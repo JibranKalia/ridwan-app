@@ -7,6 +7,15 @@ export default Controller.extend({
   actions: {
     invalidateSession() {
       this.session.invalidate();
+    },
+    async authenticate() {
+      let { email, password } = this.getProperties('identification', 'password');
+
+      try {
+        await this.get('session').authenticate('authenticator:oauth2', email, password);
+      } catch(e) {
+        this.set('errorMessage', e.error || e);
+      }
     }
   }
 });

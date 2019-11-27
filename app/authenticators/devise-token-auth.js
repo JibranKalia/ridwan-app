@@ -1,4 +1,5 @@
 import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
+import config from 'app-ridwan/config/environment';
 import fetch from 'fetch';
 import RSVP from 'rsvp';
 import { run } from '@ember/runloop';
@@ -11,7 +12,7 @@ const defaultHeaders = {
 };
 
 export default BaseAuthenticator.extend({
-  authHost: 'http://localhost:3010/v1/auth',
+  authHost: config.apiHost + '/v1/auth',
   serverTokenEndpoint: '/sign_in',
   invalidateEndpoint: '/sign_out',
   validateTokenEndpoint: '/validate_token',

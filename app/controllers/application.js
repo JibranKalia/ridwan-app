@@ -12,7 +12,7 @@ export default Controller.extend({
       let { email, password } = this.getProperties('identification', 'password');
 
       try {
-        await this.get('session').authenticate('authenticator:oauth2', email, password);
+        await this.get('session').authenticate('authenticator:devise-token-auth', email, password);
       } catch(e) {
         this.set('errorMessage', e.error || e);
       }

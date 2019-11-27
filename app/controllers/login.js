@@ -8,7 +8,7 @@ export default Controller.extend({
     async authenticate() {
       let { identification, password } = this.getProperties('identification', 'password');
       try {
-        await this.session.authenticate('authenticator:oauth2', identification, password);
+        await this.session.authenticate('authenticator:devise-token-auth', identification, password);
       } catch(error) {
         this.set('errorMessage', error.error || error);
       }

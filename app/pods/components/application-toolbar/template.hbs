@@ -1,0 +1,19 @@
+<PaperToolbar>
+  <PaperToolbarTools>
+    <span class="flex"></span>
+    {{#if session.isAuthenticated}}
+      <PaperButton
+        @raised={{true}}
+        @onClick={{action invalidateSession}}>
+          Logout
+      </PaperButton>
+    {{else}}
+      <LinkTo @route="login">
+        <PaperButton
+          @raised={{true}}>
+          Login
+        </PaperButton>
+      </LinkTo>
+    {{/if}}
+  </PaperToolbarTools>
+</PaperToolbar>

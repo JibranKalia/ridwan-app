@@ -3,9 +3,11 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'app-ridwan',
+    podModulePrefix: 'app-ridwan/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
+    apiHost: process.env.API_HOST,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

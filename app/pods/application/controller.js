@@ -8,6 +8,7 @@ export default Controller.extend({
     invalidateSession() {
       this.session.invalidate();
     },
+
     async authenticate() {
       let { email, password } = this.getProperties('identification', 'password');
 

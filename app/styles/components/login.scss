@@ -1,0 +1,9 @@
+.login-page {
+  height: 100vh;
+  .login-box {
+    padding: 3rem;
+    & > md-input-container {
+      min-width: 15rem;
+    }
+  }
+}

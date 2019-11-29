@@ -1,5 +1,6 @@
-@import 'ember-paper';
+$primary: "green";
+$accent: "grey";
+$warn: "red";
 
-.full-height {
-  height: 100vh;
-}
+@import 'ember-paper';
+@import 'components/login'

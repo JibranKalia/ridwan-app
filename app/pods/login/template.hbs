@@ -1,21 +1,23 @@
-
-<div class='full-height layout-column layout-align-center-center'>
-  <PaperInput 
-    @value={{identification}}
-    @onChange={{action (mut identification)}}
-    @label="Email Address"
-    @type="email"
-  />
-  <PaperInput 
-    @value={{password}}
-    @onChange={{action (mut password)}}
-    @label="Password"
-    @type="password"
-  />
-  <PaperButton @raised={{true}} @onClick={{action "authenticate"}}>
-    Submit
-  </PaperButton>
-  {{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-  {{/if}}
+<div class='login-page layout-column layout-align-center-center'>
+  <article class='login-box layout-column layout-align-center-center'>
+    <PaperInput 
+      @value={{identification}}
+      @onChange={{action (mut identification)}}
+      @label="Email Address"
+      @required={{true}}
+      @class="flex-50"
+      @type="email"
+    />
+    <PaperInput 
+      @value={{password}}
+      @onChange={{action (mut password)}}
+      @label="Password"
+      @required={{true}}
+      @type="password"
+      @errors={{errorMessage}}
+    />
+    <PaperButton @raised={{true}} @primary={{true}} @onClick={{action "authenticate"}}>
+      Submit
+    </PaperButton>
+  </article>
 </div>

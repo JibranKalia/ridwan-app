@@ -1,4 +1,6 @@
 import Controller from '@ember/controller';
+import { observer } from '@ember/object';
+import { A } from '@ember/array';
 import { inject as service } from '@ember/service';
 
 const ERROR_MAPPER = Object.freeze({
@@ -7,12 +9,20 @@ const ERROR_MAPPER = Object.freeze({
 
 export default Controller.extend({
   session: service(),
-
+  errors: A([]),
 
   handleError(error) {
     const msg = ERROR_MAPPER[error.status.toString()]
-    this.set('errorMessage', [msg]);
+    if (this.errors.length === 0) {
+      this.errors.pushObject(msg);
+    }
   },
+
+  inputObserver: observer('password', function() {
+    if (this.errors.length > 0) {
+      this.set('errors', []);
+    }
+  }),
 
   actions: {
     async authenticate() {
@@ -26,6 +36,6 @@ export default Controller.extend({
       if (this.session.isAuthenticated) {
         // What to do with all this success?
       }
-    }
+    },
   }
 });

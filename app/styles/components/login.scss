@@ -1,13 +1,21 @@
 .login-page {
   height: 100vh;
-  background-color: paper-color("grey", '100');
+  background-color: paper-color("grey", '200');
   .login-box {
     background-color: paper-color("grey", '50');
     padding: 3rem;
     border-radius: 10px;
 
-    & > md-input-container {
+    & .login-form > md-input-container {
       min-width: 15rem;
+    }
+    .link-section {
+      margin-top: 1rem;
+      .login-link {
+        line-height: 2rem;
+        color: #1565c0;
+        text-decoration-line: none;
+      }
     }
   }
 }

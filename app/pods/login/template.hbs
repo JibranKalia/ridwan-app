@@ -1,25 +1,36 @@
 <div class='login-page layout-column layout-align-center-center'>
-  <PaperForm @onSubmit={{action "authenticate"}} @class='login-box layout-column layout-align-center-center' as |form|>
-    <form.input
-      @value={{identification}}
-      @onChange={{action (mut identification)}}
-      @label="Email Address"
-      @required={{true}}
-      @class="flex-50"
-      @type="email"
-      @isTouched={{gt errors.length 0}}
-    />
-    <form.input 
-      @value={{password}}
-      @onChange={{action (mut password)}}
-      @label="Password"
-      @required={{true}}
-      @type="password"
-      @isTouched={{gt errors.length 0}}
-      @errors={{errors}}
-    />
-    <form.submit-button @raised={{true}} @primary={{true}} @disabled={{form.isInvalid}}>
-      Submit
-    </form.submit-button>
-  </PaperForm>
+  <article class='login-box'>
+    <PaperForm @onSubmit={{action "authenticate"}} @class='login-form layout-column layout-align-center-center' as |form|>
+      <form.input
+        @value={{identification}}
+        @onChange={{action (mut identification)}}
+        @label="Email Address"
+        @required={{true}}
+        @class="flex-50"
+        @type="email"
+        @isTouched={{gt errors.length 0}}
+      />
+      <form.input 
+        @value={{password}}
+        @onChange={{action (mut password)}}
+        @label="Password"
+        @required={{true}}
+        @type="password"
+        @isTouched={{gt errors.length 0}}
+        @errors={{errors}}
+      />
+      <form.submit-button @raised={{true}} @primary={{true}} @disabled={{form.isInvalid}}>
+        Submit
+      </form.submit-button>
+    </PaperForm>
+    <section class='link-section layout-column layout-align-center-center'>
+      <LinkTo @class='login-link' @route="login">
+        Forgot your password?
+      </LinkTo>
+
+      <LinkTo @class='login-link' @route="login">
+        Register as a new user.
+      </LinkTo>
+    </section>
+  </article>
 </div>

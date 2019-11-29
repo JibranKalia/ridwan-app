@@ -1,10 +1,21 @@
-<form {{action "authenticate" on="submit"}}>
-  <label for="identification">Login</label>
-  {{input id="identification" placeholder="Enter Login" value=identification}}
-  <label for="password">Password</label>
-  {{input id="password" placeholder="Enter Password" type="password" value=password}}
-  <button type="submit">Login</button>
+
+<div class='full-height layout-column layout-align-center-center'>
+  <PaperInput 
+    @value={{identification}}
+    @onChange={{action (mut identification)}}
+    @label="Email Address"
+    @type="email"
+  />
+  <PaperInput 
+    @value={{password}}
+    @onChange={{action (mut password)}}
+    @label="Password"
+    @type="password"
+  />
+  <PaperButton @raised={{true}} @onClick={{action "authenticate"}}>
+    Submit
+  </PaperButton>
   {{#if errorMessage}}
     <p>{{errorMessage}}</p>
   {{/if}}
-</form>
+</div>

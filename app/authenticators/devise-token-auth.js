@@ -12,7 +12,7 @@ const defaultHeaders = {
 };
 
 export default BaseAuthenticator.extend({
-  authHost: config.apiHost + '/v1/auth',
+  authHost: config.apiHost + '/auth',
   serverTokenEndpoint: '/sign_in',
   invalidateEndpoint: '/sign_out',
   validateTokenEndpoint: '/validate_token',

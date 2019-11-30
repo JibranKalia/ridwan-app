@@ -3,5 +3,4 @@ import config from 'app-ridwan/config/environment';
 
 export default JSONAPIAdapter.extend({
   host: config.apiHost,
-  namespace: 'v1',
 });

@@ -18,14 +18,12 @@
     @open={{leftSideBarOpen}}
     @lockedOpen={{false}}
     @onToggle={{action (mut leftSideBarOpen)}}>
-    <PaperToolbar as |toolbar|>
+    <PaperToolbar>
       <PaperToolbarTools>John Doe</PaperToolbarTools>
       <PaperContent>
         {{#if session.isAuthenticated}}
-          <PaperButton
-            @raised={{true}}
-            @onClick={{action invalidateSession}}>
-              Logout
+          <PaperButton @raised={{true}} @onClick={{action invalidateSession}}>
+            Logout
           </PaperButton>
         {{/if}}
       </PaperContent>

@@ -37,12 +37,14 @@ export default BaseAuthenticator.extend({
           headers: defaultHeaders,
         });
         if (!response.ok) return run(null, reject, response);
+        const parsedResponse = await response.json();
         const result = {
           accessToken: response.headers.map['access-token'],
           expiry: response.headers.map['expiry'],
           tokenType: response.headers.map['token-type'],
           uid: response.headers.map['uid'],
           client: response.headers.map['client'],
+          user_id: parsedResponse.data.id
         };
         run(null, resolve, result);
       } catch (error) {

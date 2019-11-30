@@ -19,7 +19,7 @@
     @lockedOpen={{false}}
     @onToggle={{action (mut leftSideBarOpen)}}>
     <PaperToolbar>
-      <PaperToolbarTools>John Doe</PaperToolbarTools>
+      <PaperToolbarTools>{{currentUser.user.formattedName}}</PaperToolbarTools>
       <PaperContent>
         {{#if session.isAuthenticated}}
           <PaperButton @raised={{true}} @onClick={{action invalidateSession}}>

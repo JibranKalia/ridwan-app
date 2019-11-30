@@ -48,6 +48,7 @@ export default BaseAuthenticator.extend({
         };
         run(null, resolve, result);
       } catch (error) {
+        console.error(error);
         run(null, reject, error);
       }
     });
@@ -68,6 +69,7 @@ export default BaseAuthenticator.extend({
         if (!response.ok) return run(null, reject, response);
         run(null, resolve, data);
       } catch (error) {
+        console.error(error);
         run(null, reject, error);
       }
     });
@@ -88,6 +90,7 @@ export default BaseAuthenticator.extend({
         if (!response.ok) return run(null, reject, response);
         run(null, resolve, data);
       } catch (error) {
+        console.error(error);
         run(null, reject, error);
       }
     });

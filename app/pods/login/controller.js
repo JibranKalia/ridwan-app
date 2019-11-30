@@ -31,6 +31,7 @@ export default Controller.extend({
       try {
         await this.session.authenticate('authenticator:devise-token-auth', identification, password);
       } catch(error) {
+        console.error(error);
         this.handleError(error);
       }
     },

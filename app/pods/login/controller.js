@@ -33,8 +33,6 @@ export default Controller.extend({
       } catch(error) {
         this.handleError(error);
       }
-      if (this.session.isAuthenticated) {
-      }
     },
   }
 });

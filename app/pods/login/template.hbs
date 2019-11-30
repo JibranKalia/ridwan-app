@@ -1,6 +1,6 @@
-<div class='login-page layout-column layout-align-center-center'>
-  <article class='login-box'>
-    <PaperForm @onSubmit={{action "authenticate"}} @class='login-form layout-column layout-align-center-center' as |form|>
+<div class="login-page layout-column layout-align-center-center">
+  <article class="login-box">
+    <PaperForm @onSubmit={{action "authenticate"}} @class="login-form layout-column layout-align-center-center" as |form|>
       <form.input
         @value={{identification}}
         @onChange={{action (mut identification)}}
@@ -23,12 +23,12 @@
         Submit
       </form.submit-button>
     </PaperForm>
-    <section class='link-section layout-column layout-align-center-center'>
-      <LinkTo @class='login-link' @route="login">
+    <section class="link-section layout-column layout-align-center-center">
+      <LinkTo @class="login-link" @route="login">
         Forgot your password?
       </LinkTo>
 
-      <LinkTo @class='login-link' @route="login">
+      <LinkTo @class="login-link" @route="login">
         Register as a new user.
       </LinkTo>
     </section>

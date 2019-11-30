@@ -18,6 +18,7 @@ export default Controller.extend({
     }
   },
 
+  // eslint-disable-next-line ember/no-observers
   inputObserver: observer('password', function() {
     if (this.errors.length > 0) {
       this.set('errors', []);
@@ -31,10 +32,6 @@ export default Controller.extend({
         await this.session.authenticate('authenticator:devise-token-auth', identification, password);
       } catch(error) {
         this.handleError(error);
-      }
-
-      if (this.session.isAuthenticated) {
-        // What to do with all this success?
       }
     },
   }

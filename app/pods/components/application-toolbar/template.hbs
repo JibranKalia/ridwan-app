@@ -1,19 +1,32 @@
 <PaperToolbar>
   <PaperToolbarTools>
-    <span class="flex"></span>
-    {{#if session.isAuthenticated}}
-      <PaperButton
-        @raised={{true}}
-        @onClick={{action invalidateSession}}>
-          Logout
+    <PaperSidenavToggle @name="left" as |toggleAction|>
+      <PaperButton @iconButton={{true}} @onClick={{action toggleAction}}>
+        {{paper-icon "menu"}}
       </PaperButton>
-    {{else}}
-      <LinkTo @route="login">
-        <PaperButton
-          @raised={{true}}>
-          Login
-        </PaperButton>
-      </LinkTo>
-    {{/if}}
+    </PaperSidenavToggle> 
+    <div>Ridwan</div>
+    <span class="flex"></span>
   </PaperToolbarTools>
 </PaperToolbar>
+
+<PaperSidenavContainer @class="inner-sidenave">
+  <PaperSidenav
+    @class="md-whiteframe-z2"
+    @name="left"
+    @position="left"
+    @open={{leftSideBarOpen}}
+    @lockedOpen={{false}}
+    @onToggle={{action (mut leftSideBarOpen)}}>
+    <PaperToolbar>
+      <PaperToolbarTools>John Doe</PaperToolbarTools>
+      <PaperContent>
+        {{#if session.isAuthenticated}}
+          <PaperButton @raised={{true}} @onClick={{action invalidateSession}}>
+            Logout
+          </PaperButton>
+        {{/if}}
+      </PaperContent>
+    </PaperToolbar>
+  </PaperSidenav>
+</PaperSidenavContainer>

@@ -3,4 +3,9 @@ $accent: "grey";
 $warn: "red";
 
 @import 'ember-paper';
-@import 'components/login'
+@import 'components/login';
+
+.base-link {
+  color: black;
+  text-decoration-line: none;
+}

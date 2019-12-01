@@ -3,13 +3,19 @@
     <PaperSubheader>
       Your classes
     </PaperSubheader>
-    {{#each model.classrooms as |class index|}}
+    {{#each model.classrooms as |class|}}
       <PaperCard as |card|>
         {{#card.title as |title|}}
           {{#title.text as |text|}}
             {{#text.headline}}{{class.name}}{{/text.headline}}
           {{/title.text}}
         {{/card.title}}
+        {{#card.actions}}
+          <LinkTo @class='base-link' @route="home.classrooms.show" @model={{class.id}}>
+            <PaperButton>Show Details</PaperButton>
+          </LinkTo>
+          <PaperButton>Delete</PaperButton>
+        {{/card.actions}}
       </PaperCard>
     {{/each}}
   </PaperList>

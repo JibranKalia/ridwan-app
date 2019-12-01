@@ -2,9 +2,9 @@ import Route from '@ember/routing/route';
 import { hash } from 'rsvp';
 
 export default Route.extend({
-  model() {
+  model({ id }) {
     return hash({
-      classrooms: this.store.query('classroom', {})
+      classroom: this.store.findRecord('classroom', id)
     })
   },
 });

@@ -11,7 +11,7 @@ Router.map(function() {
   this.route('home', function() {
     this.route('classrooms', function() {
       this.route('index', { path: '/' });
-      this.route('show');
+      this.route('show', { path: '/:id' } );
     })
   });
 

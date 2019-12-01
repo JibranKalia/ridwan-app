@@ -1,0 +1,20 @@
+<PaperSidenavContainer @class="inner-sidenav">
+  <PaperSidenav
+    @class="md-whiteframe-z2"
+    @name="left"
+    @position="left"
+    @open={{leftSideBarOpen}}
+    @lockedOpen={{false}}
+    @onToggle={{action (mut leftSideBarOpen)}}>
+    <PaperToolbar>
+      <PaperToolbarTools>{{currentUser.user.formattedName}}</PaperToolbarTools>
+      <PaperContent>
+        {{#if session.isAuthenticated}}
+          <PaperButton @raised={{true}} @onClick={{action invalidateSession}}>
+            Logout
+          </PaperButton>
+        {{/if}}
+      </PaperContent>
+    </PaperToolbar>
+  </PaperSidenav>
+</PaperSidenavContainer>

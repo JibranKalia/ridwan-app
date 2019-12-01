@@ -11,8 +11,9 @@
       <PaperContent>
         <PaperList>
           <PaperItem @onClick={{action "transitionToClassrooms"}}>
-            {{paper-icon "class"}}
-            <p>Class</p>
+            <div class="md-list-item-text">
+              <p>Classrooms</p>
+            </div>
           </PaperItem>
         </PaperList>
         {{#if session.isAuthenticated}}

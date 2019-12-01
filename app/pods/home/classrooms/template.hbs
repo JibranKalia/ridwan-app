@@ -1,3 +1,16 @@
 <article>
-  This is a classroom
+  <PaperList>
+    <PaperSubheader>
+      Your classes
+    </PaperSubheader>
+    {{#each model.classrooms as |class index|}}
+      <PaperCard as |card|>
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}}{{class.name}}{{/text.headline}}
+          {{/title.text}}
+        {{/card.title}}
+      </PaperCard>
+    {{/each}}
+  </PaperList>
 </article>

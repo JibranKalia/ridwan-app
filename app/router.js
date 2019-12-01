@@ -9,7 +9,10 @@ export default class Router extends EmberRouter {
 Router.map(function() {
   this.route('login');
   this.route('home', function() {
-    this.route('classrooms')
+    this.route('classrooms', function() {
+      this.route('index', { path: '/' });
+      this.route('show');
+    })
   });
 
 });

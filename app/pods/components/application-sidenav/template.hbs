@@ -9,6 +9,12 @@
     <PaperToolbar>
       <PaperToolbarTools>{{currentUser.user.formattedName}}</PaperToolbarTools>
       <PaperContent>
+        <PaperList>
+          <PaperItem @onClick={{action "transitionToClassrooms"}}>
+            {{paper-icon "class"}}
+            <p>Class</p>
+          </PaperItem>
+        </PaperList>
         {{#if session.isAuthenticated}}
           <PaperButton @raised={{true}} @onClick={{action invalidateSession}}>
             Logout

@@ -20,14 +20,9 @@
         {{/card.actions}}
       </PaperCard>
     {{/each}}
+    <div class='extra-list-element'></div>
   </PaperList>
-  <PaperButton
-    @accent={{true}}
-    @raised={{true}}
-    @fab={{true}}
-    @class='app-fab--absolute'
-    @onClick={{action 'openCreateClassModal'}}
-    >
+  <PaperButton @accent={{true}} @raised={{true}} @fab={{true}} @class='app-fab--absolute' @onClick={{action 'openCreateClassModal'}} >
     {{paper-icon "add"}}
   </PaperButton>
 </article>

@@ -5,7 +5,6 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
   store: service(),
   currentUser: service(),
-  paperToaster: service(),
   user: readOnly('currentUser.user'),
 
   showCreateClassModal: false,
@@ -22,6 +21,7 @@ export default Controller.extend({
       this.set('showCreateClassModal', false);
     },
     deleteClassroom(classroom) {
+      //TODO: Display modal on deletion
       classroom.destroyRecord();
     },
     async saveClassroom(className) {
@@ -31,12 +31,9 @@ export default Controller.extend({
           user: this.user
         })
         await classroom.save();
-        this.paperToaster.show('Class Created', {
-          duration: 4000,
-          toastClass: this.get('toastClass')
-        });
       } catch(e) {
         console.error(e);
+        //TODO: Show an alert on error
       } finally {
         this.set('showCreateClassModal', false);
         this.reload();

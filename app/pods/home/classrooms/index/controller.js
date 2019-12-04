@@ -17,6 +17,9 @@ export default Controller.extend({
     closeCreateClassModal() {
       this.set('showCreateClassModal', false);
     },
+    deleteClassroom(classroom) {
+      classroom.destroyRecord();
+    },
     async saveClassroom(className) {
       try {
         const classroom = this.store.createRecord('classroom', {

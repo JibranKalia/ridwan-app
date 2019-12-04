@@ -10,6 +10,10 @@ export default Controller.extend({
 
   showCreateClassModal: false,
 
+  reload() {
+    this.send('routeReload');
+  },
+
   actions: {
     openCreateClassModal() {
       this.set('showCreateClassModal', true);
@@ -31,12 +35,11 @@ export default Controller.extend({
           duration: 4000,
           toastClass: this.get('toastClass')
         });
-
       } catch(e) {
         console.error(e);
-
       } finally {
         this.set('showCreateClassModal', false);
+        this.reload();
       }
     }
 

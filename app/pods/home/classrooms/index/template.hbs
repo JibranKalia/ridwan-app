@@ -21,4 +21,30 @@
       </PaperCard>
     {{/each}}
   </PaperList>
+  <PaperButton
+    @accent={{true}}
+    @raised={{true}}
+    @fab={{true}}
+    @class='app-fab--absolute'
+    @onClick={{action 'openCreateClassModal'}}
+    >
+    {{paper-icon "add"}}
+  </PaperButton>
 </article>
+
+{{#if showCreateClassModal}}
+  {{#paper-dialog fullscreen=false onClose=(action "closeCreateClassModal")}}
+
+    {{#paper-dialog-content}}
+      <h2 class="md-title">Create New Class</h2>
+      {{paper-input placeholder="Class Name" autofocus=true value=className onChange=(action (mut className))}}
+    {{/paper-dialog-content}}
+
+    {{#paper-dialog-actions class="layout-row"}}
+      <span class="flex"></span>
+      {{#paper-button primary=true onClick=(action "closeCreateClassModal")}}Cancel{{/paper-button}}
+      {{#paper-button primary=true onClick=(action "saveClassroom" className)}}Save{{/paper-button}}
+    {{/paper-dialog-actions}}
+
+  {{/paper-dialog}}
+{{/if}}

@@ -32,7 +32,13 @@
 
     {{#paper-dialog-content}}
       <h2 class="md-title">Create New Class</h2>
-      {{paper-input placeholder="Class Name" autofocus=true value=className onChange=(action (mut className))}}
+      <PaperInput
+        @label="Class Name"
+        @autofocus={{true}}
+        @value={{className}}
+        @onChange={{action (mut className)}}
+        @required={{true}}
+        @min="2"/>
     {{/paper-dialog-content}}
 
     {{#paper-dialog-actions class="layout-row"}}

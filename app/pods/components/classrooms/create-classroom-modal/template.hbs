@@ -1,5 +1,5 @@
-{{#paper-dialog fullscreen=false onClose=(action closeModal classroom)}}
-  {{#paper-dialog-content}}
+<PaperDialog @fullscreen={{false}} @onClose={{action closeModal classroom}}>
+  <PaperDialogContent>
     <h2 class="md-title">Create New Class</h2>
     <PaperInput
       @label="Class Name"
@@ -8,11 +8,11 @@
       @onChange={{action (mut classroom.name)}}
       @isTouched={{classroom.nameErrors.length}}
       @errors={{classroom.nameErrors}}/>
-  {{/paper-dialog-content}}
+  </PaperDialogContent>
 
-  {{#paper-dialog-actions class="layout-row"}}
+  <PaperDialogActions @class="layout-row">
     <span class="flex"></span>
-    {{#paper-button primary=true onClick=(action closeModal classroom)}}Cancel{{/paper-button}}
-    {{#paper-button primary=true onClick=(action saveClassroom classroom)}}Save{{/paper-button}}
-  {{/paper-dialog-actions}}
-{{/paper-dialog}}
+    <PaperButton @primary={{true}} @onClick={{action closeModal classroom}}>Cancel</PaperButton>
+    <PaperButton @primary={{true}} @onClick={{action saveClassroom classroom}}>Save</PaperButton>
+  </PaperDialogActions>
+</PaperDialog>

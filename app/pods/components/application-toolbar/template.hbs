@@ -1,7 +1,7 @@
 <PaperToolbar>
   <PaperToolbarTools>
     {{#if previousRoute}}
-      <PaperButton @iconButton={{true}} @onClick={{action 'goToPreviousRoute'}}>
+      <PaperButton @iconButton={{true}} @onClick={{action "goToPreviousRoute"}}>
         {{paper-icon "keyboard_backspace"}}
       </PaperButton>
     {{else}}
@@ -9,7 +9,7 @@
         {{paper-icon "menu"}}
       </PaperButton>
     {{/if}}
-    <div class='toolbar'>{{name}}</div>
+    <div class="toolbar">{{name}}</div>
     <span class="flex"></span>
   </PaperToolbarTools>
 </PaperToolbar>

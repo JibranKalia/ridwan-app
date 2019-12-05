@@ -17,7 +17,7 @@
           </PaperItem>
         </PaperList>
         {{#if session.isAuthenticated}}
-          <PaperButton @raised={{true}} @onClick={{action 'invalidateSession'}}>
+          <PaperButton @raised={{true}} @onClick={{action "invalidateSession"}}>
             Logout
           </PaperButton>
         {{/if}}

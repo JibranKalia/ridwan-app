@@ -1,11 +1,25 @@
 $primary: "green";
-$accent: "grey";
+$accent: "deep-orange";
 $warn: "red";
 
 @import 'ember-paper';
 @import 'components/login';
+@import 'components/paper-modifications';
 
 .base-link {
   color: black;
   text-decoration-line: none;
+}
+
+.app-fab--absolute {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+@media(min-width: 1024px) {
+   .app-fab--absolute {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
 }

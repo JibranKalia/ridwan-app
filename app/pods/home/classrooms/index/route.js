@@ -7,4 +7,9 @@ export default Route.extend({
       classrooms: this.store.query('classroom', {})
     })
   },
+  actions: {
+    routeReload() {
+      this.refresh();
+    }
+  }
 });

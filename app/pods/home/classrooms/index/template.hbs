@@ -1,24 +1,32 @@
-<ApplicationToolbar @name='Classes'/>
+<ApplicationToolbar @name="Classes"/>
 
 <article>
   <PaperList>
     <PaperSubheader>
       Your classes
     </PaperSubheader>
-    {{#each model.classrooms as |class|}}
+    {{#each model.classrooms as |classroom|}}
       <PaperCard as |card|>
         {{#card.title as |title|}}
           {{#title.text as |text|}}
-            {{#text.headline}}{{class.name}}{{/text.headline}}
+            {{#text.headline}}{{classroom.name}}{{/text.headline}}
           {{/title.text}}
         {{/card.title}}
         {{#card.actions}}
-          <LinkTo @class='base-link' @route="home.classrooms.show" @model={{class.id}}>
+          <LinkTo @class="base-link" @route="home.classrooms.show" @model={{classroom.id}}>
             <PaperButton>Show Details</PaperButton>
           </LinkTo>
-          <PaperButton>Delete</PaperButton>
+          <PaperButton @onClick={{action "deleteClassroom" classroom}}>Delete</PaperButton>
         {{/card.actions}}
       </PaperCard>
     {{/each}}
+    <div class="extra-list-element"></div>
   </PaperList>
+  <PaperButton @accent={{true}} @raised={{true}} @fab={{true}} @class="app-fab--absolute" @onClick={{action "openCreateClassModal"}} >
+    {{paper-icon "add"}}
+  </PaperButton>
 </article>
+
+{{#if showCreateClassModal}}
+  <Classrooms::CreateClassroomModal @saveClassroom={{action "saveClassroom"}} @closeModal={{action "closeModal"}}/>
+{{/if}}

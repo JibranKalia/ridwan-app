@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service';
 export default Controller.extend({
   store: service(),
   currentUser: service(),
+  paperToaster: service(),
   user: readOnly('currentUser.user'),
 
   showCreateClassModal: false,
@@ -13,7 +14,7 @@ export default Controller.extend({
     this.send('routeReload');
   },
 
-  actions: {
+  actions: { 
     openCreateClassModal() {
       this.set('showCreateClassModal', true);
     },
@@ -32,7 +33,7 @@ export default Controller.extend({
         this.reload();
       } catch(e) {
         console.error(e);
-        //TODO: Show an alert on error
+        this.get('paperToaster').show('Error creating class');
       }
     }
   }

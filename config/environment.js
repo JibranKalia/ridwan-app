@@ -25,6 +25,13 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-paper'] = {
+    'paper-toaster': {
+      position: 'bottom left',
+      duration: 4000
+    }
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

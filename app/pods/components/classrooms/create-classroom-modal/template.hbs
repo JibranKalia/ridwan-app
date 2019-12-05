@@ -1,0 +1,19 @@
+{{#paper-dialog fullscreen=false onClose=(action closeModal)}}
+
+  {{#paper-dialog-content}}
+    <h2 class="md-title">Create New Class</h2>
+    <PaperInput
+      @label="Class Name"
+      @autofocus={{true}}
+      @value={{classroom.name}}
+      @onChange={{action (mut classroom.name)}}
+      @isTouched={{classroom.nameErrors.length}}
+      @errors={{classroom.nameErrors}}/>
+  {{/paper-dialog-content}}
+
+  {{#paper-dialog-actions class="layout-row"}}
+    <span class="flex"></span>
+    {{#paper-button primary=true onClick=(action closeModal classroom)}}Cancel{{/paper-button}}
+    {{#paper-button primary=true onClick=(action saveClassroom classroom)}}Save{{/paper-button}}
+  {{/paper-dialog-actions}}
+{{/paper-dialog}}

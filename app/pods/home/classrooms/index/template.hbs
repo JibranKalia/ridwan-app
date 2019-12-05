@@ -28,23 +28,5 @@
 </article>
 
 {{#if showCreateClassModal}}
-  {{#paper-dialog fullscreen=false onClose=(action "closeCreateClassModal")}}
-
-    {{#paper-dialog-content}}
-      <h2 class="md-title">Create New Class</h2>
-      <PaperInput
-        @label="Class Name"
-        @autofocus={{true}}
-        @value={{className}}
-        @onChange={{action (mut className)}}
-        @required={{true}}
-        @min="2"/>
-    {{/paper-dialog-content}}
-
-    {{#paper-dialog-actions class="layout-row"}}
-      <span class="flex"></span>
-      {{#paper-button primary=true onClick=(action "closeCreateClassModal")}}Cancel{{/paper-button}}
-      {{#paper-button primary=true onClick=(action "saveClassroom" className)}}Save{{/paper-button}}
-    {{/paper-dialog-actions}}
-  {{/paper-dialog}}
+  <Classrooms::CreateClassroomModal @saveClassroom={{action 'saveClassroom'}} @closeModal={{action 'closeModal'}}/>
 {{/if}}

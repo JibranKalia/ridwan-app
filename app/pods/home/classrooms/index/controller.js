@@ -17,28 +17,23 @@ export default Controller.extend({
     openCreateClassModal() {
       this.set('showCreateClassModal', true);
     },
-    closeCreateClassModal() {
+    closeModal(classroom) {
+      classroom.destroyRecord();
       this.set('showCreateClassModal', false);
     },
     deleteClassroom(classroom) {
       //TODO: Display modal on deletion
       classroom.destroyRecord();
     },
-    async saveClassroom(className) {
+    async saveClassroom(classroom) {
       try {
-        const classroom = this.store.createRecord('classroom', {
-          name: className,
-          user: this.user
-        })
         await classroom.save();
+        this.set('showCreateClassModal', false);
+        this.reload();
       } catch(e) {
         console.error(e);
         //TODO: Show an alert on error
-      } finally {
-        this.set('showCreateClassModal', false);
-        this.reload();
       }
     }
-
   }
 });

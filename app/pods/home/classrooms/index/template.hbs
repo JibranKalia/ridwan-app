@@ -1,4 +1,4 @@
-<ApplicationToolbar @name='Classes'/>
+<ApplicationToolbar @name="Classes"/>
 
 <article>
   <PaperList>
@@ -13,20 +13,20 @@
           {{/title.text}}
         {{/card.title}}
         {{#card.actions}}
-          <LinkTo @class='base-link' @route="home.classrooms.show" @model={{classroom.id}}>
+          <LinkTo @class="base-link" @route="home.classrooms.show" @model={{classroom.id}}>
             <PaperButton>Show Details</PaperButton>
           </LinkTo>
-          <PaperButton @onClick={{action 'deleteClassroom' classroom}}>Delete</PaperButton>
+          <PaperButton @onClick={{action "deleteClassroom" classroom}}>Delete</PaperButton>
         {{/card.actions}}
       </PaperCard>
     {{/each}}
-    <div class='extra-list-element'></div>
+    <div class="extra-list-element"></div>
   </PaperList>
-  <PaperButton @accent={{true}} @raised={{true}} @fab={{true}} @class='app-fab--absolute' @onClick={{action 'openCreateClassModal'}} >
+  <PaperButton @accent={{true}} @raised={{true}} @fab={{true}} @class="app-fab--absolute" @onClick={{action "openCreateClassModal"}} >
     {{paper-icon "add"}}
   </PaperButton>
 </article>
 
 {{#if showCreateClassModal}}
-  <Classrooms::CreateClassroomModal @saveClassroom={{action 'saveClassroom'}} @closeModal={{action 'closeModal'}}/>
+  <Classrooms::CreateClassroomModal @saveClassroom={{action "saveClassroom"}} @closeModal={{action "closeModal"}}/>
 {{/if}}

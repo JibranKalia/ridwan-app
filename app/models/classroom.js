@@ -9,5 +9,6 @@ export default Model.extend({
   nameErrors: mapBy('errors.name', 'message'),
   // relationships
   user: belongsTo('user'),
-  students: hasMany('students')
+  students: hasMany('students'),
+  enrollments: hasMany('enrollments')
 });

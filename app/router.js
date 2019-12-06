@@ -13,6 +13,9 @@ Router.map(function() {
       this.route('index', { path: '/' });
       this.route('show', { path: '/:id' } );
     })
+    this.route('enrollments', function() {
+      this.route('show', { path: '/:id' } );
+    })
   });
 
 });

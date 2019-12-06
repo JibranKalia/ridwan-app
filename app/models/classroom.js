@@ -1,10 +1,13 @@
 import Model, { attr } from '@ember-data/model';
-import { belongsTo } from 'ember-data/relationships';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 import { mapBy } from '@ember/object/computed';
 
 export default Model.extend({
-  user: belongsTo('user'),
+  // attributes
   name: attr('string'),
-
+  // computed properties
   nameErrors: mapBy('errors.name', 'message'),
+  // relationships
+  user: belongsTo('user'),
+  students: hasMany('students')
 });

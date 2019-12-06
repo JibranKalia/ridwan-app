@@ -6,20 +6,22 @@
       Your Students
     </PaperSubheader>
     {{#each model.classroom.enrollments as |enrollment|}}
-      <PaperCard as |card|>
-        {{#card.title as |title|}}
-          {{#title.text as |text|}}
-            {{#text.headline}}{{enrollment.formattedName}}{{/text.headline}}
-          {{/title.text}}
-        {{/card.title}}
-        {{#card.actions}}
-          <LinkTo @class="base-link" @route="home.enrollments.show" @model={{enrollment.id}}>
-            <PaperButton>Show Details</PaperButton>
-          </LinkTo>
-            <PaperButton>Delete</PaperButton>
-          {{!-- <PaperButton @onClick={{action "deleteClassroom" classroom}}>Delete</PaperButton> --}}
-        {{/card.actions}}
-      </PaperCard>
+      <LinkTo @class="base-link" @route="home.enrollments.show" @model={{enrollment.id}}>
+        <PaperCard as |card|>
+          {{#card.title as |title|}}
+            {{#title.text as |text|}}
+              {{#text.headline}}{{enrollment.formattedName}}{{/text.headline}}
+            {{/title.text}}
+          {{/card.title}}
+          {{#card.actions}}
+            <LinkTo @class="base-link" @route="home.enrollments.show" @model={{enrollment.id}}>
+              <PaperButton>Show Details</PaperButton>
+            </LinkTo>
+              <PaperButton>Delete</PaperButton>
+            {{!-- <PaperButton @onClick={{action "deleteClassroom" classroom}}>Delete</PaperButton> --}}
+          {{/card.actions}}
+        </PaperCard>
+      </LinkTo>
     {{/each}}
     <div class="extra-list-element"></div>
   </PaperList>

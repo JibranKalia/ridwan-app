@@ -1,18 +1,13 @@
-<PaperDialog @fullscreen={{false}} @onClose={{action closeModal classroom}}>
-  <PaperDialogContent>
-    <h2 class="md-title">Create New Class</h2>
-    <PaperInput
-      @label="Class Name"
-      @autofocus={{true}}
-      @value={{classroom.name}}
-      @onChange={{action (mut classroom.name)}}
-      @isTouched={{classroom.nameErrors.length}}
-      @errors={{classroom.nameErrors}}/>
-  </PaperDialogContent>
-
-  <PaperDialogActions @class="layout-row">
-    <span class="flex"></span>
-    <PaperButton @primary={{true}} @onClick={{action closeModal classroom}}>Cancel</PaperButton>
-    <PaperButton @primary={{true}} @onClick={{action saveClassroom classroom}}>Save</PaperButton>
-  </PaperDialogActions>
-</PaperDialog>
+<FullScreenDialog
+  @close={{action closeModal classroom}}
+  @save={{action saveClassroom classroom}}
+  @title='Create New Class'
+ >
+  <PaperInput
+    @label="Class Name"
+    @autofocus={{true}}
+    @value={{classroom.name}}
+    @onChange={{action (mut classroom.name)}}
+    @isTouched={{classroom.nameErrors.length}}
+    @errors={{classroom.nameErrors}}/>
+</FullScreenDialog>

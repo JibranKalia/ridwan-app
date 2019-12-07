@@ -26,8 +26,14 @@ export default Controller.extend({
       classroom.destroyRecord();
       this.set('showCreateModal', false);
     },
-    deleteClassroom(classroom) {
-      classroom.destroyRecord();
+    async deleteClassroom(classroom) {
+      try {
+        await classroom.destroyRecord();
+      } catch(e) {
+        console.error(e);
+        classroom.rollbackAttributes();
+        this.get('paperToaster').show('Error deleting class');
+      }
     },
     async saveClassroom(classroom) {
       try {

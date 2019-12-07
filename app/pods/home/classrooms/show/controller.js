@@ -14,8 +14,14 @@ export default Controller.extend({
         this.transitionToRoute('home.enrollments.show', enrollmentId);
       }
     },
-    deleteEnrollment(enrollment) {
-      enrollment.destroyRecord();
+    async deleteEnrollment(enrollment) {
+      try {
+        await enrollment.destroyRecord();
+      } catch(e) {
+        console.error(e);
+        enrollment.rollbackAttributes();
+        this.get('paperToaster').show('Error removing student');
+      }
     }
   }
 })

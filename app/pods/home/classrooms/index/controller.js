@@ -8,7 +8,7 @@ export default Controller.extend({
   paperToaster: service(),
   user: readOnly('currentUser.user'),
 
-  showCreateClassModal: false,
+  showCreateModal: false,
 
   reload() {
     this.send('routeReload');
@@ -19,12 +19,12 @@ export default Controller.extend({
         this.transitionToRoute('home.classrooms.show', classroomId);
       }
     },
-    openCreateClassModal() {
-      this.set('showCreateClassModal', true);
+    openCreateModal() {
+      this.set('showCreateModal', true);
     },
-    closeModal(classroom) {
+    closeCreateModal(classroom) {
       classroom.destroyRecord();
-      this.set('showCreateClassModal', false);
+      this.set('showCreateModal', false);
     },
     deleteClassroom(classroom) {
       classroom.destroyRecord();
@@ -32,7 +32,7 @@ export default Controller.extend({
     async saveClassroom(classroom) {
       try {
         await classroom.save();
-        this.set('showCreateClassModal', false);
+        this.set('showCreateModal', false);
         this.reload();
       } catch(e) {
         console.error(e);

@@ -1,0 +1,32 @@
+{{#if (media "fullScreenDialog")}}
+  <PaperDialog @fullscreen={{true}} @onClose={{action close}}>
+    <PaperToolbar>
+      <PaperToolbarTools>
+        <PaperButton @iconButton={{true}} @onClick={{action close}}>
+          {{paper-icon "close"}}
+        </PaperButton>
+        <div class="toolbar">{{title}}</div>
+        <span class="flex"></span>
+        <PaperButton @onClick={{action save}}>
+          Save
+        </PaperButton>
+      </PaperToolbarTools>
+    </PaperToolbar>
+    <PaperDialogContent>
+      {{yield}}
+    </PaperDialogContent>
+  </PaperDialog>
+{{else}}
+  <PaperDialog @fullscreen={{false}} @onClose={{action close}}>
+    <PaperDialogContent>
+      <h2 class="md-title">{{title}}</h2>
+      {{yield}}
+    </PaperDialogContent>
+    <PaperDialogActions @class="layout-row">
+      <span class="flex"></span>
+      <PaperButton @primary={{true}} @onClick={{action close}}>Cancel</PaperButton>
+      <PaperButton @primary={{true}} @onClick={{action save}}>Save</PaperButton>
+    </PaperDialogActions>
+  </PaperDialog>
+{{/if}}
+

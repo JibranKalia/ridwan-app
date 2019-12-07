@@ -11,6 +11,10 @@ $warn: "red";
   text-decoration-line: none;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .app-fab--absolute {
   position: fixed;
   bottom: 1rem;

@@ -13,8 +13,12 @@ export default Controller.extend({
   reload() {
     this.send('routeReload');
   },
-
   actions: { 
+    showClassroomDetails(classroomId, event) {
+      if (!event.target.classList.contains("md-button")) {
+        this.transitionToRoute('home.classrooms.show', classroomId);
+      }
+    },
     openCreateClassModal() {
       this.set('showCreateClassModal', true);
     },
@@ -23,7 +27,6 @@ export default Controller.extend({
       this.set('showCreateClassModal', false);
     },
     deleteClassroom(classroom) {
-      //TODO: Display modal on deletion
       classroom.destroyRecord();
     },
     async saveClassroom(classroom) {

@@ -6,21 +6,20 @@
       Your classes
     </PaperSubheader>
     {{#each model.classrooms as |classroom|}}
-      <LinkTo @class="base-link" @route="home.classrooms.show" @model={{classroom.id}}>
-        <PaperCard as |card|>
-          {{#card.title as |title|}}
-            {{#title.text as |text|}}
-              {{#text.headline}}{{classroom.name}}{{/text.headline}}
-            {{/title.text}}
-          {{/card.title}}
-          {{#card.actions}}
-            <LinkTo @class="base-link" @route="home.classrooms.show" @model={{classroom.id}}>
-              <PaperButton>Show Details</PaperButton>
-            </LinkTo>
-            <PaperButton @onClick={{action "deleteClassroom" classroom}}>Delete</PaperButton>
-          {{/card.actions}}
-        </PaperCard>
-      </LinkTo>
+      <PaperCard {{on "click" (action "showClassroomDetails" classroom.id)}} 
+      @class='clickable' as |card|>
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}}{{classroom.name}}{{/text.headline}}
+          {{/title.text}}
+        {{/card.title}}
+        {{#card.actions}}
+          <LinkTo @class="base-link" @route="home.classrooms.show" @model={{classroom.id}}>
+            <PaperButton>Show Details</PaperButton>
+          </LinkTo>
+          <PaperButton @onClick={{action "deleteClassroom" classroom}}>Delete</PaperButton>
+        {{/card.actions}}
+      </PaperCard>
     {{/each}}
     <div class="extra-list-element"></div>
   </PaperList>

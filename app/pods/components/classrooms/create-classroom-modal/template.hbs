@@ -1,13 +1,14 @@
 <FullScreenDialog
   @close={{action closeModal classroom}}
   @save={{action saveClassroom classroom}}
-  @title="Create New Class"
- >
+  @title="Create New Class">
+
   <PaperInput
     @label="Class Name"
     @autofocus={{true}}
     @value={{classroom.name}}
     @onChange={{action (mut classroom.name)}}
     @isTouched={{classroom.nameErrors.length}}
-    @errors={{classroom.nameErrors}}/>
+    @errors={{classroom.nameErrors}} />
+
 </FullScreenDialog>

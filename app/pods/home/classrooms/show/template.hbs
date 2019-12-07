@@ -22,7 +22,11 @@
     {{/each}}
     <div class="extra-list-element"></div>
   </PaperList>
-  {{!-- <PaperButton @accent={{true}} @raised={{true}} @fab={{true}} @class="app-fab--absolute" @onClick={{action "openCreateModal"}} >
+  <PaperButton @accent={{true}} @raised={{true}} @fab={{true}} @class="app-fab--absolute" @onClick={{action "openCreateModal"}} >
     {{paper-icon "add"}}
-  </PaperButton> --}}
+  </PaperButton>
 </article>
+
+{{#if showCreateModal}}
+  <Students::CreateStudentModal @classroom={{model.classroom}} @saveStudent={{action "saveStudent"}} @closeModal={{action "closeCreateModal"}}/>
+{{/if}}

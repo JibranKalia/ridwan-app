@@ -6,7 +6,7 @@
       Your classes
     </PaperSubheader>
     {{#each model.classrooms as |classroom|}}
-      <PaperCard as |card|>
+      <PaperCard {{on "click" (action "showClassroomDetails" classroom.id)}} @class='clickable' as |card|>
         {{#card.title as |title|}}
           {{#title.text as |text|}}
             {{#text.headline}}{{classroom.name}}{{/text.headline}}
@@ -22,11 +22,11 @@
     {{/each}}
     <div class="extra-list-element"></div>
   </PaperList>
-  <PaperButton @accent={{true}} @raised={{true}} @fab={{true}} @class="app-fab--absolute" @onClick={{action "openCreateClassModal"}} >
+  <PaperButton @accent={{true}} @raised={{true}} @fab={{true}} @class="app-fab--absolute" @onClick={{action "openCreateModal"}} >
     {{paper-icon "add"}}
   </PaperButton>
 </article>
 
-{{#if showCreateClassModal}}
-  <Classrooms::CreateClassroomModal @saveClassroom={{action "saveClassroom"}} @closeModal={{action "closeModal"}}/>
+{{#if showCreateModal}}
+  <Classrooms::CreateClassroomModal @saveClassroom={{action "saveClassroom"}} @closeModal={{action "closeCreateModal"}}/>
 {{/if}}

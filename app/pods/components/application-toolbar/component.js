@@ -6,7 +6,11 @@ export default Component.extend({
 
   actions: {
     goToPreviousRoute() {
-      this.router.transitionTo(this.previousRoute);
+      if (this.recordId) {
+        this.router.transitionTo(this.previousRoute, this.recordId);
+      } else {
+        this.router.transitionTo(this.previousRoute);
+      }
     },
   }
 })

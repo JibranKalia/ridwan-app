@@ -8,28 +8,37 @@ export default Controller.extend({
   paperToaster: service(),
   user: readOnly('currentUser.user'),
 
-  showCreateClassModal: false,
+  showCreateModal: false,
 
   reload() {
     this.send('routeReload');
   },
-
   actions: { 
-    openCreateClassModal() {
-      this.set('showCreateClassModal', true);
+    showClassroomDetails(classroomId, event) {
+      if (!event.target.classList.contains("md-button")) {
+        this.transitionToRoute('home.classrooms.show', classroomId);
+      }
     },
-    closeModal(classroom) {
-      classroom.destroyRecord();
-      this.set('showCreateClassModal', false);
+    openCreateModal() {
+      this.set('showCreateModal', true);
     },
-    deleteClassroom(classroom) {
-      //TODO: Display modal on deletion
+    closeCreateModal(classroom) {
       classroom.destroyRecord();
+      this.set('showCreateModal', false);
+    },
+    async deleteClassroom(classroom) {
+      try {
+        await classroom.destroyRecord();
+      } catch(e) {
+        console.error(e);
+        classroom.rollbackAttributes();
+        this.get('paperToaster').show('Error deleting class');
+      }
     },
     async saveClassroom(classroom) {
       try {
         await classroom.save();
-        this.set('showCreateClassModal', false);
+        this.set('showCreateModal', false);
         this.reload();
       } catch(e) {
         console.error(e);

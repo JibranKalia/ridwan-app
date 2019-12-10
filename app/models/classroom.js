@@ -8,7 +8,7 @@ export default Model.extend({
   // computed properties
   nameErrors: mapBy('errors.name', 'message'),
   // relationships
-  user: belongsTo('user'),
+  teacher: belongsTo('teacher'),
   students: hasMany('students'),
   enrollments: hasMany('enrollments')
 });

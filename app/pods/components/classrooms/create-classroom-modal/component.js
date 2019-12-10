@@ -10,7 +10,7 @@ export default Component.extend({
   didReceiveAttrs() {
     this._super(...arguments);
     this.set('classroom', this.store.createRecord('classroom', {
-      user: this.user
+      teacher: this.user.teacher
     }))
   }
 })

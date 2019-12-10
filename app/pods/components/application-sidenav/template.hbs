@@ -7,7 +7,7 @@
     @lockedOpen={{false}}
     @onToggle={{action (mut leftSideBarOpen)}}>
     <PaperToolbar>
-      <PaperToolbarTools>{{currentUser.user.formattedName}}</PaperToolbarTools>
+      <PaperToolbarTools>{{currentUser.user.teacher.formattedName}}</PaperToolbarTools>
       <PaperContent>
         <PaperList>
           <PaperItem @onClick={{action "transitionToClassrooms"}}>

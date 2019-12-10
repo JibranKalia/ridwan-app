@@ -1,12 +1,11 @@
 import Model, { attr } from '@ember-data/model';
-import { computed } from '@ember/object';
+import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   // attributes
-  firstName: attr('string'),
-  lastName: attr('string'),
-  // computed properties
-  formattedName: computed('firstName,lastName', function() {
-    return `${this.firstName} ${this.lastName}`;
-  })
+  email: attr('string'),
+  type: attr('string'),
+   
+  // relationships
+  teacher: belongsTo('teacher')
 });

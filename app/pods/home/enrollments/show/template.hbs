@@ -6,4 +6,39 @@
 
 <article>
   This section will have lesson info
+  <PaperList>
+    <PaperSubheader>
+      Your Students
+    </PaperSubheader>
+    {{#if typeOneLesson}}
+      {{typeOneLesson.name}}
+    {{else}}
+      <PaperButton 
+        @raised={{true}}
+        @primary={{true}}
+        @onClick={{action "createLesson" "type_one"}}>
+        Create New Lesson
+      </PaperButton>
+    {{/if}}
+    {{#if typeTwoLesson}}
+      {{typeTwoLesson.name}}
+    {{else}}
+      <PaperButton 
+        @raised={{true}}
+        @primary={{true}}
+        @onClick={{action "createLesson" "type_two"}}>
+        Create New Revision
+      </PaperButton>
+    {{/if}}
+    {{#if typeThreeLesson}}
+      {{typeThreeLesson.name}}
+    {{else}}
+      <PaperButton 
+        @raised={{true}}
+        @primary={{true}}
+        @onClick={{action "createLesson" "type_three"}}>
+        Create Old Revision
+      </PaperButton>
+    {{/if}}
+  </PaperList>
 </article>

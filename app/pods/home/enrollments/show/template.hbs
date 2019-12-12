@@ -8,37 +8,54 @@
   This section will have lesson info
   <PaperList>
     <PaperSubheader>
+      Current Lesson
       Your Students
     </PaperSubheader>
     {{#if typeOneLesson}}
-      {{typeOneLesson.name}}
+      <PaperCard as |card|>
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.headline}}{{typeOneLesson.name}}{{/text.headline}}
+          {{/title.text}}
+        {{/card.title}}
+      </PaperCard>
     {{else}}
-      <PaperButton 
-        @raised={{true}}
-        @primary={{true}}
-        @onClick={{action "createLesson" "type_one"}}>
-        Create New Lesson
-      </PaperButton>
+      <PaperItem>
+        <PaperButton 
+          @raised={{true}}
+          @primary={{true}}
+          @onClick={{action "createLesson" "type_one"}}>
+          Create New Lesson
+        </PaperButton>
+      </PaperItem>
     {{/if}}
     {{#if typeTwoLesson}}
       {{typeTwoLesson.name}}
     {{else}}
-      <PaperButton 
-        @raised={{true}}
-        @primary={{true}}
-        @onClick={{action "createLesson" "type_two"}}>
-        Create New Revision
-      </PaperButton>
+      <PaperItem>
+        <PaperButton 
+          @raised={{true}}
+          @primary={{true}}
+          @onClick={{action "createLesson" "type_two"}}>
+          Create New Revision
+        </PaperButton>
+      </PaperItem>
     {{/if}}
     {{#if typeThreeLesson}}
       {{typeThreeLesson.name}}
     {{else}}
-      <PaperButton 
-        @raised={{true}}
-        @primary={{true}}
-        @onClick={{action "createLesson" "type_three"}}>
-        Create Old Revision
-      </PaperButton>
+      <PaperItem>
+        <PaperButton 
+          @raised={{true}}
+          @primary={{true}}
+          @onClick={{action "createLesson" "type_three"}}>
+          Create Old Revision
+        </PaperButton>
+      </PaperItem>
     {{/if}}
   </PaperList>
 </article>
+
+{{#if showCreateModal}}
+  <Classrooms::CreateLessonModal @saveLesson={{action "saveLesson"}} @closeModal={{action "closeCreateModal"}}/>
+{{/if}}

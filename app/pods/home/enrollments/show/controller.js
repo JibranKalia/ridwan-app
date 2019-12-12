@@ -12,13 +12,13 @@ export default Controller.extend({
 
   store: service(),
 
-  typeOneLesson: computed('model.enrollment.lessons', function() {
+  typeOneLesson: computed('model.enrollment.lessons.@each.type', function() {
     return this.model.enrollment.lessons.find(lesson => lesson.type === 'type_one' )
   }),
-  typeTwoLesson: computed('model.enrollment.lessons', function() {
+  typeTwoLesson: computed('model.enrollment.lessons.@each.type', function() {
     return this.model.enrollment.lessons.find(lesson => lesson.type === 'type_two' )
   }),
-  typeThreeLesson: computed('model.enrollment.lessons', function() {
+  typeThreeLesson: computed('model.enrollment.lessons.@each.type', function() {
     return this.model.enrollment.lessons.find(lesson => lesson.type === 'type_three' )
   }),
 

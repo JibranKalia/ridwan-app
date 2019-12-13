@@ -7,50 +7,23 @@
   <PaperList>
     <PaperSubheader>
       Current Lesson
-      Your Students
     </PaperSubheader>
-    {{#if typeOneLesson}}
-      <PaperCard as |card|>
-        {{#card.title as |title|}}
-          {{#title.text as |text|}}
-            {{#text.headline}}{{typeOneLesson.name}}{{/text.headline}}
-          {{/title.text}}
-        {{/card.title}}
-      </PaperCard>
-    {{else}}
-      <PaperItem>
-        <PaperButton 
-          @raised={{true}}
-          @primary={{true}}
-          @onClick={{action "createLesson" "type_one"}}>
-          Create New Lesson
-        </PaperButton>
-      </PaperItem>
-    {{/if}}
-    {{#if typeTwoLesson}}
-      {{typeTwoLesson.name}}
-    {{else}}
-      <PaperItem>
-        <PaperButton 
-          @raised={{true}}
-          @primary={{true}}
-          @onClick={{action "createLesson" "type_two"}}>
-          Create New Revision
-        </PaperButton>
-      </PaperItem>
-    {{/if}}
-    {{#if typeThreeLesson}}
-      {{typeThreeLesson.name}}
-    {{else}}
-      <PaperItem>
-        <PaperButton 
-          @raised={{true}}
-          @primary={{true}}
-          @onClick={{action "createLesson" "type_three"}}>
-          Create Old Revision
-        </PaperButton>
-      </PaperItem>
-    {{/if}}
+
+    <Lessons::Tile 
+      @type="type_one"
+      @lessons={{model.lessons}}
+      @enrollment={{model.enrollment}}
+    />
+    <Lessons::Tile 
+      @type="type_two"
+      @lessons={{model.lessons}}
+      @enrollment={{model.enrollment}}
+    />
+    <Lessons::Tile 
+      @type="type_three"
+      @lessons={{model.lessons}}
+      @enrollment={{model.enrollment}}
+    />
   </PaperList>
 </article>
 

@@ -11,8 +11,18 @@
     <PaperButton 
       @raised={{true}}
       @primary={{true}}
-      @onClick={{action "createLesson"}}>
-      Create {{lessonName}}
+      @onClick={{action "openCreateModal"}}>
+      {{paper-icon "add"}} Create {{lessonName}}
     </PaperButton>
   </PaperItem>
+{{/if}}
+
+{{#if showCreateModal}}
+  <Lessons::CreateModal 
+    @enrollment={{enrollment}}
+    @type={{type}}
+    @lessonName={{lessonName}}
+    @saveLesson={{action "saveLesson"}} 
+    @closeModal={{action "closeCreateModal"}}
+  />
 {{/if}}

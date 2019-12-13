@@ -1,11 +1,12 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-// import { readOnly } from '@ember/object/computed';
+import { readOnly } from '@ember/object/computed';
 
 export default Component.extend({
-  // currentUser: service(),
+  constants: service(),
   store: service(),
-  // user: readOnly('currentUser.user'),
+
+  surahs: readOnly('constants.surahs'),
 
   didReceiveAttrs() {
     this._super(...arguments);

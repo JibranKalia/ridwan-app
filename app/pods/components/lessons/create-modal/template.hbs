@@ -3,12 +3,22 @@
   @save={{action saveLesson lesson}}
   @title={{concat "Create " lessonName}}>
 
-  {{!-- <PaperInput
-    @label="Class Name"
-    @autofocus={{true}}
-    @value={{classroom.name}}
-    @onChange={{action (mut classroom.name)}}
-    @isTouched={{classroom.nameErrors.length}}
-    @errors={{classroom.nameErrors}} /> --}}
+    <PaperSelect
+      @dropdownClass='lesson-select-dropdown'
+      @label="Surah Name"
+      @placeholder="Surah Name"
+      @required={{true}}
+      @selected={{selectedSurah}}
+      @options={{surahs}}
+      @value={{selectedSurah}}
+      @searchField="transliteration"
+      @searchPlaceholder="Search for a surah.."
+      @searchEnabled={{true}}
+      @onChange={{action (mut selectedSurah)}} as |surah|>
+        {{surah.transliteration}}
+    </PaperSelect>
 
 </FullScreenDialog>
+
+
+{{log "Surah" selectedSurah}}

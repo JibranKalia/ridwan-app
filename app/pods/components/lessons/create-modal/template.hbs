@@ -3,22 +3,22 @@
   @save={{action saveLesson lesson}}
   @title={{concat "Create " lessonName}}>
 
+  <div class='from'>
     <PaperSelect
+      {{on "keydown" (action 'handlePaperSelectKeyDown')}}
+
       @dropdownClass='lesson-select-dropdown'
       @label="Surah Name"
       @placeholder="Surah Name"
       @required={{true}}
       @selected={{selectedSurah}}
-      @options={{surahs}}
+      @options={{constants.SURAHS}}
       @value={{selectedSurah}}
       @searchField="transliteration"
       @searchPlaceholder="Search for a surah.."
       @searchEnabled={{true}}
       @onChange={{action (mut selectedSurah)}} as |surah|>
-        {{surah.transliteration}}
+      {{surah.transliteration}}
     </PaperSelect>
-
+  </div>
 </FullScreenDialog>
-
-
-{{log "Surah" selectedSurah}}

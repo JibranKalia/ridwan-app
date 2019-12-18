@@ -1,0 +1,18 @@
+<article class='surah-selector'>
+  <HandleEscapeKey>
+    <PaperSelect
+      @dropdownClass='lesson-select-dropdown'
+      @label="Ayah Number"
+      @placeholder="Ayah Number"
+      @required={{true}}
+      @selected={{selectedAyah}}
+      @options={{options}}
+      @disabled={{disabled}}
+      {{!-- @searchPlaceholder="Search for number.." --}}
+      @searchEnabled={{false}}
+      @onChange={{action 'setAyah'}} as |ayah|
+    >
+      {{ayah}}
+    </PaperSelect>
+  </HandleEscapeKey>
+</article>

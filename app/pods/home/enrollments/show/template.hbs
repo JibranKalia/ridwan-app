@@ -3,7 +3,26 @@
     @previousRoute="home.classrooms.show" 
     @recordId={{model.enrollment.classroom.id}}/>
 
-
 <article>
-  This section will have lesson info
+  <PaperList>
+    <PaperSubheader>
+      Current Lesson
+    </PaperSubheader>
+
+    <Lessons::Tile 
+      @type="type_one"
+      @lessons={{model.lessons}}
+      @enrollment={{model.enrollment}}
+    />
+    <Lessons::Tile 
+      @type="type_two"
+      @lessons={{model.lessons}}
+      @enrollment={{model.enrollment}}
+    />
+    <Lessons::Tile 
+      @type="type_three"
+      @lessons={{model.lessons}}
+      @enrollment={{model.enrollment}}
+    />
+  </PaperList>
 </article>

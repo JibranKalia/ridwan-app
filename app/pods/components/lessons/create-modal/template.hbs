@@ -1,0 +1,9 @@
+<FullScreenDialog
+  @close={{action closeModal lesson}}
+  @save={{action saveLesson lesson}}
+  @title={{concat "Create " lessonName}}
+> 
+  <LessonSelector 
+    @lesson={{lesson}}
+  />
+</FullScreenDialog>

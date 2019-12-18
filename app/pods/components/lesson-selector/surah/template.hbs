@@ -5,13 +5,13 @@
       @label="Surah Name"
       @placeholder="Surah Name"
       @required={{true}}
-      @selected={{lesson.fromSurah}}
+      @selected={{selectedSurah}}
       @options={{constants.SURAHS}}
       @value={{lesson.fromSurah}}
       @searchField="transliteration"
       @searchPlaceholder="Search for a surah.."
       @searchEnabled={{true}}
-      @onChange={{action (mut lesson.fromSurah)}} as |surah|
+      @onChange={{action 'setSurah'}} as |surah|
     >
       {{surah.transliteration}}
     </PaperSelect>

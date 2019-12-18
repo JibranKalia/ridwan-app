@@ -1,6 +1,8 @@
-<section class='lesson-selector'>
+<section class='lesson-selector layout-xs-column layout-row layout-align-center-center'>
   <div class='from'>
-    <LessonSelector::Surah @lesson={{lesson}}/>
-
+    <LessonSelector::Surah @lesson={{lesson}} @from={{true}}/>
+  </div>
+  <div class='to'>
+    <LessonSelector::Surah @lesson={{lesson}} @from={{false}}/>
   </div>
 </section>

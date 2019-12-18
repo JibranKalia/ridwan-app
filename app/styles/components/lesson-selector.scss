@@ -1,3 +1,16 @@
+
+.lesson-selector {
+  & > div {
+    margin: 2rem;
+  }
+  .surah-selector {
+    min-width: 10rem;
+    md-input-container {
+      width: 100%;
+    }
+  }
+}
+
 .lesson-select-dropdown {
   md-select-menu {
     .md-searchbox {

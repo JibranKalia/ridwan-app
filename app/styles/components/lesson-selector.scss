@@ -1,12 +1,15 @@
 
 .lesson-selector {
   & > div {
-    margin: 2rem;
+    margin: 1rem;
   }
-  .surah-selector {
+  .selector {
     min-width: 10rem;
     md-input-container {
       width: 100%;
+    }
+    &--ayah {
+      margin-left: 0.75rem;
     }
   }
 }

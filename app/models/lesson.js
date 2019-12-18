@@ -6,6 +6,10 @@ export default Model.extend({
   name: attr('string'),
   date: attr('date'),
   type: attr('string'),
+  fromSurah: attr('number'),
+  fromAyah: attr('number'),
+  toSurah: attr('number'),
+  toAyah: attr('number'),
 
   // relationships
   enrollment: belongsTo('enrollment'),

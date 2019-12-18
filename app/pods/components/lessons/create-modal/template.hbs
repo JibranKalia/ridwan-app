@@ -1,24 +1,9 @@
 <FullScreenDialog
   @close={{action closeModal lesson}}
   @save={{action saveLesson lesson}}
-  @title={{concat "Create " lessonName}}>
-
-  <div class='from'>
-    <PaperSelect
-      {{on "keydown" (action 'handlePaperSelectKeyDown')}}
-
-      @dropdownClass='lesson-select-dropdown'
-      @label="Surah Name"
-      @placeholder="Surah Name"
-      @required={{true}}
-      @selected={{selectedSurah}}
-      @options={{constants.SURAHS}}
-      @value={{selectedSurah}}
-      @searchField="transliteration"
-      @searchPlaceholder="Search for a surah.."
-      @searchEnabled={{true}}
-      @onChange={{action (mut selectedSurah)}} as |surah|>
-      {{surah.transliteration}}
-    </PaperSelect>
-  </div>
+  @title={{concat "Create " lessonName}}
+> 
+  <LessonSelector 
+    @lesson={{lesson}}
+  />
 </FullScreenDialog>

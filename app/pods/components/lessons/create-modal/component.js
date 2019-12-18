@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
-  constants: service(),
   store: service(),
 
   didReceiveAttrs() {
@@ -14,12 +13,4 @@ export default Component.extend({
       type: this.type
     }))
   },
-
-  actions: {
-    handlePaperSelectKeyDown(event) {
-      if (event.which == this.constants.KEYCODE.ESCAPE) {
-        event.stopPropagation();
-      }
-    }
-  }
 })

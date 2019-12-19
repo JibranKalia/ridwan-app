@@ -8,11 +8,11 @@
       @selected={{selectedSurah}}
       @options={{constants.SURAHS}}
       @searchField="transliteration"
-      @searchPlaceholder="Search for a surah.."
+      @searchPlaceholder="Search for surah.."
       @searchEnabled={{true}}
       @onChange={{action 'setSurah'}} as |surah|
     >
-      {{surah.transliteration}}
+      {{surah.name_en}}
     </PaperSelect>
   </HandleEscapeKey>
 </article>

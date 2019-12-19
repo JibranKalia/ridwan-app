@@ -12,7 +12,7 @@ export default Component.extend({
 
   options: computed('selectedSurah', function() {
     if (isPresent(this.selectedSurah)) {
-      return Array.from(Array(this.selectedSurah.totalVerses), (_, index) => (index + 1))
+      return Array.from(Array(this.selectedSurah.total_verses), (_, index) => (index + 1).toString())
     }
   }),
 

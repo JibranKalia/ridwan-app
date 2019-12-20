@@ -1,5 +1,6 @@
 import Model, { attr } from '@ember-data/model';
 import { belongsTo } from 'ember-data/relationships';
+import { computed } from '@ember/object';
 
 export default Model.extend({
   // attributes
@@ -10,6 +11,10 @@ export default Model.extend({
   fromAyah: attr('number'),
   toSurah: attr('number'),
   toAyah: attr('number'),
+  // computed properties
+  formattedDate: computed('date', function() {
+    return this.date.toLocaleDateString("en-US");
+  }),
 
   // relationships
   enrollment: belongsTo('enrollment'),

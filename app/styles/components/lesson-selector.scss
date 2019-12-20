@@ -1,4 +1,3 @@
-
 .lesson-selector {
   & > div {
     margin: 1rem;
@@ -19,5 +18,13 @@
     .md-searchbox {
       flex-shrink: 0;
     }
+  }
+}
+
+.lesson-details-list {
+  display: grid;
+  grid-template-columns: 6rem auto;
+  & > div {
+    min-height: 3rem;
   }
 }

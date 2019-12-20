@@ -3,11 +3,14 @@
     margin: 1rem;
   }
   .selector {
-    min-width: 10rem;
     md-input-container {
       width: 100%;
     }
+    &--surah {
+      min-width: 8rem;
+    }
     &--ayah {
+      width: 5rem;
       margin-left: 0.75rem;
     }
   }

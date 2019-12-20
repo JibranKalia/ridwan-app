@@ -2,13 +2,13 @@
   <HandleEscapeKey>
     <PaperSelect
       @dropdownClass='lesson-select-dropdown'
-      @label="Ayah Number"
-      @placeholder="Ayah Number"
+      @label="Ayah"
+      @placeholder="Ayah"
       @required={{true}}
       @selected={{selectedAyah}}
       @options={{options}}
       @disabled={{disabled}}
-      @searchPlaceholder="Search for ayah.."
+      @searchPlaceholder="Search for ayah"
       @searchEnabled={{true}}
       @verticalPosition="below"
       @onChange={{action 'setAyah'}} as |ayah|

@@ -4,3 +4,12 @@ md-list {
     height: 5rem;
   }
 }
+
+.md-searchbox {
+  padding-left: 0px;
+  &::before {
+    content: '';
+    width: 10.667px;
+    background: white;
+  }
+}

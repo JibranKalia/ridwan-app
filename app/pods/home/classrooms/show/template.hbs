@@ -6,7 +6,7 @@
       Your Students
     </PaperSubheader>
     {{#each model.classroom.enrollments as |enrollment|}}
-      <PaperCard {{on "click" (action "showEnrollmentDetails" enrollment.id)}} @class='clickable' as |card|>
+      <PaperCard {{on "click" (action "showEnrollmentDetails" enrollment.id)}} @class="clickable" as |card|>
         {{#card.title as |title|}}
           {{#title.text as |text|}}
             {{#text.headline}}{{enrollment.formattedName}}{{/text.headline}}

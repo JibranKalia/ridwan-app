@@ -1,7 +1,7 @@
-<article class='selector selector--surah'>
+<article class="selector selector--surah">
   <HandleEscapeKey>
     <PaperSelect
-      @dropdownClass='lesson-select-dropdown'
+      @dropdownClass="lesson-select-dropdown"
       @label="Surah"
       @placeholder="Surah"
       @required={{true}}
@@ -10,7 +10,7 @@
       @searchField="transliteration"
       @searchPlaceholder="Search for surah"
       @searchEnabled={{true}}
-      @onChange={{action 'setSurah'}} as |surah|
+      @onChange={{action "setSurah"}} as |surah|
     >
       {{surah.name_en}}
     </PaperSelect>

@@ -32,7 +32,7 @@ export default Controller.extend({
       } catch(e) {
         console.error(e);
         classroom.rollbackAttributes();
-        this.get('paperToaster').show('Error deleting class');
+        this.paperToaster.show('Error deleting class');
       }
     },
     async saveClassroom(classroom) {
@@ -42,7 +42,7 @@ export default Controller.extend({
         this.reload();
       } catch(e) {
         console.error(e);
-        this.get('paperToaster').show('Error creating class');
+        this.paperToaster.show('Error creating class');
       }
     }
   }

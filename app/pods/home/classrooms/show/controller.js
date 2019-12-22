@@ -23,7 +23,7 @@ export default Controller.extend({
       } catch(e) {
         console.error(e);
         enrollment.rollbackAttributes();
-        this.get('paperToaster').show('Error removing student');
+        this.paperToaster.show('Error removing student');
       }
     },
     openCreateModal() {
@@ -41,7 +41,7 @@ export default Controller.extend({
         this.reload();
       } catch(e) {
         console.error(e);
-        this.get('paperToaster').show('Error creating student');
+        this.paperToaster.show('Error creating student');
       }
     }
   }

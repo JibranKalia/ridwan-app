@@ -1,6 +1,5 @@
 import { mapBy } from '@ember/object/computed';
-import Model, { attr } from '@ember-data/model';
-import { hasMany } from 'ember-data/relationships';
+import Model, { attr, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
 
 export default Model.extend({

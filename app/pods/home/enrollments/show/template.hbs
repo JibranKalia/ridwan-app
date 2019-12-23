@@ -1,7 +1,7 @@
 <ApplicationToolbar 
-    @name={{model.enrollment.formattedName}}
-    @previousRoute="home.classrooms.show" 
-    @recordId={{model.enrollment.classroom.id}}/>
+    @name={{this.model.enrollment.formattedName}}
+    @previousRoute="home.classrooms.show"
+    @recordId={{this.model.enrollment.classroom.id}} />
 
 <article>
   <PaperList>
@@ -11,18 +11,18 @@
 
     <Lessons::Tile 
       @type="type_one"
-      @lessons={{model.lessons}}
-      @enrollment={{model.enrollment}}
+      @lessons={{this.model.lessons}}
+      @enrollment={{this.model.enrollment}}
     />
     <Lessons::Tile 
       @type="type_two"
-      @lessons={{model.lessons}}
-      @enrollment={{model.enrollment}}
+      @lessons={{this.model.lessons}}
+      @enrollment={{this.model.enrollment}}
     />
     <Lessons::Tile 
       @type="type_three"
-      @lessons={{model.lessons}}
-      @enrollment={{model.enrollment}}
+      @lessons={{this.model.lessons}}
+      @enrollment={{this.model.enrollment}}
     />
   </PaperList>
 </article>

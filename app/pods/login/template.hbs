@@ -2,22 +2,22 @@
   <article class="login-box">
     <PaperForm @onSubmit={{action "authenticate"}} @class="login-form layout-column layout-align-center-center" as |form|>
       <form.input
-        @value={{identification}}
-        @onChange={{action (mut identification)}}
+        @value={{this.identification}}
+        @onChange={{action (mut this.identification)}}
         @label="Email Address"
         @required={{true}}
         @class="flex-50"
         @type="email"
-        @isTouched={{gt errors.length 0}}
+        @isTouched={{gt this.errors.length 0}}
       />
       <form.input 
-        @value={{password}}
-        @onChange={{action (mut password)}}
+        @value={{this.password}}
+        @onChange={{action (mut this.password)}}
         @label="Password"
         @required={{true}}
         @type="password"
-        @isTouched={{gt errors.length 0}}
-        @errors={{errors}}
+        @isTouched={{gt this.errors.length 0}}
+        @errors={{this.errors}}
       />
       <form.submit-button @raised={{true}} @primary={{true}} @disabled={{form.isInvalid}}>
         Submit

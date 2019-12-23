@@ -1,22 +1,22 @@
 <FullScreenDialog
-  @close={{action closeModal student}}
-  @save={{action saveStudent student}}
+  @close={{action this.closeModal this.student}}
+  @save={{action this.saveStudent this.student}}
   @title="Add New Student">
 
   <PaperInput
     @label="First Name"
     @autofocus={{true}}
-    @value={{student.firstName}}
-    @onChange={{action (mut student.firstName)}}
-    @isTouched={{gt student.firstNameErrors.length 0}}
-    @errors={{student.firstNameErrors}}/>
+    @value={{this.student.firstName}}
+    @onChange={{action (mut this.student.firstName)}}
+    @isTouched={{gt this.student.firstNameErrors.length 0}}
+    @errors={{this.student.firstNameErrors}} />
 
   <PaperInput
     @label="Last Name"
     @autofocus={{false}}
-    @value={{student.lastName}}
-    @onChange={{action (mut student.lastName)}}
-    @isTouched={{gt student.lastNameErrors.length 0}}
-    @errors={{student.lastNameErrors}}/>
+    @value={{this.student.lastName}}
+    @onChange={{action (mut this.student.lastName)}}
+    @isTouched={{gt this.student.lastNameErrors.length 0}}
+    @errors={{this.student.lastNameErrors}} />
 
 </FullScreenDialog>

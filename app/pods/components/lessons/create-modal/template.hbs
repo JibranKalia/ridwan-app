@@ -1,15 +1,15 @@
 <FullScreenDialog
-  @close={{action closeModal lesson}}
-  @save={{action saveLesson lesson}}
-  @title={{concat "Create " lessonName}}
+  @close={{action this.closeModal this.lesson}}
+  @save={{action this.saveLesson this.lesson}}
+  @title={{concat "Create " this.lessonName}}
 > 
   <div class="layout-column lesson-details-list">
     <div>Date:</div>
-    <div>{{lesson.formattedDate}}</div>
+    <div>{{this.lesson.formattedDate}}</div>
     <div>Classroom:</div>
-    <div>{{lesson.enrollment.classroom.name}}</div>
+    <div>{{this.lesson.enrollment.classroom.name}}</div>
     <div>Student:</div>
-    <div>{{lesson.enrollment.student.formattedName}}</div>
+    <div>{{this.lesson.enrollment.student.formattedName}}</div>
   </div>
-  <LessonSelector @lesson={{lesson}}/>
+  <LessonSelector @lesson={{this.lesson}} />
 </FullScreenDialog>

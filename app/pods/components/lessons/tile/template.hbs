@@ -1,8 +1,8 @@
-{{#if individualLesson}}
+{{#if this.individualLesson}}
   <PaperCard as |card|>
     <card.title as |title|>
       <title.text as |text|>
-        <text.headline>{{individualLesson.name}}</text.headline>
+        <text.headline>{{this.individualLesson.name}}</text.headline>
       </title.text>
     </card.title>
   </PaperCard>
@@ -12,17 +12,17 @@
       @raised={{true}}
       @primary={{true}}
       @onClick={{action "openCreateModal"}}>
-      {{paper-icon "add"}} Create {{lessonName}}
+      {{paper-icon "add"}} Create {{this.lessonName}}
     </PaperButton>
   </PaperItem>
 {{/if}}
 
-{{#if showCreateModal}}
+{{#if this.showCreateModal}}
   <Lessons::CreateModal 
-    @enrollment={{enrollment}}
-    @type={{type}}
-    @lessonName={{lessonName}}
-    @saveLesson={{action "saveLesson"}} 
+    @enrollment={{this.enrollment}}
+    @type={{this.type}}
+    @lessonName={{this.lessonName}}
+    @saveLesson={{action "saveLesson"}}
     @closeModal={{action "closeCreateModal"}}
   />
 {{/if}}

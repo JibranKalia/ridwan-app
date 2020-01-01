@@ -10,6 +10,7 @@ const LESSON_TYPE_TO_NAME_MAPPER = {
 
 export default Component.extend({
   store: service(),
+  paperToaster: service(),
   showCreateModal: false,
   showEditModal: false,
 
@@ -41,7 +42,7 @@ export default Component.extend({
       } catch(e) {
         console.error(e);
         lesson.rollbackAttributes();
-        this.get('paperToaster').show('Error deleting lesson');
+        this.paperToaster.show('Error deleting lesson');
       }
     },
     async saveLesson(lesson) {
@@ -51,7 +52,7 @@ export default Component.extend({
         this.set('showEditModal', false);
       } catch(e) {
         console.error(e);
-        this.get('paperToaster').show('Error creating lesson');
+        this.paperToaster.show('Error creating lesson');
       }
     }
   }

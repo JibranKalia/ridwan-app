@@ -11,6 +11,7 @@ const LESSON_TYPE_TO_NAME_MAPPER = {
 export default Component.extend({
   store: service(),
   showCreateModal: false,
+  showEditModal: false,
 
   individualLesson: computed('enrollment.lessons.@each.type', function() {
     return this.enrollment.lessons.find(lesson => lesson.type === this.type )
@@ -28,6 +29,12 @@ export default Component.extend({
       lesson.destroyRecord();
       this.set('showCreateModal', false);
     },
+    openEditModal() {
+      this.set('showEditModal', true);
+    },
+    closeEditModal() {
+      this.set('showEditModal', false);
+    },
     async deleteLesson(lesson) {
       try {
         await lesson.destroyRecord();
@@ -41,7 +48,7 @@ export default Component.extend({
       try {
         await lesson.save();
         this.set('showCreateModal', false);
-        this.reload();
+        this.set('showEditModal', false);
       } catch(e) {
         console.error(e);
         this.get('paperToaster').show('Error creating lesson');

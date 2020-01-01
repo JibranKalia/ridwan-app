@@ -5,6 +5,10 @@
         <text.headline>{{individualLesson.name}}</text.headline>
       </title.text>
     </card.title>
+    <card.actions>
+      <PaperButton @onClick={{action "deleteLesson" individualLesson}}>Delete</PaperButton>
+      <PaperButton @onClick={{action "openEditModal"}}>Edit</PaperButton>
+    </card.actions>
   </PaperCard>
 {{else}}
   <PaperItem>
@@ -26,3 +30,13 @@
     @closeModal={{action "closeCreateModal"}}
   />
 {{/if}}
+
+{{#if showEditModal}}
+  <Lessons::EditModal 
+    @lesson={{individualLesson}}
+    @saveLesson={{action "saveLesson"}} 
+    @closeModal={{action "closeEditModal"}}
+  />
+{{/if}}
+
+{{log "HERE" showEditModal}}

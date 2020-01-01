@@ -1,10 +1,14 @@
 {{#if individualLesson}}
   <PaperCard as |card|>
-    {{#card.title as |title|}}
-      {{#title.text as |text|}}
-        {{#text.headline}}{{individualLesson.name}}{{/text.headline}}
-      {{/title.text}}
-    {{/card.title}}
+    <card.title as |title|>
+      <title.text as |text|>
+        <text.headline>{{individualLesson.name}}</text.headline>
+      </title.text>
+    </card.title>
+    <card.actions>
+      <PaperButton @onClick={{action "deleteLesson" individualLesson}}>Delete</PaperButton>
+      <PaperButton @onClick={{action "openEditModal"}}>Edit</PaperButton>
+    </card.actions>
   </PaperCard>
 {{else}}
   <PaperItem>
@@ -24,5 +28,13 @@
     @lessonName={{lessonName}}
     @saveLesson={{action "saveLesson"}} 
     @closeModal={{action "closeCreateModal"}}
+  />
+{{/if}}
+
+{{#if showEditModal}}
+  <Lessons::EditModal 
+    @lesson={{individualLesson}}
+    @saveLesson={{action "saveLesson"}} 
+    @closeModal={{action "closeEditModal"}}
   />
 {{/if}}

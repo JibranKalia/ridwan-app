@@ -7,17 +7,17 @@
     </PaperSubheader>
     {{#each model.classrooms as |classroom|}}
       <PaperCard {{on "click" (action "showClassroomDetails" classroom.id)}} @class="clickable" as |card|>
-        {{#card.title as |title|}}
-          {{#title.text as |text|}}
-            {{#text.headline}}{{classroom.name}}{{/text.headline}}
-          {{/title.text}}
-        {{/card.title}}
-        {{#card.actions}}
+        <card.title as |title|>
+          <title.text as |text|>
+            <text.headline>{{classroom.name}}</text.headline>
+          </title.text>
+        </card.title>
+        <card.actions>
           <LinkTo @class="base-link" @route="home.classrooms.show" @model={{classroom.id}}>
             <PaperButton>Show Details</PaperButton>
           </LinkTo>
           <PaperButton @onClick={{action "deleteClassroom" classroom}}>Delete</PaperButton>
-        {{/card.actions}}
+        </card.actions>
       </PaperCard>
     {{/each}}
     <div class="extra-list-element"></div>

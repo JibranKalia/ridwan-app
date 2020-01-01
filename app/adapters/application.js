@@ -24,5 +24,4 @@ export default JSONAPIAdapter.extend({
     let underscored = underscore(type);
     return pluralize(underscored);
   },
-
 });

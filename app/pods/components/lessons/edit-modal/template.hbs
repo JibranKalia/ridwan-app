@@ -1,7 +1,7 @@
 <FullScreenDialog
-  @close={{action closeModal lesson}}
-  @save={{action saveLesson lesson 'save'}}
-  @title={{concat "Create " lessonName}}
+  @close={{action closeModal}}
+  @save={{action saveLesson lesson 'update'}}
+  @title={{concat "Edit " lesson.name}}
 > 
   <div class="layout-column lesson-details-list">
     <div>Date:</div>

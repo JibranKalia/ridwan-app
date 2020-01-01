@@ -1,6 +1,6 @@
 <FullScreenDialog
   @close={{action closeModal}}
-  @save={{action saveLesson lesson}}
+  @save={{action saveLesson lesson 'update'}}
   @title={{concat "Edit " lesson.name}}
 > 
   <div class="layout-column lesson-details-list">

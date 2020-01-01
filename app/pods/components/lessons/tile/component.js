@@ -39,17 +39,19 @@ export default Component.extend({
     async deleteLesson(lesson) {
       try {
         await lesson.destroyRecord();
+        this.paperToaster.show('Deleted lesson');
       } catch(e) {
         console.error(e);
         lesson.rollbackAttributes();
         this.paperToaster.show('Error deleting lesson');
       }
     },
-    async saveLesson(lesson) {
+    async saveLesson(lesson, action) {
       try {
         await lesson.save();
         this.set('showCreateModal', false);
         this.set('showEditModal', false);
+        this.paperToaster.show(`${action === 'save' ? 'Saved' : 'Updated'} lesson`);
       } catch(e) {
         console.error(e);
         this.paperToaster.show('Error creating lesson');

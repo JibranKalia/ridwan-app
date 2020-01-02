@@ -4,8 +4,9 @@ $warn: "red";
 $grey: "grey";
 
 @import 'ember-paper';
-@import 'components/login';
 @import 'components/lesson-selector';
+@import 'components/login';
+@import 'components/material-power-select';
 @import 'components/paper-modifications';
 
 .base-link {
@@ -29,3 +30,4 @@ $grey: "grey";
     right: 1.5rem;
   }
 }
+@import 'ember-power-select';

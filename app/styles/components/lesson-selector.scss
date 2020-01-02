@@ -7,19 +7,11 @@
       width: 100%;
     }
     &--surah {
-      min-width: 8rem;
+      min-width: 10rem;
     }
     &--ayah {
-      width: 5rem;
+      width: 6rem;
       margin-left: 0.75rem;
-    }
-  }
-}
-
-.lesson-select-dropdown {
-  md-select-menu {
-    .md-searchbox {
-      flex-shrink: 0;
     }
   }
 }

@@ -8,6 +8,9 @@
     <card.actions>
       <PaperButton @onClick={{action "deleteLesson" individualLesson}}>Delete</PaperButton>
       <PaperButton @onClick={{action "openEditModal"}}>Edit</PaperButton>
+      <LinkTo @class="base-link" @route="home.lessons.show" @model={{individualLesson.id}}>
+        <PaperButton>Show Details</PaperButton>
+      </LinkTo>
     </card.actions>
   </PaperCard>
 {{else}}

@@ -1,16 +1,10 @@
 import Model, { attr } from '@ember-data/model';
-import { belongsTo } from 'ember-data/relationships';
+import { belongsTo, hasMany } from 'ember-data/relationships';
 import { computed } from '@ember/object';
 
 export default Model.extend({
   // attributes
-  name: attr('string'),
   date: attr('date'),
-  type: attr('string'),
-  fromSurah: attr('number'),
-  fromAyah: attr('number'),
-  toSurah: attr('number'),
-  toAyah: attr('number'),
   // computed properties
   formattedDate: computed('date', function() {
     return this.date.toLocaleDateString("en-US");
@@ -18,4 +12,5 @@ export default Model.extend({
 
   // relationships
   enrollment: belongsTo('enrollment'),
+  lessonItems: hasMany('lessonItems')
 });

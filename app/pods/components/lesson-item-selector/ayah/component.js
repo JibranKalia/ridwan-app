@@ -16,21 +16,21 @@ export default Component.extend({
     }
   }),
 
-  selectedAyah: computed('lesson.{fromAyah,toAyah}', function() {
-    return this.from ? this.lesson.fromAyah : this.lesson.toAyah;
+  selectedAyah: computed('lessonItem.{fromAyah,toAyah}', function() {
+    return this.from ? this.lessonItem.fromAyah : this.lessonItem.toAyah;
   }),
 
-  selectedSurah: computed('lesson.{fromSurah,toSurah}', function() {
-    const surahNumber = this.from ? this.lesson.fromSurah : this.lesson.toSurah;
+  selectedSurah: computed('lessonItem.{fromSurah,toSurah}', function() {
+    const surahNumber = this.from ? this.lessonItem.fromSurah : this.lessonItem.toSurah;
     return this.constants.SURAHS.find(r => r.number === surahNumber)
   }),
 
   actions: {
     setAyah(ayahNumber) {
       if (this.from) {
-        this.set('lesson.fromAyah', ayahNumber);
+        this.set('lessonItem.fromAyah', ayahNumber);
       } else {
-        this.set('lesson.toAyah', ayahNumber);
+        this.set('lessonItem.toAyah', ayahNumber);
       }
     }
   }

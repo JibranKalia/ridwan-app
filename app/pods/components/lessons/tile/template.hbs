@@ -29,7 +29,7 @@
     @enrollment={{enrollment}}
     @type={{type}}
     @lessonName={{lessonName}}
-    @saveLesson={{action "saveLesson"}} 
+    @saveLessonItem={{action "saveLessonItem"}} 
     @closeModal={{action "closeCreateModal"}}
   />
 {{/if}}
@@ -37,7 +37,7 @@
 {{#if showEditModal}}
   <Lessons::EditModal 
     @lesson={{individualLesson}}
-    @saveLesson={{action "saveLesson"}} 
+    @saveLessonItem={{action "saveLessonItem"}} 
     @closeModal={{action "closeEditModal"}}
   />
 {{/if}}

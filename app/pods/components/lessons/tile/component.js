@@ -46,9 +46,10 @@ export default Component.extend({
         this.paperToaster.show('Error deleting lesson');
       }
     },
-    async saveLesson(lesson, action) {
+    async saveLessonItem(lesson, lessonItem, action) {
       try {
         await lesson.save();
+        await lessonItem.save();
         this.set('showCreateModal', false);
         this.set('showEditModal', false);
         this.paperToaster.show(`${action === 'save' ? 'Saved' : 'Updated'} lesson`);

@@ -7,9 +7,9 @@
         </PaperButton>
         <div class="toolbar">{{title}}</div>
         <span class="flex"></span>
-        <PaperButton @onClick={{action save}}>
-          Save
-        </PaperButton>
+        {{#if save}}
+          <PaperButton @onClick={{action save}}>Save</PaperButton>
+        {{/if}}
       </PaperToolbarTools>
     </PaperToolbar>
     <PaperDialogContent>
@@ -25,7 +25,9 @@
     <PaperDialogActions class="layout-row">
       <span class="flex"></span>
       <PaperButton @primary={{true}} @onClick={{action close}}>Cancel</PaperButton>
-      <PaperButton @primary={{true}} @onClick={{action save}}>Save</PaperButton>
+      {{#if save}}
+        <PaperButton @primary={{true}} @onClick={{action save}}>Save</PaperButton>
+      {{/if}}
     </PaperDialogActions>
   </PaperDialog>
 {{/if}}

@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
+import { isPresent } from '@ember/utils';
 
 const LESSON_TYPE_TO_NAME_MAPPER = {
   'type_one': 'New Lesson',
@@ -27,6 +28,11 @@ export default Component.extend({
       this.set('showCreateModal', true);
     },
     closeCreateModal(lesson) {
+      lesson.lessonItems.forEach((item) => {
+        if (isPresent(item)) {
+          item.destroyRecord()
+        }
+      });
       lesson.destroyRecord();
       this.set('showCreateModal', false);
     },

@@ -2,9 +2,11 @@
   <PaperDialog @fullscreen={{true}} @onClose={{action close}} @class={{if dialogNoPadding 'dialog-no-padding'}}>
     <PaperToolbar>
       <PaperToolbarTools>
-        <PaperButton @iconButton={{true}} @onClick={{action close}}>
-          {{paper-icon "close"}}
-        </PaperButton>
+        {{#unless hideCloseIcon}}
+          <PaperButton @iconButton={{true}} @onClick={{action close}}>
+            {{paper-icon "close"}}
+          </PaperButton>
+        {{/unless}}
         <div class="toolbar">{{title}}</div>
         <span class="flex"></span>
         {{#if save}}
@@ -25,9 +27,7 @@
     <PaperDialogActions class="layout-row">
       <span class="flex"></span>
       <PaperButton @primary={{true}} @onClick={{action close}}>Cancel</PaperButton>
-      {{#if save}}
-        <PaperButton @primary={{true}} @onClick={{action save}}>Save</PaperButton>
-      {{/if}}
+      <PaperButton @primary={{true}} @onClick={{action save}}>Save</PaperButton>
     </PaperDialogActions>
   </PaperDialog>
 {{/if}}

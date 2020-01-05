@@ -3,8 +3,9 @@
   @title={{concat "Create Lesson"}}
   @topBarDialog={{true}}
   @dialogNoPadding={{true}}
+  @hideCloseIcon={{true}}
 > 
-  <div class='lessons-modal-body'>
+  <div class='lesson-modal'>
     <PaperTabs @stretch={{true}} @borderBottom={{true}} @selected={{selectedLessonItem}} @onChange={{action (mut selectedLessonItem)}} as |tabs|>
       {{#each lesson.lessonItems as |lessonItem|}}
         <tabs.tab @value={{lessonItem}}>
@@ -24,9 +25,14 @@
         <div>{{lesson.enrollment.student.formattedName}}</div>
       </div>
       <LessonItemSelector @lessonItem={{current.lessonItem}}/>
-      <PaperButton @primary={{true}} @raised={{true}} @onClick={{action saveLessonItem lesson current.lessonItem "save"}}>
-        Save {{current.lessonItem.name}}
-      </PaperButton>
+      <div class='dialog-actions'>
+        <PaperButton @primary={{true}} @onClick={{action closeModal lesson}}>
+          Cancel
+        </PaperButton>
+        <PaperButton @primary={{true}} @onClick={{action saveLessonItem lesson current.lessonItem "save"}}>
+          Save {{current.lessonItem.name}}
+        </PaperButton>
+      </div>
     {{/liquid-bind}}
   </div>
 </FullScreenDialog>

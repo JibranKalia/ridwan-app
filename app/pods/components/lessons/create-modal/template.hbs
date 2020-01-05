@@ -5,17 +5,13 @@
   @dialogNoPadding={{true}}
 > 
 
-  {{#paper-tabs
-    stretch=true
-    borderBottom=true
-    selected=selectedLessonItem
-    onChange=(action (mut selectedLessonItem)) as |tabs|}}
+  <PaperTabs @stretch={{true}} @borderBottom={{true}} @selected={{selectedLessonItem}} @onChange={{action (mut selectedLessonItem)}} as |tabs|>
     {{#each lesson.lessonItems as |lessonItem|}}
-      {{#tabs.tab value=lessonItem}}
+      <tabs.tab @value={{lessonItem}}>
         {{lessonItem.name}}
-      {{/tabs.tab}}
+      </tabs.tab>
     {{/each}}
-  {{/paper-tabs}}
+  </PaperTabs>
 
 
   {{#liquid-bind (hash tab=selectedLessonItem.index lessonItem=selectedLessonItem) class="md-padding dynamic-animation" as |current|}}
@@ -29,10 +25,8 @@
       <div>{{lesson.enrollment.student.formattedName}}</div>
     </div>
     <LessonItemSelector @lessonItem={{current.lessonItem}}/>
-    {{#paper-button
-      primary=true raised=true
-      onClick=(action saveLessonItem lesson current.lessonItem "save")}}
+    <PaperButton @primary={{true}} @raised={{true}} @onClick={{action saveLessonItem lesson current.lessonItem "save"}}>
       Save {{current.lessonItem.name}}
-    {{/paper-button}}
+    </PaperButton>
   {{/liquid-bind}}
 </FullScreenDialog>

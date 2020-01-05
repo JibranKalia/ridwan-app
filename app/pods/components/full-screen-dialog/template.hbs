@@ -1,4 +1,4 @@
-{{#if (media "fullScreenDialog")}}
+{{#if (or (media "fullScreenDialog") topBarDialog)}}
   <PaperDialog @fullscreen={{true}} @onClose={{action close}}>
     <PaperToolbar>
       <PaperToolbarTools>

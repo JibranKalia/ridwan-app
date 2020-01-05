@@ -3,6 +3,7 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   // attributes
+  name: attr('string'),
   fromSurah: attr('number'),
   fromAyah: attr('number'),
   toSurah: attr('number'),

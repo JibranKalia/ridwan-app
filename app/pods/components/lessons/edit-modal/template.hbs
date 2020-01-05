@@ -3,7 +3,8 @@
   @save={{action saveLesson lesson "update"}}
   @title={{concat "Edit " lesson.name}}
 > 
-  <div class="layout-column lesson-details-list">
+
+  {{!-- <div class="layout-column lesson-details-list">
     <div>Date:</div>
     <div>{{lesson.formattedDate}}</div>
     <div>Classroom:</div>
@@ -11,5 +12,5 @@
     <div>Student:</div>
     <div>{{lesson.enrollment.student.formattedName}}</div>
   </div>
-  <LessonSelector @lesson={{lesson}}/>
+  <LessonSelector @lesson={{lesson}}/> --}}
 </FullScreenDialog>

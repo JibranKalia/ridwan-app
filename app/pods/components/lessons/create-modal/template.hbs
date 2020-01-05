@@ -3,7 +3,21 @@
   @save={{action saveLesson lesson "save"}}
   @title={{concat "Create Lesson"}}
   @topBarDialog={{true}}
+  @dialogNoPadding={{true}}
 > 
+
+  {{#paper-tabs
+    stretch=true
+    borderBottom=true
+    selected=selectedLessonItem
+    onChange=(action (mut selectedLessonItem)) as |tabs|}}
+    {{#each lesson.lessonItems as |lessonItem|}}
+      {{#tabs.tab value=lessonItem}}
+        {{lessonItem.name}}
+      {{/tabs.tab}}
+    {{/each}}
+  {{/paper-tabs}}
+
   <div class="layout-column lesson-details-list">
     <div>Date:</div>
     <div>{{lesson.formattedDate}}</div>
@@ -13,4 +27,14 @@
     <div>{{lesson.enrollment.student.formattedName}}</div>
   </div>
   <LessonSelector @lesson={{lesson}}/>
+{{!-- 
+  {{#liquid-bind (hash tab=selectedChapter.index m=selectedChapter) class="md-padding dynamic-animation" as |current|}}
+    <h1 class="md-display-2">{{current.m.title}}</h1>
+    <p>{{current.m.body}}</p>
+    {{#paper-button
+      primary=true raised=true disabled=(eq chapters.length 1)
+      onClick=(action "removeChapter" current.m)}}
+      Remove chapter
+    {{/paper-button}}
+  {{/liquid-bind}} --}}
 </FullScreenDialog>

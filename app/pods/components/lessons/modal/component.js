@@ -5,6 +5,7 @@ import { isEmpty } from '@ember/utils';
 export default Component.extend({
   lessonItemNames: Object.freeze(['New Lesson', 'New Revision', 'Revision']),
   store: service(),
+  type: 'update',
 
   didReceiveAttrs() {
     this._super(...arguments);
@@ -15,6 +16,7 @@ export default Component.extend({
   },
 
   createLesson() {
+    this.type = 'create';
     this.lesson = this.store.createRecord('lesson', {
       enrollment: this.enrollment,
       date: new Date(),

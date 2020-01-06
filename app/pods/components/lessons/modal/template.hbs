@@ -29,7 +29,7 @@
         <PaperButton @primary={{true}} @onClick={{action closeModal lesson}}>
           Cancel
         </PaperButton>
-        <PaperButton @primary={{true}} @onClick={{action saveLessonItem lesson current.lessonItem "save"}}>
+        <PaperButton @primary={{true}} @onClick={{action saveLessonItem lesson current.lessonItem type}}>
           Save {{current.lessonItem.name}}
         </PaperButton>
       </div>

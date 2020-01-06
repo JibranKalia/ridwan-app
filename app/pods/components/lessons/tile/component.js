@@ -12,7 +12,7 @@ const LESSON_TYPE_TO_NAME_MAPPER = {
 export default Component.extend({
   store: service(),
   paperToaster: service(),
-  showCreateModal: false,
+  showModal: false,
   showEditModal: false,
 
   individualLesson: computed('enrollment.lessons.@each.type', function() {
@@ -24,17 +24,19 @@ export default Component.extend({
   }),
 
   actions: {
-    openCreateModal() {
-      this.set('showCreateModal', true);
+    openModal() {
+      this.set('showModal', true);
     },
-    closeCreateModal(lesson) {
-      lesson.lessonItems.forEach((item) => {
-        if (isPresent(item)) {
-          item.destroyRecord()
-        }
-      });
-      lesson.destroyRecord();
-      this.set('showCreateModal', false);
+    closeModal(lesson, type) {
+      if (lesson.isNew) {
+        lesson.lessonItems.forEach((item) => {
+          if (isPresent(item) && item.isNew) {
+            item.destroyRecord()
+          }
+        });
+        lesson.destroyRecord();
+      }
+      this.set('showModal', false);
     },
     openEditModal() {
       this.set('showEditModal', true);
@@ -56,7 +58,7 @@ export default Component.extend({
       try {
         await lesson.save();
         await lessonItem.save();
-        this.set('showCreateModal', false);
+        this.set('showModal', false);
         this.set('showEditModal', false);
         this.paperToaster.show(`${action === 'save' ? 'Saved' : 'Updated'} lesson`);
       } catch(e) {

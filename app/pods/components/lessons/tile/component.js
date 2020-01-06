@@ -3,31 +3,20 @@ import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import { isPresent } from '@ember/utils';
 
-const LESSON_TYPE_TO_NAME_MAPPER = {
-  'type_one': 'New Lesson',
-  'type_two': 'New Revision',
-  'type_three': 'Revision',
-}
-
 export default Component.extend({
   store: service(),
   paperToaster: service(),
   showModal: false,
-  showEditModal: false,
 
   individualLesson: computed('enrollment.lessons.@each.type', function() {
     return this.enrollment.lessons.find(lesson => lesson.type === this.type )
-  }),
-
-  lessonName: computed('type', function() {
-    return LESSON_TYPE_TO_NAME_MAPPER[this.type]
   }),
 
   actions: {
     openModal() {
       this.set('showModal', true);
     },
-    closeModal(lesson, type) {
+    closeModal(lesson) {
       if (lesson.isNew) {
         lesson.lessonItems.forEach((item) => {
           if (isPresent(item) && item.isNew) {
@@ -37,12 +26,6 @@ export default Component.extend({
         lesson.destroyRecord();
       }
       this.set('showModal', false);
-    },
-    openEditModal() {
-      this.set('showEditModal', true);
-    },
-    closeEditModal() {
-      this.set('showEditModal', false);
     },
     async deleteLesson(lesson) {
       try {

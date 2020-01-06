@@ -5,9 +5,14 @@
 
 <article>
   <PaperList>
+    <Lessons::Tile 
+      @lesson={{currentLesson}}
+      @enrollment={{model.enrollment}}
+      @currentLesson={{true}}
+    />
+
     {{#each nonCurrentLessons as |lesson|}}
       <Lessons::Tile 
-        @type="type_one"
         @lesson={{lesson}}
         @enrollment={{model.enrollment}}
       />

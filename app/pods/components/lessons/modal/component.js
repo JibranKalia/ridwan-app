@@ -12,7 +12,7 @@ export default Component.extend({
     if (isEmpty(this.lesson)) {
       this.createLesson();
     }
-    this.selectedLessonItem = this.lesson.lessonItems.firstObject;
+    this.set('selectedLessonItem', this.lesson.lessonItems.firstObject);
   },
 
   createLesson() {

@@ -1,7 +1,13 @@
 <PaperCard as |card|>
   <card.title as |title|>
     <title.text as |text|>
-      <text.headline>{{lesson.formattedDate}}</text.headline>
+      <text.headline>
+        {{#if currentLesson}}
+          Current Lesson
+        {{else}}
+          {{lesson.formattedDate}}
+        {{/if}}
+      </text.headline>
     </title.text>
   </card.title>
   <card.actions>
@@ -22,8 +28,7 @@
     @enrollment={{enrollment}}
     @type={{type}}
     @lesson={{lesson}}
-    @lessonName={{lessonName}}
     @saveLessonItem={{action "saveLessonItem"}} 
-    @closeModal={{action "closeCreateModal"}}
+    @closeModal={{action "closeModal"}}
   />
 {{/if}}

@@ -12,7 +12,23 @@ export default Component.extend({
     if (isEmpty(this.lesson)) {
       this.createLesson();
     }
+    this.ensureLessonItems(this.lesson);
     this.set('selectedLessonItem', this.lesson.lessonItems.firstObject);
+  },
+
+  ensureLessonItems(lesson) {
+    this.lessonItemNames.forEach((name) => {
+      if (isEmpty(lesson.lessonItems.find(li => li.name === name))) {
+        this.createLessonItem(lesson, name);
+      }
+    })
+  },
+
+  createLessonItem(lesson, name) {
+    this.store.createRecord('lessonItem', {
+      name: name,
+      lesson: lesson,
+    });
   },
 
   createLesson() {
@@ -25,10 +41,7 @@ export default Component.extend({
     });
 
     this.lessonItemNames.forEach((name) => {
-      this.store.createRecord('lessonItem', {
-        name: name,
-        lesson: this.lesson,
-      });
+      this.createLessonItem(this.lesson, name);
     })
   }
 })

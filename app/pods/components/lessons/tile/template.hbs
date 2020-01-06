@@ -12,7 +12,7 @@
   </card.title>
   <card.actions>
     {{#if lesson}}
-      <PaperButton @onClick={{action "deleteLesson" individualLesson}}>Delete</PaperButton>
+      <PaperButton @onClick={{action "deleteLesson" lesson}}>Delete</PaperButton>
       <PaperButton @onClick={{action "openModal"}}>Edit</PaperButton>
       {{!-- <LinkTo @class="base-link" @route="home.lessons.show" @model={{individualLesson.id}}>
         <PaperButton>Show Details</PaperButton>

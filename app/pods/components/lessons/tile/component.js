@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
 import { isPresent } from '@ember/utils';
 
 export default Component.extend({
@@ -8,21 +7,14 @@ export default Component.extend({
   paperToaster: service(),
   showModal: false,
 
-  individualLesson: computed('enrollment.lessons.@each.type', function() {
-    return this.enrollment.lessons.find(lesson => lesson.type === this.type )
-  }),
-
   actions: {
     openModal() {
       this.set('showModal', true);
     },
     closeModal(lesson) {
+      const lessonItemsToDelete = lesson.lessonItems.filter(item => isPresent(item) && item.isNew);
+      lessonItemsToDelete.forEach((item) => item.destroyRecord());
       if (lesson.isNew) {
-        lesson.lessonItems.forEach((item) => {
-          if (isPresent(item) && item.isNew) {
-            item.destroyRecord()
-          }
-        });
         lesson.destroyRecord();
       }
       this.set('showModal', false);
@@ -43,7 +35,7 @@ export default Component.extend({
         await lessonItem.save();
         this.set('showModal', false);
         this.set('showEditModal', false);
-        this.paperToaster.show(`${action === 'save' ? 'Saved' : 'Updated'} lesson`);
+        this.paperToaster.show(`${action === 'create' ? 'Created' : 'Updated'} lesson`);
       } catch(e) {
         console.error(e);
         this.paperToaster.show('Error creating lesson');

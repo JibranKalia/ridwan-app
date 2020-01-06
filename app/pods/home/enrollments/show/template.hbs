@@ -5,24 +5,12 @@
 
 <article>
   <PaperList>
-    <PaperSubheader>
-      Current Lesson
-    </PaperSubheader>
-
-    <Lessons::Tile 
-      @type="type_one"
-      @lessons={{model.lessons}}
-      @enrollment={{model.enrollment}}
-    />
-    <Lessons::Tile 
-      @type="type_two"
-      @lessons={{model.lessons}}
-      @enrollment={{model.enrollment}}
-    />
-    <Lessons::Tile 
-      @type="type_three"
-      @lessons={{model.lessons}}
-      @enrollment={{model.enrollment}}
-    />
+    {{#each nonCurrentLessons as |lesson|}}
+      <Lessons::Tile 
+        @type="type_one"
+        @lesson={{lesson}}
+        @enrollment={{model.enrollment}}
+      />
+    {{/each}}
   </PaperList>
 </article>

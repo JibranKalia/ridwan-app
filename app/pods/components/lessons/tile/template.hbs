@@ -1,43 +1,29 @@
-{{#if individualLesson}}
-  <PaperCard as |card|>
-    <card.title as |title|>
-      <title.text as |text|>
-        <text.headline>{{individualLesson.name}}</text.headline>
-      </title.text>
-    </card.title>
-    <card.actions>
+<PaperCard as |card|>
+  <card.title as |title|>
+    <title.text as |text|>
+      <text.headline>{{lesson.formattedDate}}</text.headline>
+    </title.text>
+  </card.title>
+  <card.actions>
+    {{#if lesson}}
       <PaperButton @onClick={{action "deleteLesson" individualLesson}}>Delete</PaperButton>
-      <PaperButton @onClick={{action "openEditModal"}}>Edit</PaperButton>
-      <LinkTo @class="base-link" @route="home.lessons.show" @model={{individualLesson.id}}>
+      <PaperButton @onClick={{action "openModal"}}>Edit</PaperButton>
+      {{!-- <LinkTo @class="base-link" @route="home.lessons.show" @model={{individualLesson.id}}>
         <PaperButton>Show Details</PaperButton>
-      </LinkTo>
-    </card.actions>
-  </PaperCard>
-{{else}}
-  <PaperItem>
-    <PaperButton 
-      @raised={{true}}
-      @primary={{true}}
-      @onClick={{action "openCreateModal"}}>
-      {{paper-icon "add"}} Create {{lessonName}}
-    </PaperButton>
-  </PaperItem>
-{{/if}}
+      </LinkTo> --}}
+    {{else}}
+      <PaperButton @onClick={{action "openModal"}}>Create</PaperButton>
+    {{/if}}
+  </card.actions>
+</PaperCard>
 
-{{#if showCreateModal}}
-  <Lessons::CreateModal 
+{{#if showModal}}
+  <Lessons::Modal 
     @enrollment={{enrollment}}
     @type={{type}}
+    @lesson={{lesson}}
     @lessonName={{lessonName}}
     @saveLessonItem={{action "saveLessonItem"}} 
     @closeModal={{action "closeCreateModal"}}
-  />
-{{/if}}
-
-{{#if showEditModal}}
-  <Lessons::EditModal 
-    @lesson={{individualLesson}}
-    @saveLessonItem={{action "saveLessonItem"}} 
-    @closeModal={{action "closeEditModal"}}
   />
 {{/if}}

@@ -1,13 +1,7 @@
 <PaperCard as |card|>
   <card.title as |title|>
     <title.text as |text|>
-      <text.headline>
-        {{#if currentLesson}}
-          Current Lesson
-        {{else}}
-          {{lesson.formattedDate}}
-        {{/if}}
-      </text.headline>
+      <Lessons::Tile::Text @text={{text}} @currentLesson={{currentLesson}} @lesson={{lesson}} />
     </title.text>
   </card.title>
   <card.actions>

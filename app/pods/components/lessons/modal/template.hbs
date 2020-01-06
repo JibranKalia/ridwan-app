@@ -1,0 +1,37 @@
+<FullScreenDialog
+  @close={{action closeModal lesson}}
+  @title={{concat "Create Lesson"}}
+  @topBarDialog={{true}}
+  @dialogNoPadding={{true}}
+> 
+  <div class='lesson-modal'>
+    <PaperTabs @stretch={{true}} @borderBottom={{true}} @selected={{selectedLessonItem}} @onChange={{action (mut selectedLessonItem)}} as |tabs|>
+      {{#each lesson.lessonItems as |lessonItem|}}
+        <tabs.tab @value={{lessonItem}}>
+          {{lessonItem.name}}
+        </tabs.tab>
+      {{/each}}
+    </PaperTabs>
+
+    {{#liquid-bind (hash tab=selectedLessonItem.index lessonItem=selectedLessonItem) class="md-padding dynamic-animation" as |current|}}
+      <h3 class="md-title">{{current.lessonItem.name}}</h3>
+      <div class="layout-column lesson-details-list">
+        <div>Date:</div>
+        <div>{{lesson.formattedDate}}</div>
+        <div>Classroom:</div>
+        <div>{{lesson.enrollment.classroom.name}}</div>
+        <div>Student:</div>
+        <div>{{lesson.enrollment.student.formattedName}}</div>
+      </div>
+      <LessonItemSelector @lessonItem={{current.lessonItem}}/>
+      <div class='dialog-actions'>
+        <PaperButton @primary={{true}} @onClick={{action closeModal lesson}}>
+          Cancel
+        </PaperButton>
+        <PaperButton @primary={{true}} @onClick={{action saveLessonItem lesson current.lessonItem type}}>
+          Save {{current.lessonItem.name}}
+        </PaperButton>
+      </div>
+    {{/liquid-bind}}
+  </div>
+</FullScreenDialog>

@@ -1,40 +1,25 @@
-{{#if individualLesson}}
-  <PaperCard as |card|>
-    <card.title as |title|>
-      <title.text as |text|>
-        <text.headline>{{individualLesson.name}}</text.headline>
-      </title.text>
-    </card.title>
-    <card.actions>
-      <PaperButton @onClick={{action "deleteLesson" individualLesson}}>Delete</PaperButton>
-      <PaperButton @onClick={{action "openEditModal"}}>Edit</PaperButton>
-    </card.actions>
-  </PaperCard>
-{{else}}
-  <PaperItem>
-    <PaperButton 
-      @raised={{true}}
-      @primary={{true}}
-      @onClick={{action "openCreateModal"}}>
-      {{paper-icon "add"}} Create {{lessonName}}
-    </PaperButton>
-  </PaperItem>
-{{/if}}
+<PaperCard as |card|>
+  <card.title as |title|>
+    <title.text as |text|>
+      <Lessons::Tile::Text @text={{text}} @currentLesson={{currentLesson}} @lesson={{lesson}} />
+    </title.text>
+  </card.title>
+  <card.actions>
+    {{#if lesson}}
+      <PaperButton @onClick={{action "deleteLesson" lesson}}>Delete</PaperButton>
+      <PaperButton @onClick={{action "openModal"}}>Edit</PaperButton>
+    {{else}}
+      <PaperButton @onClick={{action "openModal"}}>Create</PaperButton>
+    {{/if}}
+  </card.actions>
+</PaperCard>
 
-{{#if showCreateModal}}
-  <Lessons::CreateModal 
+{{#if showModal}}
+  <Lessons::Modal 
     @enrollment={{enrollment}}
     @type={{type}}
-    @lessonName={{lessonName}}
-    @saveLesson={{action "saveLesson"}} 
-    @closeModal={{action "closeCreateModal"}}
-  />
-{{/if}}
-
-{{#if showEditModal}}
-  <Lessons::EditModal 
-    @lesson={{individualLesson}}
-    @saveLesson={{action "saveLesson"}} 
-    @closeModal={{action "closeEditModal"}}
+    @lesson={{lesson}}
+    @saveLessonItem={{action "saveLessonItem"}} 
+    @closeModal={{action "closeModal"}}
   />
 {{/if}}

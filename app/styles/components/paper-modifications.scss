@@ -14,3 +14,9 @@ md-list {
     background: white;
   }
 }
+
+md-dialog.dialog-no-padding {
+  .md-dialog-content {
+    padding: 0px
+  }
+}

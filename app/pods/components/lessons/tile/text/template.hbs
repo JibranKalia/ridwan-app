@@ -1,0 +1,15 @@
+<span class='md-headline'>
+  {{#if currentLesson}}
+    Current Lesson
+  {{else}}
+    {{lesson.formattedDate}}
+  {{/if}}
+</span>
+
+{{#each lesson.lessonItems as |lessonItem|}}
+  {{#if (not lessonItem.isNew)}}
+    <span class='md-subhead'>
+      {{lessonItem.name}}  {{lessonItem.fromSurah}}:{{lessonItem.fromAyah}} to {{lessonItem.toSurah}}:{{lessonItem.toAyah}}
+    </span>
+  {{/if}}
+{{/each}}

@@ -5,17 +5,17 @@ import { computed } from '@ember/object';
 export default Component.extend({
   constants: service(),
 
-  selectedSurah: computed('lesson.{fromSurah,toSurah}', function() {
-    const surahNumber = this.from ? this.lesson.fromSurah : this.lesson.toSurah;
+  selectedSurah: computed('lessonItem.{fromSurah,toSurah}', function() {
+    const surahNumber = this.from ? this.lessonItem.fromSurah : this.lessonItem.toSurah;
     return this.constants.SURAHS.find(r => r.number === surahNumber)
   }),
 
   actions: {
     setSurah(surah) {
       if (this.from) {
-        this.set('lesson.fromSurah', surah.number);
+        this.set('lessonItem.fromSurah', surah.number);
       } else {
-        this.set('lesson.toSurah', surah.number);
+        this.set('lessonItem.toSurah', surah.number);
       }
     }
   }

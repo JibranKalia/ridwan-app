@@ -6,10 +6,19 @@
   {{/if}}
 </span>
 
-{{#each lesson.lessonItems as |lessonItem|}}
-  {{#if (not lessonItem.isNew)}}
-    <span class='md-subhead'>
-      {{lessonItem.name}}  {{lessonItem.fromSurah}}:{{lessonItem.fromAyah}} to {{lessonItem.toSurah}}:{{lessonItem.toAyah}}
-    </span>
-  {{/if}}
-{{/each}}
+<div class='lessons-tile-text--list  md-subhead'>
+  {{#each lesson.lessonItems as |lessonItem|}}
+    {{#if (not lessonItem.isNew)}}
+      <span>
+        {{lessonItem.name}}:  
+      </span>
+      <span class='center-text'>
+        {{lessonItem.fromSurahObject.transliteration}} : {{lessonItem.fromAyahString}} 
+      </span>
+      <span class='center-text'>to</span>
+      <span class='center-text'>
+        {{lessonItem.toSurahObject.transliteration}} : {{lessonItem.toAyahString}} 
+      </span>
+    {{/if}}
+  {{/each}}
+</div>

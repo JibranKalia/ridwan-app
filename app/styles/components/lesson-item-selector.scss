@@ -23,3 +23,17 @@
     min-height: 3rem;
   }
 }
+
+.lessons-tile-text {
+  max-width: 30rem;
+  &--list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr 1fr;
+    & > span {
+      min-height: 2rem;
+    }
+    .center-text {
+      text-align: center;
+    }
+  }
+}

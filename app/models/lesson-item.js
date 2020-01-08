@@ -2,6 +2,7 @@ import Model, { attr } from '@ember-data/model';
 import { belongsTo } from 'ember-data/relationships';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
+import { isPresent } from '@ember/utils';
 
 export default Model.extend({
   constants: service(),
@@ -21,10 +22,16 @@ export default Model.extend({
     return this.constants.SURAHS.find(r => r.number === this.toSurah);
   }),
   fromAyahString: computed('fromAyah', function() {
-    return this.fromAyah.toString().padStart(2, '0');
+    if (isPresent(this.fromAyah)) {
+      return this.fromAyah.toString().padStart(2, '0');
+    }
+    return null;
   }),
   toAyahString: computed('toAyah', function() {
-    return this.toAyah.toString().padStart(2, '0');
+    if (isPresent(this.toAyah)) {
+      return this.toAyah.toString().padStart(2, '0');
+    }
+    return null;
   }),
 
   // relationships

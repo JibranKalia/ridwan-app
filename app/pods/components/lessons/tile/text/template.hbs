@@ -9,8 +9,8 @@
 <div class='lessons-tile-text--list  md-subhead'>
   {{#each lesson.lessonItems as |lessonItem|}}
     {{#if (not lessonItem.isNew)}}
-      <span>
-        {{lessonItem.name}}:  
+      <span class='font-weight-500'>
+        {{lessonItem.name}}  
       </span>
       <span class='center-text'>
         {{lessonItem.fromSurahObject.transliteration}} : {{lessonItem.fromAyahString}} 

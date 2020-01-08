@@ -7,14 +7,16 @@
         @label="First Name"
         @required={{true}}
         @class="flex-50"
+        @errors={{filter-by 'field_name' 'first_name' errors}}
         @isTouched={{gt errors.length 0}}
       />
       <form.input
         @value={{lastName}}
         @onChange={{action (mut lastName)}}
         @label="Last Name"
-        @required={{true}}
+        @required={{false}}
         @class="flex-50"
+        @errors={{filter-by 'field_name' 'last_name' errors}}
         @isTouched={{gt errors.length 0}}
       />
       <form.input
@@ -24,6 +26,7 @@
         @required={{true}}
         @class="flex-50"
         @type="email"
+        @errors={{filter-by 'field_name' 'email' errors}}
         @isTouched={{gt errors.length 0}}
       />
       <form.input 
@@ -32,8 +35,8 @@
         @label="Password"
         @required={{true}}
         @type="password"
+        @errors={{filter-by 'field_name' 'password' errors}}
         @isTouched={{gt errors.length 0}}
-        @errors={{errors}}
       />
       <form.input 
         @value={{passwordConfirmation}}
@@ -41,8 +44,8 @@
         @label="Password Confirmation"
         @required={{true}}
         @type="password"
+        @errors={{filter-by 'field_name' 'password_confirmation' errors}}
         @isTouched={{gt errors.length 0}}
-        @errors={{errors}}
       />
       <form.submit-button @raised={{true}} @primary={{true}} @disabled={{form.isInvalid}}>
         Submit

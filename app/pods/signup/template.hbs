@@ -3,7 +3,7 @@
     <PaperForm @onSubmit={{action "save"}} @class="input-form layout-column layout-align-center-center" as |form|>
       <form.input
         @value={{firstName}}
-        @onChange={{action (mut firstName)}}
+        @onChange={{action 'setValue' 'first_name'}}
         @label="First Name"
         @required={{true}}
         @class="flex-50"
@@ -12,7 +12,7 @@
       />
       <form.input
         @value={{lastName}}
-        @onChange={{action (mut lastName)}}
+        @onChange={{action 'setValue' 'last_name'}}
         @label="Last Name"
         @required={{false}}
         @class="flex-50"
@@ -21,7 +21,7 @@
       />
       <form.input
         @value={{email}}
-        @onChange={{action (mut email)}}
+        @onChange={{action 'setValue' 'email'}}
         @label="Email Address"
         @required={{true}}
         @class="flex-50"
@@ -31,7 +31,7 @@
       />
       <form.input 
         @value={{password}}
-        @onChange={{action (mut password)}}
+        @onChange={{action 'setValue' 'password'}}
         @label="Password"
         @required={{true}}
         @type="password"
@@ -40,7 +40,7 @@
       />
       <form.input 
         @value={{passwordConfirmation}}
-        @onChange={{action (mut passwordConfirmation)}}
+        @onChange={{action 'setValue' 'password_confirmation'}}
         @label="Password Confirmation"
         @required={{true}}
         @type="password"

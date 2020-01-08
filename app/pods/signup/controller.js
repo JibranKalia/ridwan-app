@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { camelize } from '@ember/string';
 import config from 'app-ridwan/config/environment';
 import fetch from 'fetch';
 import { A } from '@ember/array';
@@ -15,6 +16,14 @@ export default Controller.extend({
   },
 
   actions: {
+    setValue(errorField, value) {
+      const error = this.errors.findBy('field_name', errorField);
+      if (error) {
+        this.errors.removeObject(error);
+      }
+      this.set(camelize(errorField), value);
+    },
+
     async save() {
       const url = config.apiHost + '/users'
       const data = {

@@ -10,9 +10,7 @@ export default Controller.extend({
   errors: A([]),
 
   handleError(errorArray) {
-    if (this.errors.length === 0) {
-      errorArray.forEach(msg =>  this.errors.pushObject(msg) );
-    }
+    errorArray.forEach(msg =>  this.errors.pushObject(msg) );
   },
 
   actions: {

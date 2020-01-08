@@ -1,5 +1,5 @@
 <div class="login-page layout-column layout-align-center-center">
-  <article class="login-box">
+  <article class="input-box">
     <PaperForm @onSubmit={{action "authenticate"}} @class="login-form layout-column layout-align-center-center" as |form|>
       <form.input
         @value={{identification}}
@@ -28,7 +28,7 @@
         Forgot your password?
       </LinkTo>
 
-      <LinkTo @class="login-link" @route="login">
+      <LinkTo @class="login-link" @route="signup">
         Register as a new user.
       </LinkTo>
     </section>

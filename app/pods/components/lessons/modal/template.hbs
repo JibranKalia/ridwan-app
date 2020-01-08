@@ -4,7 +4,7 @@
   @topBarDialog={{true}}
   @dialogNoPadding={{true}}
 > 
-  <div class='lesson-modal'>
+  <div class="lesson-modal">
     <PaperTabs @stretch={{true}} @borderBottom={{true}} @selected={{selectedLessonItem}} @onChange={{action (mut selectedLessonItem)}} as |tabs|>
       {{#each lesson.lessonItems as |lessonItem|}}
         <tabs.tab @value={{lessonItem}}>
@@ -24,7 +24,7 @@
         <div>{{lesson.enrollment.student.formattedName}}</div>
       </div>
       <LessonItemSelector @lessonItem={{current.lessonItem}}/>
-      <div class='dialog-actions'>
+      <div class="dialog-actions">
         <PaperButton @primary={{true}} @onClick={{action closeModal lesson}}>
           Cancel
         </PaperButton>

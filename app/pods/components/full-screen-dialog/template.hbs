@@ -1,5 +1,5 @@
 {{#if (or (media "fullScreenDialog") topBarDialog)}}
-  <PaperDialog @fullscreen={{true}} @onClose={{action close}} @class={{if dialogNoPadding 'dialog-no-padding'}}>
+  <PaperDialog @fullscreen={{true}} @onClose={{action close}} @class={{if dialogNoPadding "dialog-no-padding"}}>
     <PaperToolbar>
       <PaperToolbarTools>
         {{#unless hideCloseIcon}}
@@ -19,7 +19,7 @@
     </PaperDialogContent>
   </PaperDialog>
 {{else}}
-  <PaperDialog @fullscreen={{false}} @onClose={{action close}} @class={{if dialogNoPadding 'dialog-no-padding'}}>
+  <PaperDialog @fullscreen={{false}} @onClose={{action close}} @class={{if dialogNoPadding "dialog-no-padding"}}>
     <PaperDialogContent>
       <h2 class="md-title">{{title}}</h2>
       {{yield}}

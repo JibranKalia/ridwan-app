@@ -1,4 +1,4 @@
-<span class='md-headline'>
+<span class="md-headline">
   {{#if currentLesson}}
     Current Lesson
   {{else}}
@@ -6,17 +6,17 @@
   {{/if}}
 </span>
 
-<div class='lessons-tile-text--list  md-subhead'>
+<div class="lessons-tile-text--list  md-subhead">
   {{#each lesson.lessonItems as |lessonItem|}}
     {{#if (not lessonItem.isNew)}}
-      <span class='font-weight-500'>
+      <span class="font-weight-500">
         {{lessonItem.name}}  
       </span>
-      <span class='center-text'>
+      <span class="center-text">
         {{lessonItem.fromSurahObject.transliteration}} : {{lessonItem.fromAyahString}} 
       </span>
-      <span class='center-text'>to</span>
-      <span class='center-text'>
+      <span class="center-text">to</span>
+      <span class="center-text">
         {{lessonItem.toSurahObject.transliteration}} : {{lessonItem.toAyahString}} 
       </span>
     {{/if}}

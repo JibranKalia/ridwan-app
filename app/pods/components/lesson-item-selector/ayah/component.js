@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import { isPresent, isEmpty } from '@ember/utils';
+import { range } from 'lodash';
 
 export default Component.extend({
   constants: service(),
@@ -10,9 +11,20 @@ export default Component.extend({
     return isEmpty(this.selectedSurah);
   }),
 
-  options: computed('selectedSurah', function() {
+  fromAndToSurahSame: computed('from', 'lessonItem.{fromSurah,toSurah,fromAyah}', function() {
+    return !this.from &&
+            isPresent(this.lessonItem.fromSurah) &&
+            isPresent(this.lessonItem.toSurah) &&
+            isPresent(this.lessonItem.fromAyah) &&
+            this.lessonItem.fromSurah === this.lessonItem.toSurah
+  }), 
+
+  options: computed('selectedSurah', 'fromAndToSurahSame', function() {
     if (isPresent(this.selectedSurah)) {
-      return Array.from(Array(this.selectedSurah.total_verses), (_, index) => (index + 1).toString())
+      if (this.fromAndToSurahSame) {
+        return range(Number(this.lessonItem.fromAyah) + 1, this.selectedSurah.total_verses + 1).map(i => i.toString());
+      }
+      return range(1, this.selectedSurah.total_verses + 1).map(i => i.toString());
     }
   }),
 
@@ -25,10 +37,18 @@ export default Component.extend({
     return this.constants.SURAHS.find(r => r.number === surahNumber)
   }),
 
+  wipeToValues() {
+    if (this.lessonItem.fromSurah === this.lessonItem.toSurah && 
+        Number(this.lessonItem.fromAyah) >= Number(this.lessonItem.toAyah)) {
+      this.set('lessonItem.toAyah', undefined);
+    }
+  },
+
   actions: {
     setAyah(ayahNumber) {
       if (this.from) {
         this.set('lessonItem.fromAyah', ayahNumber);
+        this.wipeToValues();
       } else {
         this.set('lessonItem.toAyah', ayahNumber);
       }

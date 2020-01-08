@@ -8,6 +8,8 @@ export default Controller.extend({
   }),
 
   nonCurrentLessons: computed('model.enrollment.lessons.[]', function() {
-    return this.model.enrollment.lessons.filter((lesson) => moment().isAfter(lesson.date, 'day'));
+    return this.model.enrollment.lessons
+               .filter((lesson) => moment().isAfter(lesson.date, 'day'))
+               .sort((a, b) => new Date(b.date) - new Date(a.date));
   }),
 });

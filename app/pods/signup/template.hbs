@@ -1,1 +1,52 @@
-{{outlet}}
+<div class="signup-page layout-column layout-align-center-center">
+  <article class="input-box">
+    <PaperForm @onSubmit={{action "save"}} @class="input-form layout-column layout-align-center-center" as |form|>
+      <form.input
+        @value={{firstName}}
+        @onChange={{action (mut firstName)}}
+        @label="First Name"
+        @required={{true}}
+        @class="flex-50"
+        @isTouched={{gt errors.length 0}}
+      />
+      <form.input
+        @value={{lastName}}
+        @onChange={{action (mut lastName)}}
+        @label="Last Name"
+        @required={{true}}
+        @class="flex-50"
+        @isTouched={{gt errors.length 0}}
+      />
+      <form.input
+        @value={{email}}
+        @onChange={{action (mut email)}}
+        @label="Email Address"
+        @required={{true}}
+        @class="flex-50"
+        @type="email"
+        @isTouched={{gt errors.length 0}}
+      />
+      <form.input 
+        @value={{password}}
+        @onChange={{action (mut password)}}
+        @label="Password"
+        @required={{true}}
+        @type="password"
+        @isTouched={{gt errors.length 0}}
+        @errors={{errors}}
+      />
+      <form.input 
+        @value={{passwordConfirmation}}
+        @onChange={{action (mut passwordConfirmation)}}
+        @label="Password Confirmation"
+        @required={{true}}
+        @type="password"
+        @isTouched={{gt errors.length 0}}
+        @errors={{errors}}
+      />
+      <form.submit-button @raised={{true}} @primary={{true}} @disabled={{form.isInvalid}}>
+        Submit
+      </form.submit-button>
+    </PaperForm>
+  </article>
+</div>

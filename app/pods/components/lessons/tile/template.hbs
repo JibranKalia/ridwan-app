@@ -1,4 +1,4 @@
-<PaperCard as |card|>
+<PaperCard {{on "click" (action "openModal")}} @class="clickable"  as |card|>
   <card.title as |title|>
     <title.text as |text|>
       <Lessons::Tile::Text @text={{text}} @currentLesson={{currentLesson}} @lesson={{lesson}} />

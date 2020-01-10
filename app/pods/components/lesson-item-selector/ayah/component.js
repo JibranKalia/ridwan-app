@@ -26,6 +26,7 @@ export default Component.extend({
       }
       return range(1, this.selectedSurah.total_verses + 1).map(i => i.toString());
     }
+    return undefined;
   }),
 
   selectedAyah: computed('lessonItem.{fromAyah,toAyah}', function() {

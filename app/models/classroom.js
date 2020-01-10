@@ -10,5 +10,5 @@ export default Model.extend({
   // relationships
   teacher: belongsTo('teacher'),
   students: hasMany('students'),
-  enrollments: hasMany('enrollments')
+  enrollments: hasMany('enrollments', { async: false })
 });

@@ -1,16 +1,16 @@
-{{#if (or (media "fullScreenDialog") topBarDialog)}}
-  <PaperDialog @fullscreen={{true}} @onClose={{action close}} @class={{if dialogNoPadding "dialog-no-padding"}}>
+{{#if (or (media "fullScreenDialog") this.topBarDialog)}}
+  <PaperDialog @fullscreen={{true}} @onClose={{action this.close}} @class={{if this.dialogNoPadding "dialog-no-padding"}}>
     <PaperToolbar>
       <PaperToolbarTools>
-        {{#unless hideCloseIcon}}
-          <PaperButton @iconButton={{true}} @onClick={{action close}}>
+        {{#unless this.hideCloseIcon}}
+          <PaperButton @iconButton={{true}} @onClick={{action this.close}}>
             {{paper-icon "close"}}
           </PaperButton>
         {{/unless}}
         <div class="toolbar">{{title}}</div>
         <span class="flex"></span>
-        {{#if save}}
-          <PaperButton @onClick={{action save}}>Save</PaperButton>
+        {{#if this.save}}
+          <PaperButton @onClick={{action this.save}}>Save</PaperButton>
         {{/if}}
       </PaperToolbarTools>
     </PaperToolbar>
@@ -19,15 +19,15 @@
     </PaperDialogContent>
   </PaperDialog>
 {{else}}
-  <PaperDialog @fullscreen={{false}} @onClose={{action close}} @class={{if dialogNoPadding "dialog-no-padding"}}>
+  <PaperDialog @fullscreen={{false}} @onClose={{action this.close}} @class={{if this.dialogNoPadding "dialog-no-padding"}}>
     <PaperDialogContent>
       <h2 class="md-title">{{title}}</h2>
       {{yield}}
     </PaperDialogContent>
     <PaperDialogActions class="layout-row">
       <span class="flex"></span>
-      <PaperButton @primary={{true}} @onClick={{action close}}>Cancel</PaperButton>
-      <PaperButton @primary={{true}} @onClick={{action save}}>Save</PaperButton>
+      <PaperButton @primary={{true}} @onClick={{action this.close}}>Cancel</PaperButton>
+      <PaperButton @primary={{true}} @onClick={{action this.save}}>Save</PaperButton>
     </PaperDialogActions>
   </PaperDialog>
 {{/if}}

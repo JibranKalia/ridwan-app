@@ -1,17 +1,17 @@
-{{assert-must-preload model.enrollment 'lessons.lesson_items'}}
+{{assert-must-preload this.model.enrollment 'lessons.lesson_items'}}
 
 <article>
   <PaperList>
     <Lessons::Tile 
-      @lesson={{currentLesson}}
-      @enrollment={{model.enrollment}}
+      @lesson={{this.currentLesson}}
+      @enrollment={{this.model.enrollment}}
       @currentLesson={{true}}
     />
 
-    {{#each nonCurrentLessons as |lesson|}}
+    {{#each this.nonCurrentLessons as |lesson|}}
       <Lessons::Tile 
         @lesson={{lesson}}
-        @enrollment={{model.enrollment}}
+        @enrollment={{this.model.enrollment}}
       />
     {{/each}}
   </PaperList>

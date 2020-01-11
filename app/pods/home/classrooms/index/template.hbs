@@ -5,7 +5,7 @@
     <PaperSubheader>
       Your classes
     </PaperSubheader>
-    {{#each model.classrooms as |classroom|}}
+    {{#each this.model.classrooms as |classroom|}}
       <PaperCard {{on "click" (action "showClassroomDetails" classroom.id)}} @class="clickable" as |card|>
         <card.title as |title|>
           <title.text as |text|>
@@ -27,6 +27,6 @@
   </PaperButton>
 </article>
 
-{{#if showCreateModal}}
+{{#if this.showCreateModal}}
   <Classrooms::CreateClassroomModal @saveClassroom={{action "saveClassroom"}} @closeModal={{action "closeCreateModal"}}/>
 {{/if}}

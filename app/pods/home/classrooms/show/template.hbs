@@ -1,13 +1,13 @@
-{{assert-must-preload model.classroom 'enrollments.student'}}
+{{assert-must-preload this.model.classroom 'enrollments.student'}}
 
-<ApplicationToolbar @name={{model.classroom.name}} @previousRoute="home.classrooms"/>
+<ApplicationToolbar @name={{this.model.classroom.name}} @previousRoute="home.classrooms" />
 
 <article>
   <PaperList>
     <PaperSubheader>
       Your Students
     </PaperSubheader>
-    {{#each model.classroom.enrollments as |enrollment|}}
+    {{#each this.model.classroom.enrollments as |enrollment|}}
       <PaperCard {{on "click" (action "showEnrollmentDetails" enrollment.id)}} @class="clickable" as |card|>
         <card.title as |title|>
           <title.text as |text|>
@@ -29,6 +29,6 @@
   </PaperButton>
 </article>
 
-{{#if showCreateModal}}
-  <Students::CreateStudentModal @classroom={{model.classroom}} @saveStudent={{action "saveStudent"}} @closeModal={{action "closeCreateModal"}}/>
+{{#if this.showCreateModal}}
+  <Students::CreateStudentModal @classroom={{this.model.classroom}} @saveStudent={{action "saveStudent"}} @closeModal={{action "closeCreateModal"}} />
 {{/if}}

@@ -3,9 +3,9 @@
     @label="Ayah"
     @placeholder="Ayah"
     @required={{true}}
-    @selected={{selectedAyah}}
-    @options={{options}}
-    @disabled={{disabled}}
+    @selected={{this.selectedAyah}}
+    @options={{this.options}}
+    @disabled={{this.disabled}}
     @searchPlaceholder="Search ..."
     @searchEnabled={{true}}
     @onChange={{action "setAyah"}} as |ayah|

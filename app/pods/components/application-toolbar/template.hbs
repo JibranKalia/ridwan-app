@@ -1,17 +1,17 @@
 <PaperToolbar>
   <PaperToolbarTools>
-    {{#if previousRoute}}
+    {{#if this.previousRoute}}
       <PaperButton @iconButton={{true}} @onClick={{action "goToPreviousRoute"}}>
         {{paper-icon "keyboard_backspace"}}
       </PaperButton>
     {{else}}
-      <PaperButton @iconButton={{true}} @onClick={{action (mut leftSideBarOpen)}}>
+      <PaperButton @iconButton={{true}} @onClick={{action (mut this.leftSideBarOpen)}}>
         {{paper-icon "menu"}}
       </PaperButton>
     {{/if}}
-    <div class="toolbar">{{name}}</div>
+    <div class="toolbar">{{this.name}}</div>
     <span class="flex"></span>
   </PaperToolbarTools>
 </PaperToolbar>
 
-<ApplicationSidenav @leftSideBarOpen={{leftSideBarOpen}} />
+<ApplicationSidenav @leftSideBarOpen={{this.leftSideBarOpen}} />

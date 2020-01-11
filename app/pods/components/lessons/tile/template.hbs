@@ -1,12 +1,12 @@
 <PaperCard {{on "click" (action "openModal")}} @class="clickable"  as |card|>
   <card.title as |title|>
     <title.text as |text|>
-      <Lessons::Tile::Text @text={{text}} @currentLesson={{currentLesson}} @lesson={{lesson}} />
+      <Lessons::Tile::Text @text={{text}} @currentLesson={{this.currentLesson}} @lesson={{this.lesson}} />
     </title.text>
   </card.title>
   <card.actions>
-    {{#if lesson}}
-      <PaperButton @onClick={{action "deleteLesson" lesson}}>Delete</PaperButton>
+    {{#if this.lesson}}
+      <PaperButton @onClick={{action "deleteLesson" this.lesson}}>Delete</PaperButton>
       <PaperButton @onClick={{action "openModal"}}>Edit</PaperButton>
     {{else}}
       <PaperButton @onClick={{action "openModal"}}>Create</PaperButton>
@@ -14,12 +14,12 @@
   </card.actions>
 </PaperCard>
 
-{{#if showModal}}
+{{#if this.showModal}}
   <Lessons::Modal 
-    @enrollment={{enrollment}}
-    @type={{type}}
-    @lesson={{lesson}}
-    @saveLessonItem={{action "saveLessonItem"}} 
+    @enrollment={{this.enrollment}}
+    @type={{this.type}}
+    @lesson={{this.lesson}}
+    @saveLessonItem={{action "saveLessonItem"}}
     @closeModal={{action "closeModal"}}
   />
 {{/if}}

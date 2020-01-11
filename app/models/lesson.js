@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default Model.extend({
   // attributes
-  date: attr('date'),
+  date: attr(),
   // computed properties
   formattedDate: computed('date', function() {
     return moment(this.date).format('L')

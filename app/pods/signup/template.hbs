@@ -2,50 +2,50 @@
   <article class="input-box">
     <PaperForm @onSubmit={{action "save"}} @class="input-form layout-column layout-align-center-center" as |form|>
       <form.input
-        @value={{firstName}}
+        @value={{this.firstName}}
         @onChange={{action "setValue" "first_name"}}
         @label="First Name"
         @required={{true}}
         @class="flex-50"
-        @errors={{filter-by "field_name" "first_name" errors}}
-        @isTouched={{gt errors.length 0}}
+        @errors={{filter-by "field_name" "first_name" this.errors}}
+        @isTouched={{gt this.errors.length 0}}
       />
       <form.input
-        @value={{lastName}}
+        @value={{this.lastName}}
         @onChange={{action "setValue" "last_name"}}
         @label="Last Name"
         @required={{false}}
         @class="flex-50"
-        @errors={{filter-by "field_name" "last_name" errors}}
-        @isTouched={{gt errors.length 0}}
+        @errors={{filter-by "field_name" "last_name" this.errors}}
+        @isTouched={{gt this.errors.length 0}}
       />
       <form.input
-        @value={{email}}
+        @value={{this.email}}
         @onChange={{action "setValue" "email"}}
         @label="Email Address"
         @required={{true}}
         @class="flex-50"
         @type="email"
-        @errors={{filter-by "field_name" "email" errors}}
-        @isTouched={{gt errors.length 0}}
+        @errors={{filter-by "field_name" "email" this.errors}}
+        @isTouched={{gt this.errors.length 0}}
       />
       <form.input 
-        @value={{password}}
+        @value={{this.password}}
         @onChange={{action "setValue" "password"}}
         @label="Password"
         @required={{true}}
         @type="password"
-        @errors={{filter-by "field_name" "password" errors}}
-        @isTouched={{gt errors.length 0}}
+        @errors={{filter-by "field_name" "password" this.errors}}
+        @isTouched={{gt this.errors.length 0}}
       />
       <form.input 
-        @value={{passwordConfirmation}}
+        @value={{this.passwordConfirmation}}
         @onChange={{action "setValue" "password_confirmation"}}
         @label="Password Confirmation"
         @required={{true}}
         @type="password"
-        @errors={{filter-by "field_name" "password_confirmation" errors}}
-        @isTouched={{gt errors.length 0}}
+        @errors={{filter-by "field_name" "password_confirmation" this.errors}}
+        @isTouched={{gt this.errors.length 0}}
       />
       <form.submit-button @raised={{true}} @primary={{true}} @disabled={{form.isInvalid}}>
         Submit

@@ -3,11 +3,11 @@
     @class="md-whiteframe-z2"
     @name="left"
     @position="left"
-    @open={{leftSideBarOpen}}
+    @open={{this.leftSideBarOpen}}
     @lockedOpen={{false}}
-    @onToggle={{action (mut leftSideBarOpen)}}>
+    @onToggle={{action (mut this.leftSideBarOpen)}}>
     <PaperToolbar>
-      <PaperToolbarTools>{{currentUser.user.teacher.formattedName}}</PaperToolbarTools>
+      <PaperToolbarTools>{{this.currentUser.user.teacher.formattedName}}</PaperToolbarTools>
       <PaperContent>
         <PaperList>
           <PaperItem @onClick={{action "transitionToClassrooms"}}>
@@ -16,7 +16,7 @@
             </div>
           </PaperItem>
         </PaperList>
-        {{#if session.isAuthenticated}}
+        {{#if this.session.isAuthenticated}}
           <PaperButton @raised={{true}} @onClick={{action "invalidateSession"}}>
             Logout
           </PaperButton>

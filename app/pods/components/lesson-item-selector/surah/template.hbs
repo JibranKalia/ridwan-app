@@ -3,11 +3,11 @@
     @label="Surah"
     @placeholder="Surah"
     @required={{true}}
-    @selected={{selectedSurah}}
-    @options={{options}}
+    @selected={{this.selectedSurah}}
+    @options={{this.options}}
     @searchField="transliteration"
     @searchPlaceholder="Search ..."
-    @searchEnabled={{true}} 
+    @searchEnabled={{true}}
     @onChange={{action "setSurah"}} as |surah|
   >
     {{surah.transliteration}}

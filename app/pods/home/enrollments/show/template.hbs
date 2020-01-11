@@ -1,10 +1,10 @@
 <ApplicationToolbar 
-  @name={{model.enrollment.formattedName}}
-  @previousRoute="home.classrooms.show" 
-  @recordId={{model.enrollment.classroom.id}}
+  @name={{this.model.enrollment.formattedName}}
+  @previousRoute="home.classrooms.show"
+  @recordId={{this.model.enrollment.classroom.id}}
 />
 
-<PaperTabs @selected={{selectedRoute}} @stretch={{false}} @borderBottom={{true}} as |tabs|>
+<PaperTabs @selected={{this.selectedRoute}} @stretch={{false}} @borderBottom={{true}} as |tabs|>
   <tabs.tab @value="home.enrollments.show.lessons" @href={{href-to "home.enrollments.show.lessons"}}>
     Lessons
   </tabs.tab>

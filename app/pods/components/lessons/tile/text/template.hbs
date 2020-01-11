@@ -1,13 +1,13 @@
 <span class="md-headline">
-  {{#if currentLesson}}
+  {{#if this.currentLesson}}
     Current Lesson
   {{else}}
-    {{lesson.formattedDate}}
+    {{this.lesson.formattedDate}}
   {{/if}}
 </span>
 
 <div class="lessons-tile-text--list  md-subhead">
-  {{#each lesson.lessonItems as |lessonItem|}}
+  {{#each this.lesson.lessonItems as |lessonItem|}}
     {{#if (not lessonItem.isNew)}}
       <span class="font-weight-500">
         {{lessonItem.name}}  

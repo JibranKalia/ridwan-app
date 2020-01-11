@@ -1,21 +1,22 @@
 <ApplicationToolbar 
-    @name={{model.enrollment.formattedName}}
-    @previousRoute="home.classrooms.show" 
-    @recordId={{model.enrollment.classroom.id}}/>
+  @name={{model.enrollment.formattedName}}
+  @previousRoute="home.classrooms.show" 
+  @recordId={{model.enrollment.classroom.id}}
+/>
 
-{{#paper-tabs selected=currentRouteName stretch=true borderBottom=true as |tabs|}}
-  {{#tabs.tab value="home.enrollments.show.lessons" href=(href-to "home.enrollments.show.lessons")}}
+<PaperTabs @selected={{selectedRoute}} @stretch={{true}} @borderBottom={{true}} as |tabs|>
+  <tabs.tab @value="home.enrollments.show.lessons" @href={{href-to "home.enrollments.show.lessons"}}>
     Lessons
-  {{/tabs.tab}}
-  {{#tabs.tab value="home.enrollments.show.messages" href=(href-to "home.enrollments.show.messages")}}
+  </tabs.tab>
+  <tabs.tab @value="home.enrollments.show.messages" @href={{href-to "home.enrollments.show.messages"}}>
     Messages
-  {{/tabs.tab}}
-  {{#tabs.tab value="home.enrollments.show.payments" href=(href-to "home.enrollments.show.payments")}}
+  </tabs.tab>
+  <tabs.tab @value="home.enrollments.show.payments" @href={{href-to "home.enrollments.show.payments"}}>
     Payments
-  {{/tabs.tab}}
-  {{#tabs.tab value="home.enrollments.show.reports" href=(href-to "home.enrollments.show.reports")}}
+  </tabs.tab>
+  <tabs.tab @value="home.enrollments.show.reports" @href={{href-to "home.enrollments.show.reports"}}>
     Reports
-  {{/tabs.tab}}
-{{/paper-tabs}}
+  </tabs.tab>
+</PaperTabs>
 
 {{liquid-outlet class="md-padding"}}

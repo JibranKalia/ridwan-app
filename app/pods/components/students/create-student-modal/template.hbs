@@ -1,7 +1,8 @@
 <FullScreenDialog
   @close={{action closeModal student}}
   @save={{action saveStudent student}}
-  @title="Add New Student">
+  @title="Add New Student"
+>
 
   <PaperInput
     @label="First Name"
@@ -9,7 +10,8 @@
     @value={{student.firstName}}
     @onChange={{action (mut student.firstName)}}
     @isTouched={{gt student.firstNameErrors.length 0}}
-    @errors={{student.firstNameErrors}}/>
+    @errors={{student.firstNameErrors}}
+  />
 
   <PaperInput
     @label="Last Name"
@@ -17,6 +19,7 @@
     @value={{student.lastName}}
     @onChange={{action (mut student.lastName)}}
     @isTouched={{gt student.lastNameErrors.length 0}}
-    @errors={{student.lastNameErrors}}/>
+    @errors={{student.lastNameErrors}}
+  />
 
 </FullScreenDialog>

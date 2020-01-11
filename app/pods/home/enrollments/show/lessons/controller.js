@@ -4,7 +4,8 @@ import moment from 'moment';
 
 export default Controller.extend({
   currentLesson: computed('model.enrollment.lessons.[]', function() { 
-    return this.model.enrollment.lessons.find((lesson) => moment().isSame(lesson.date, 'day'));
+    return this.model.enrollment.lessons
+               .find((lesson) => moment().isSame(lesson.date, 'day'));
   }),
 
   nonCurrentLessons: computed('model.enrollment.lessons.[]', function() {

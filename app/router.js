@@ -18,6 +18,8 @@ Router.map(function() {
       this.route('show', { path: '/:id' }, function() {
         this.route('lessons', { path: '/'});
         this.route('messages');
+        this.route('reports');
+        this.route('payments');
       });
     })
   });

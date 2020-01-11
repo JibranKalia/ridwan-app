@@ -1,21 +1,23 @@
 <ApplicationToolbar 
-    @name={{model.enrollment.formattedName}}
-    @previousRoute="home.classrooms.show" 
-    @recordId={{model.enrollment.classroom.id}}/>
+  @name={{model.enrollment.formattedName}}
+  @previousRoute="home.classrooms.show" 
+  @recordId={{model.enrollment.classroom.id}}
+/>
 
-<article>
-  <PaperList>
-    <Lessons::Tile 
-      @lesson={{currentLesson}}
-      @enrollment={{model.enrollment}}
-      @currentLesson={{true}}
-    />
+<PaperTabs @selected={{selectedRoute}} @stretch={{false}} @borderBottom={{true}} as |tabs|>
+  <tabs.tab @value="home.enrollments.show.lessons" @href={{href-to "home.enrollments.show.lessons"}}>
+    Lessons
+  </tabs.tab>
+  <tabs.tab @value="home.enrollments.show.messages" @href={{href-to "home.enrollments.show.messages"}}>
+    Messages
+  </tabs.tab>
+  <tabs.tab @value="home.enrollments.show.payments" @href={{href-to "home.enrollments.show.payments"}}>
+    Payments
+  </tabs.tab>
+  <tabs.tab @value="home.enrollments.show.reports" @href={{href-to "home.enrollments.show.reports"}}>
+    Reports
+  </tabs.tab>
+</PaperTabs>
 
-    {{#each nonCurrentLessons as |lesson|}}
-      <Lessons::Tile 
-        @lesson={{lesson}}
-        @enrollment={{model.enrollment}}
-      />
-    {{/each}}
-  </PaperList>
-</article>
+{{outlet}}
+

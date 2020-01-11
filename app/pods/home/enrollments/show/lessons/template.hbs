@@ -1,0 +1,18 @@
+{{assert-must-preload model.enrollment 'lessons.lesson_items'}}
+
+<article>
+  <PaperList>
+    <Lessons::Tile 
+      @lesson={{currentLesson}}
+      @enrollment={{model.enrollment}}
+      @currentLesson={{true}}
+    />
+
+    {{#each nonCurrentLessons as |lesson|}}
+      <Lessons::Tile 
+        @lesson={{lesson}}
+        @enrollment={{model.enrollment}}
+      />
+    {{/each}}
+  </PaperList>
+</article>

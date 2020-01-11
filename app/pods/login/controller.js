@@ -27,7 +27,7 @@ export default Controller.extend({
 
   actions: {
     async authenticate() {
-      let { identification, password } = this.getProperties('identification', 'password');
+      let { identification, password } = this;
       try {
         await this.session.authenticate('authenticator:devise-token-auth', identification, password);
       } catch(error) {

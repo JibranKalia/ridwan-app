@@ -4,7 +4,7 @@
   @recordId={{model.enrollment.classroom.id}}
 />
 
-<PaperTabs @selected={{selectedRoute}} @stretch={{true}} @borderBottom={{true}} as |tabs|>
+<PaperTabs @selected={{selectedRoute}} @stretch={{false}} @borderBottom={{true}} as |tabs|>
   <tabs.tab @value="home.enrollments.show.lessons" @href={{href-to "home.enrollments.show.lessons"}}>
     Lessons
   </tabs.tab>

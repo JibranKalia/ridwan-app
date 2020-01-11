@@ -3,19 +3,13 @@
     @previousRoute="home.classrooms.show" 
     @recordId={{model.enrollment.classroom.id}}/>
 
-<article>
-  <PaperList>
-    <Lessons::Tile 
-      @lesson={{currentLesson}}
-      @enrollment={{model.enrollment}}
-      @currentLesson={{true}}
-    />
+{{#paper-tabs selected=currentRouteName stretch=true borderBottom=true as |tabs|}}
+  {{#tabs.tab value="home.enrollments.show.lessons" href=(href-to "home.enrollments.show.lessons")}}
+    Lessons
+  {{/tabs.tab}}
+  {{#tabs.tab value="home.enrollments.show.messages" href=(href-to "home.enrollments.show.messages")}}
+    Messages
+  {{/tabs.tab}}
+{{/paper-tabs}}
 
-    {{#each nonCurrentLessons as |lesson|}}
-      <Lessons::Tile 
-        @lesson={{lesson}}
-        @enrollment={{model.enrollment}}
-      />
-    {{/each}}
-  </PaperList>
-</article>
+{{liquid-outlet class="md-padding"}}

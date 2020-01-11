@@ -4,7 +4,7 @@ import { hash } from 'rsvp';
 export default Route.extend({
   model({ id }) {
     return hash({
-      enrollment: this.store.findRecord('enrollment', id, { reload: true })
+      enrollment: this.store.loadRecord('enrollment', id, { include: 'student,lessons,lessons.lesson_items' })
     })
   },
 });

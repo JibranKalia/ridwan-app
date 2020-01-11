@@ -1,5 +1,4 @@
-import Model from '@ember-data/model';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import Model, { belongsTo, hasMany } from '@ember-data/model';
 import { readOnly } from '@ember/object/computed';
 import LoadableModel from 'ember-data-storefront/mixins/loadable-model';
 

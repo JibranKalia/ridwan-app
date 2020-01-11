@@ -24,7 +24,7 @@ export default BaseAuthenticator.extend({
         authHost,
         identificationAttributeName,
         serverTokenEndpoint,
-      } = this.getProperties('authHost', 'identificationAttributeName', 'serverTokenEndpoint');
+      } = this;
       const url = joinUrl(authHost, serverTokenEndpoint);
       const requestPayload = {
         [identificationAttributeName]: identification,
@@ -56,7 +56,7 @@ export default BaseAuthenticator.extend({
 
   invalidate(data) {
     return new RSVP.Promise(async (resolve, reject) => {
-      const { authHost, invalidateEndpoint } = this.getProperties('authHost', 'invalidateEndpoint');
+      const { authHost, invalidateEndpoint } = this;
       const url = joinUrl(authHost, invalidateEndpoint);
       try {
         const response = await fetch(url, {
@@ -77,7 +77,7 @@ export default BaseAuthenticator.extend({
 
   restore(data) {
     return new RSVP.Promise(async (resolve, reject) => {
-      const { authHost, validateTokenEndpoint } = this.getProperties('authHost', 'validateTokenEndpoint');
+      const { authHost, validateTokenEndpoint } = this;
       const url = joinUrl(authHost, validateTokenEndpoint);
       try {
         const response = await fetch(url, {

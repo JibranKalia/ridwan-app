@@ -1,4 +1,4 @@
-import JSONAPIAdapter from 'ember-data/adapters/json-api';
+import JSONAPIAdapter from '@ember-data/adapter/json-api';
 import config from 'app-ridwan/config/environment';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';

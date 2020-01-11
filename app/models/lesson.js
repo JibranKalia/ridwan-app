@@ -1,5 +1,4 @@
-import Model, { attr } from '@ember-data/model';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { computed } from '@ember/object';
 import moment from 'moment';
 

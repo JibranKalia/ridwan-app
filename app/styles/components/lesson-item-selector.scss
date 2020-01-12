@@ -1,22 +1,39 @@
 .lesson-item-selector {
-  & > div {
-    margin: 1rem;
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(4rem, 8rem));
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+  @media (max-width: $layout-breakpoint-xs - 1) {
+    grid-template-columns: repeat(4, minmax(4rem, 8rem));
   }
-  .selector {
+
+
+  .lesson-item-component {
+    align-self: center;
+    grid-column-end: span 2;
+
+    &--small {
+      grid-column-end: span 1;
+    }
+
     md-input-container {
-      width: 100%;
+      margin-bottom: 0px;
     }
-    &--surah {
-      min-width: 10rem;
-    }
-    &--ayah {
-      width: 6rem;
-      margin-left: 0.75rem;
+
+    @media (min-width: $layout-breakpoint-xs) {
+      &--quality-one {
+        grid-column-start: 2;
+      }
+      &--quality-two {
+        grid-column-start: 4;
+      }
     }
   }
 }
 
 .lesson-details-list {
+  margin: 2rem 1rem 1rem 1rem;
   display: grid;
   grid-template-columns: 6rem auto;
   & > div {

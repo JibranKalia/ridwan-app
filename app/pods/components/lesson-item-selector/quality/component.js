@@ -3,6 +3,9 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 
 export default Component.extend({
+  classNames: [ 'lesson-item-component', 'lesson-item-component--quality'],
+  classNameBindings: ['isQualityOne:lesson-item-component--quality-one:lesson-item-component--quality-two'],
+
   qualityField: computed("isQualityOne", "lessonItem.{qualityOne,qualityTwo}", function() {
     return this.isQualityOne ? this.lessonItem.qualityOne : this.lessonItem.qualityTwo;
   }),

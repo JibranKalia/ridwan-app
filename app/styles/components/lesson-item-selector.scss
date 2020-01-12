@@ -8,25 +8,19 @@
     grid-template-columns: repeat(3, minmax(4rem, 8rem));
   }
 
-
   .lesson-item-component {
     align-self: center;
-    grid-column-end: span 2;
-
-    &--small {
+    grid-column-end: span 2; &--small {
       grid-column-end: span 1;
     }
-
     md-input-container {
       margin-bottom: 0px;
     }
-
     @media (max-width: $layout-breakpoint-xs - 1 ) {
       &--quality {
         grid-column-end: span 1;
       }
     }
-
     @media (min-width: $layout-breakpoint-xs) {
       &--quality-one {
         grid-column-start: 2;

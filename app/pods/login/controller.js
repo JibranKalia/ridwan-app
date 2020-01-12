@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import { observer } from '@ember/object';
 import { A } from '@ember/array';
 import { inject as service } from '@ember/service';
 
@@ -13,19 +12,15 @@ export default Controller.extend({
 
   handleError(error) {
     const msg = ERROR_MAPPER[error.status.toString()]
-    if (this.errors.length === 0) {
-      this.errors.pushObject(msg);
-    }
+    this.errors.pushObject(msg);
   },
 
-  // eslint-disable-next-line ember/no-observers
-  inputObserver: observer('password', function() {
-    if (this.errors.length > 0) {
-      this.set('errors', []);
-    }
-  }),
-
   actions: {
+    setPassword(value) {
+      this.errors.clear();
+      this.set('password', value);
+    },
+
     async authenticate() {
       let { identification, password } = this;
       try {

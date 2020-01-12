@@ -12,7 +12,7 @@
       />
       <form.input 
         @value={{this.password}}
-        @onChange={{action (mut this.password)}}
+        @onChange={{action 'setPassword'}}
         @label="Password"
         @required={{true}}
         @type="password"

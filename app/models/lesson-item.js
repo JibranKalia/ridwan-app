@@ -13,8 +13,8 @@ export default Model.extend({
   fromAyah: attr('number'),
   toSurah: attr('number'),
   toAyah: attr('number'),
-  qualityOne: attr('number'),
-  qualityTwo: attr('number'),
+  qualityOne: attr('number', { defaultValue: 0 }),
+  qualityTwo: attr('number', { defaultValue: 0 }),
 
   // computed properties
   qualityOneErrors: mapBy('errors.qualityOne', 'message'),

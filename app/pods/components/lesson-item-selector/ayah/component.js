@@ -5,6 +5,7 @@ import { isPresent, isEmpty } from '@ember/utils';
 import { range } from 'lodash';
 
 export default Component.extend({
+  classNames: [ 'lesson-item-component', 'lesson-item-component--small'],
   constants: service(),
 
   disabled: computed('selectedSurah', function() {

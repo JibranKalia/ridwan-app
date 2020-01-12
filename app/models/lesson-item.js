@@ -1,6 +1,7 @@
 import Model, { attr, belongsTo } from '@ember-data/model';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
+import { mapBy } from '@ember/object/computed';
 import { isPresent } from '@ember/utils';
 
 export default Model.extend({
@@ -12,8 +13,12 @@ export default Model.extend({
   fromAyah: attr('number'),
   toSurah: attr('number'),
   toAyah: attr('number'),
+  qualityOne: attr('number', { defaultValue: 0 }),
+  qualityTwo: attr('number', { defaultValue: 0 }),
 
   // computed properties
+  qualityOneErrors: mapBy('errors.qualityOne', 'message'),
+  qualityTwoErrors: mapBy('errors.qualityTwo', 'message'),
   fromSurahObject: computed('fromSurah', function() {
     return this.constants.SURAHS.find(r => r.number === this.fromSurah);
   }),

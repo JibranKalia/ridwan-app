@@ -1,0 +1,8 @@
+<PaperInput 
+  @type="number" 
+  @label={{if @isQualityOne "Mistakes" "Hesitations"}} 
+  @value={{this.qualityField}} 
+  @onChange={{action "setQuality"}} 
+  @isTouched={{this.isTouched}} 
+  @errors={{this.errors}}
+/>

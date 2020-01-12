@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import moment from 'moment';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
@@ -35,7 +36,7 @@ export default Component.extend({
     this.type = 'create';
     this.lesson = this.store.createRecord('lesson', {
       enrollment: this.enrollment,
-      date: new Date(),
+      date: moment().format('YYYY-MM-DD'),
       name: this.lessonName,
       type: this.type
     });

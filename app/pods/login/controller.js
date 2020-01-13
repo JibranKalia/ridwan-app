@@ -21,6 +21,11 @@ export default Controller.extend({
       this.set('password', value);
     },
 
+    setIdentification(value) {
+      this.errors.clear();
+      this.set('identification', value);
+    },
+
     async authenticate() {
       let { identification, password } = this;
       try {

@@ -3,7 +3,7 @@
     <PaperForm @onSubmit={{action "authenticate"}} @class="input-form layout-column layout-align-center-center" as |form|>
       <form.input
         @value={{this.identification}}
-        @onChange={{action (mut this.identification)}}
+        @onChange={{action 'setIdentification'}}
         @label="Email Address"
         @required={{true}}
         @class="flex-50"

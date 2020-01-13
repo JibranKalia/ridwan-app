@@ -1,0 +1,23 @@
+<div class="password-reset-page layout-column layout-align-center-center">
+  <article class="input-box">
+    {{#if (eq this.emailSent false)}}
+      <PaperForm @onSubmit={{action "forgotPassword"}} @class="input-form layout-column layout-align-center-center" as |form|>
+        <form.input
+          @value={{this.email}}
+          @onChange={{action 'setEmail'}}
+          @label="Email Address"
+          @required={{true}}
+          @class="flex-50"
+          @type="email"
+          @isTouched={{gt this.errors.length 0}}
+          @errors={{this.errors}}
+        />
+        <form.submit-button @raised={{true}} @primary={{true}} @disabled={{form.isInvalid}}>
+          Send Reset Email
+        </form.submit-button>
+      </PaperForm>
+    {{else}}
+      {{this.successMessage}}
+    {{/if}}
+  </article>
+</div>

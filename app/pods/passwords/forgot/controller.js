@@ -20,10 +20,10 @@ export default Controller.extend({
       this.set('email', value)
     }, 
     async forgotPassword() {
-      const redirect_url = config.appDomainName + '/passwords/reset';
+      const redirectUrl = config.appDomainName + '/passwords/reset';
       const data = {
         email: this.email,
-        redirect_url: redirect_url
+        redirect_url: redirectUrl 
       }
       try {
         const url = config.apiHost + '/auth/password'

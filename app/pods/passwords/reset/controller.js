@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { camelize } from '@ember/string';
 import config from 'app-ridwan/config/environment';
 import fetch from 'fetch';
+import { A } from '@ember/array';
 
 const JSON_CONTENT_TYPE = 'application/json';
 
@@ -13,6 +14,16 @@ const defaultHeaders = {
 export default Controller.extend({
   success: false,
   queryParams: ['access-token', 'client', 'uid'],
+  errors: A([]),
+
+  handleError(errors) {
+    for (const property in errors) {
+      this.errors.pushObject({
+        field_name: property,
+        message: errors[property][0]
+      })
+    }
+  },
 
   deriveAccessHeaders() {
     return {
@@ -24,6 +35,10 @@ export default Controller.extend({
 
   actions: {
     setValue(errorField, value) {
+      const error = this.errors.findBy('field_name', errorField);
+      if (error) {
+        this.errors.removeObject(error);
+      }
       this.set(camelize(errorField), value);
     },
 
@@ -45,7 +60,7 @@ export default Controller.extend({
         })
         if (!response.ok) { 
           const error = await response.json();
-          console.log('error', error);
+          this.handleError(error.errors);
           return;
         }
         this.set('success', true);

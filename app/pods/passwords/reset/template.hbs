@@ -1,3 +1,33 @@
-{{outlet}}
-
-Reset Password page
+<div class="password-reset-page layout-column layout-align-center-center">
+  <article class="input-box">
+    {{#if (eq success false)}}
+      <PaperForm @onSubmit={{action "resetPassword"}} @class="input-form layout-column layout-align-center-center" as |form|>
+        <form.input 
+          @value={{this.password}}
+          @onChange={{action "setValue" "password"}}
+          @label="Password"
+          @required={{true}}
+          @type="password"
+          @errors={{filter-by "field_name" "password" this.errors}}
+          @isTouched={{gt this.errors.length 0}}
+        />
+        <form.input 
+          @value={{this.passwordConfirmation}}
+          @onChange={{action "setValue" "password_confirmation"}}
+          @label="Password Confirmation"
+          @required={{true}}
+          @type="password"
+          @errors={{filter-by "field_name" "password_confirmation" this.errors}}
+          @isTouched={{gt this.errors.length 0}}
+        />
+        <form.submit-button @raised={{true}} @primary={{true}} @disabled={{form.isInvalid}}>
+          Submit
+        </form.submit-button>
+      </PaperForm>
+    {{else}}
+      Your password has been successfully updated.  
+      <LinkTo @route="login">Click here</LinkTo> 
+      to return to login screen.
+    {{/if}}
+  </article>
+</div>

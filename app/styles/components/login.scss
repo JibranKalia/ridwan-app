@@ -5,6 +5,9 @@
     background-color: paper-color("grey", '50');
     padding: 3rem;
     border-radius: 10px;
+    @media (max-width: $layout-breakpoint-xs - 1) {
+      max-width: 20rem;
+    }
 
     & .input-form > md-input-container {
       min-width: 15rem;

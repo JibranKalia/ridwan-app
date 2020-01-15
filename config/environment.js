@@ -19,6 +19,10 @@ module.exports = function(environment) {
         Date: false
       }
     },
+    emberRollbarClient: {
+      accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+      enabled: environment === 'production'
+    },
 
     APP: {
       // Here you can pass flags/options to your application instance
@@ -55,6 +59,13 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+  }
+
+  // Heroku Git Hash support
+  if (process.env.SOURCE_VERSION) {
+    let packageJson = require('../package.json');
+    let gitHash = process.env.SOURCE_VERSION.substr(0, 7);
+    ENV.emberRollbarClient.payload.client.javascript['code_version'] = `${packageJson.version}+${gitHash}`;
   }
 
   return ENV;

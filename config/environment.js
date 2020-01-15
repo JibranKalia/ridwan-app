@@ -21,7 +21,16 @@ module.exports = function(environment) {
     },
     emberRollbarClient: {
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
-      enabled: environment === 'production'
+      enabled: environment === 'production',
+      payload: {
+        environment: environment,
+        client: {
+          javascript: {
+            source_map_enabled: true,
+            guess_uncaught_frames: true,
+          }
+        }
+      }
     },
 
     APP: {

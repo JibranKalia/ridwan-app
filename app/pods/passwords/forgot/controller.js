@@ -1,7 +1,5 @@
 
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
-import { camelize } from '@ember/string';
 import config from 'app-ridwan/config/environment';
 import fetch from 'fetch';
 import { A } from '@ember/array';

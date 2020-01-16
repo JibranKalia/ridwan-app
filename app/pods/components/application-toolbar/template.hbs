@@ -4,7 +4,7 @@
       <PaperButton @iconButton={{true}} @onClick={{action "goToPreviousRoute"}}>
         {{paper-icon "keyboard_backspace"}}
       </PaperButton>
-    {{else}}
+    {{else if (eq @hideSideNav false)}}
       <PaperButton @iconButton={{true}} @onClick={{action (mut this.leftSideBarOpen)}}>
         {{paper-icon "menu"}}
       </PaperButton>
@@ -14,4 +14,6 @@
   </PaperToolbarTools>
 </PaperToolbar>
 
-<ApplicationSidenav @leftSideBarOpen={{this.leftSideBarOpen}} />
+{{#unless @hideSideNav}}
+  <ApplicationSidenav @leftSideBarOpen={{this.leftSideBarOpen}} />
+{{/unless}}

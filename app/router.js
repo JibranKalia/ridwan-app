@@ -14,6 +14,7 @@ Router.map(function() {
     this.route('reset');
   })
   this.route('home', function() {
+    this.route('setup');
     this.route('classrooms', function() {
       this.route('index', { path: '/' });
       this.route('show', { path: '/:id' } );

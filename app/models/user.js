@@ -5,7 +5,7 @@ import { computed } from '@ember/object';
 export default Model.extend({
   // attributes
   email: attr('string'),
-  type: attr('string'),
+  role: attr('string'),
   firstName: attr('string'),
   lastName: attr('string'),
   // computed properties

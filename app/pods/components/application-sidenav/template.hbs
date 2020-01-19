@@ -10,11 +10,13 @@
       <PaperToolbarTools>{{this.currentUser.user.formattedName}}</PaperToolbarTools>
       <PaperContent>
         <PaperList>
-          <PaperItem @onClick={{action "transitionToClassrooms"}}>
-            <div class="md-list-item-text">
-              <p>Classrooms</p>
-            </div>
-          </PaperItem>
+          {{#if this.currentUser.user.isTeacher}}
+            <PaperItem @onClick={{action "transitionToClassrooms"}}>
+              <div class="md-list-item-text">
+                <p>Classrooms</p>
+              </div>
+            </PaperItem>
+          {{/if}}
         </PaperList>
         {{#if this.session.isAuthenticated}}
           <PaperButton @raised={{true}} @onClick={{action "invalidateSession"}}>

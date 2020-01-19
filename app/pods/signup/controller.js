@@ -4,13 +4,19 @@ import { camelize } from '@ember/string';
 import config from 'app-ridwan/config/environment';
 import fetch from 'fetch';
 import { A } from '@ember/array';
+import { get } from 'lodash';
 
 export default Controller.extend({
   session: service(),
   errors: A([]),
 
   handleError(errorArray) {
-    errorArray.forEach(msg =>  this.errors.pushObject(msg) );
+    for (const property in errorArray) {
+      this.errors.pushObject({
+        field_name: property,
+        message: get(errorArray, [property, '0'], "is invalid")
+      })
+    }
   },
 
   actions: {
@@ -23,7 +29,7 @@ export default Controller.extend({
     },
 
     async save() {
-      const url = config.apiHost + '/users'
+      const url = config.apiHost + '/auth'
       const data = {
         first_name: this.firstName, 
         last_name: this.lastName,

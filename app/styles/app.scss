@@ -10,6 +10,11 @@ $grey: "grey";
 @import 'components/login';
 @import 'components/material-power-select';
 @import 'components/paper-modifications';
+@import 'components/signup';
+
+.main-container {
+  min-height: 100%;
+}
 
 .base-link {
   color: black;

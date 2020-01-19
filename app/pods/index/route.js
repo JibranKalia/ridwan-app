@@ -6,6 +6,6 @@ export default Route.extend(AuthenticatedRouteMixin, {
   session: service('session'),
 
   beforeModel() {
-    this.transitionTo('home.classrooms');
+    this.transitionTo('home');
   },
 });

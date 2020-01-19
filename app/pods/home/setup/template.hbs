@@ -1,0 +1,16 @@
+<ApplicationToolbar @name="Finish Signup" @showSideNav={{true}}/>
+
+<section class='signup-container'>
+  <article class='inner-group'>
+    <h2 class='md-subhead'>
+      Sign up as:
+    </h2>
+    {{#paper-radio-group
+      groupValue=(readonly currentUser.user.role)
+      onChange=(action (mut currentUser.user.role)) as |group|}}
+      {{#group.radio value="teacher" primary=true}} Teacher {{/group.radio}}
+      {{#group.radio value="parent" disabled=true warn=true}} Parent {{/group.radio}}
+    {{/paper-radio-group}}
+    {{#paper-button primary=true disabled=buttonDisabled raised=true onClick=(action "saveSetting" currentUser.user.role)}}Signup{{/paper-button}}
+  </article>
+</section>

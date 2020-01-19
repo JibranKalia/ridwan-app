@@ -14,6 +14,9 @@ export default Model.extend({
   formattedName: computed('firstName,lastName', function() {
     return `${this.firstName} ${this.lastName}`;
   }),
+  isTeacher: computed('role', function() {
+    return this.role === 'teacher';
+  }),
   // relationships
   teacher: belongsTo('teacher')
 });

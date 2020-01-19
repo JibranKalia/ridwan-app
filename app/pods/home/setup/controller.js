@@ -30,7 +30,7 @@ export default Controller.extend({
   actions: {
     async saveSetting(role) {
       if (role === 'teacher') {
-        this.createTeacher();
+        await this.createTeacher();
         this.router.transitionTo('home.classrooms');
       }
     }

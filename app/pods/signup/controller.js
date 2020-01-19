@@ -34,6 +34,7 @@ export default Controller.extend({
         first_name: this.firstName, 
         last_name: this.lastName,
         email: this.email,
+        role: 'none',
         password: this.password,
         password_confirmation: this.passwordConfirmation
       }

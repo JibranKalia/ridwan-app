@@ -1,4 +1,4 @@
-{{assert-must-preload this.model.classroom 'enrollments.student'}}
+{{assert-must-preload this.model.classroom 'enrollments'}}
 
 <ApplicationToolbar @name={{this.model.classroom.name}} @previousRoute="home.classrooms" />
 
@@ -7,11 +7,11 @@
     <PaperSubheader>
       Your Students
     </PaperSubheader>
-    {{#each this.model.classroom.enrollments as |enrollment|}}
+    {{#each this.model.classroom.sortedEnrollments as |enrollment|}}
       <PaperCard {{on "click" (action "showEnrollmentDetails" enrollment.id)}} @class="clickable" as |card|>
         <card.title as |title|>
           <title.text as |text|>
-            <text.headline>{{enrollment.formattedName}}</text.headline>
+            <text.headline>{{enrollment.studentName}}</text.headline>
           </title.text>
         </card.title>
         <card.actions>

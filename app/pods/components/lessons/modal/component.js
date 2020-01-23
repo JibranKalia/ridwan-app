@@ -44,5 +44,12 @@ export default Component.extend({
     this.lessonItemNames.forEach((name) => {
       this.createLessonItem(this.lesson, name);
     })
+  },
+
+  actions: {
+    setRating(value) {
+      this.set('rating', value);
+    }
   }
+
 })

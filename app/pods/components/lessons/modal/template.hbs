@@ -14,28 +14,30 @@
     </PaperTabs>
 
     {{#liquid-bind (hash tab=this.selectedLessonItem.index lessonItem=this.selectedLessonItem) class="md-padding dynamic-animation" as |current|}}
-      <div>
-        <h3 class="md-title margin-1">{{current.lessonItem.name}}</h3>
-        <Lessons::Modal::Details @lesson={{this.lesson}}/>
-        <LessonItemSelector @lessonItem={{current.lessonItem}}/>
-        <div class='star-rating-container'>
-          <StarRating
-            @rating={{current.lessonItem.rating}}
-            @wholeOnly={{true}}
-            @useHalfStars={{false}}
-            @fillColor="green"
-            @onClick={{action 'setRating' current.lessonItem}}/>
-        </div>
+      <article class='lesson-item-container'>
+        <div class='lesson-item-content'>
+          <h3 class="md-title margin-1">{{current.lessonItem.name}}</h3>
+          <Lessons::Modal::Details @lesson={{this.lesson}}/>
+          <LessonItemSelector @lessonItem={{current.lessonItem}}/>
+          <div class='star-rating-container'>
+            <StarRating
+              @rating={{current.lessonItem.rating}}
+              @wholeOnly={{true}}
+              @useHalfStars={{false}}
+              @fillColor="green"
+              @onClick={{action 'setRating' current.lessonItem}}/>
+          </div>
 
-        <div class="dialog-actions">
-          <PaperButton @primary={{true}} @onClick={{action this.closeModal this.lesson}}>
-            Cancel
-          </PaperButton>
-          <PaperButton @primary={{true}} @onClick={{action this.saveLessonItem this.lesson current.lessonItem this.type}}>
-            Save {{current.lessonItem.name}}
-          </PaperButton>
+          <div class="dialog-actions">
+            <PaperButton @primary={{true}} @onClick={{action this.closeModal this.lesson}}>
+              Cancel
+            </PaperButton>
+            <PaperButton @primary={{true}} @onClick={{action this.saveLessonItem this.lesson current.lessonItem this.type}}>
+              Save {{current.lessonItem.name}}
+            </PaperButton>
+          </div>
         </div>
-      </div>
+      </article>
     {{/liquid-bind}}
   </div>
 </FullScreenDialog>

@@ -3,7 +3,7 @@
   @title={{concat "Create Lesson"}}
   @topBarDialog={{true}}
   @dialogNoPadding={{true}}
-> 
+>
   <div class="lesson-modal">
     <PaperTabs @stretch={{true}} @borderBottom={{true}} @selected={{this.selectedLessonItem}} @onChange={{action (mut this.selectedLessonItem)}} as |tabs|>
       {{#each this.lesson.lessonItems as |lessonItem|}}
@@ -24,6 +24,16 @@
         <div>{{this.lesson.enrollment.student.formattedName}}</div>
       </div>
       <LessonItemSelector @lessonItem={{current.lessonItem}}/>
+
+      <div class='star-rating-container'>
+        <StarRating
+          @rating={{current.lessonItem.rating}}
+          @wholeOnly={{true}}
+          @useHalfStars={{false}}
+          @fillColor="green"
+          @onClick={{action 'setRating' current.lessonItem}}/>
+      </div>
+
       <div class="dialog-actions">
         <PaperButton @primary={{true}} @onClick={{action this.closeModal this.lesson}}>
           Cancel

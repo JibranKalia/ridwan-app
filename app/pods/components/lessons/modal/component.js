@@ -47,8 +47,8 @@ export default Component.extend({
   },
 
   actions: {
-    setRating(value) {
-      this.set('rating', value);
+    setRating(lessonItem, value) {
+      lessonItem.set('rating', value);
     }
   }
 

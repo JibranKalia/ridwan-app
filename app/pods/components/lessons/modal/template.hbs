@@ -24,7 +24,13 @@
         <div>{{this.lesson.enrollment.student.formattedName}}</div>
       </div>
       <LessonItemSelector @lessonItem={{current.lessonItem}}/>
-      <StarRating @rating={{this.rating}} @onClick={{action 'setRating'}}/>
+
+      <StarRating 
+        @rating={{current.lessonItem.rating}} 
+        @wholeOnly={{true}}
+        @useHalfStars={{false}}
+        @onClick={{action 'setRating' current.lessonItem}}/>
+
       <div class="dialog-actions">
         <PaperButton @primary={{true}} @onClick={{action this.closeModal this.lesson}}>
           Cancel

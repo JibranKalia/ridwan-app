@@ -15,6 +15,7 @@ export default Model.extend({
   toAyah: attr('number'),
   qualityOne: attr('number', { defaultValue: 0 }),
   qualityTwo: attr('number', { defaultValue: 0 }),
+  rating: attr('number', { defaultValue: 0 }),
 
   // computed properties
   qualityOneErrors: mapBy('errors.qualityOne', 'message'),

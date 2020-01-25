@@ -13,23 +13,15 @@ export default Component.extend({
     if (isEmpty(this.lesson)) {
       this.createLesson();
     }
-    this.ensureLessonItems(this.lesson);
-    this.set('selectedLessonItem', this.lesson.lessonItems.firstObject);
+    this.setSelectedLessonItem();
   },
 
-  ensureLessonItems(lesson) {
-    this.lessonItemNames.forEach((name) => {
-      if (isEmpty(lesson.lessonItems.find(li => li.name === name))) {
-        this.createLessonItem(lesson, name);
-      }
-    })
-  },
-
-  createLessonItem(lesson, name) {
-    this.store.createRecord('lessonItem', {
-      name: name,
-      lesson: lesson,
-    });
+  setSelectedLessonItem() {
+    if (isEmpty(this.lesson.lessonItems)) {
+      this.set('selectedLessonItem', 'new');
+    } else {
+      this.set('selectedLessonItem', this.lesson.lessonItems.firstObject);
+    }
   },
 
   createLesson() {
@@ -40,13 +32,17 @@ export default Component.extend({
       name: this.lessonName,
       type: this.type
     });
-
-    this.lessonItemNames.forEach((name) => {
-      this.createLessonItem(this.lesson, name);
-    })
   },
 
   actions: {
+    addLesson(name) {
+      const lessonItem = this.store.createRecord('lessonItem', {
+        name: name,
+        lesson: this.lesson
+      });
+      this.set('selectedLessonItem', lessonItem);
+    },
+
     setRating(lessonItem, value) {
       lessonItem.set('rating', value);
     }

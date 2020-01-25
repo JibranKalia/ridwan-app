@@ -1,7 +1,7 @@
 <FullScreenDialog
-  @close={{action this.closeModal this.lesson}}
+  @close={{action @closeModal this.lesson}}
   @title={{concat "Create Lesson"}}
-  @topBarDialog={{true}}
+  @alwaysFullscreen={{true}}
   @dialogNoPadding={{true}}
 >
   <div class="lesson-modal">
@@ -11,37 +11,25 @@
           {{lessonItem.name}}
         </tabs.tab>
       {{/each}}
+      <tabs.tab @value="new">Add New</tabs.tab>
     </PaperTabs>
 
-    {{#liquid-bind (hash tab=this.selectedLessonItem.index lessonItem=this.selectedLessonItem) class="md-padding dynamic-animation" as |current|}}
-      <h3 class="md-title margin-1">{{current.lessonItem.name}}</h3>
-      <div class="layout-column lesson-details-list">
-        <div>Date:</div>
-        <div>{{this.lesson.formattedDate}}</div>
-        <div>Classroom:</div>
-        <div>{{this.lesson.enrollment.classroom.name}}</div>
-        <div>Student:</div>
-        <div>{{this.lesson.enrollment.student.formattedName}}</div>
-      </div>
-      <LessonItemSelector @lessonItem={{current.lessonItem}}/>
-
-      <div class='star-rating-container'>
-        <StarRating
-          @rating={{current.lessonItem.rating}}
-          @wholeOnly={{true}}
-          @useHalfStars={{false}}
-          @fillColor="green"
-          @onClick={{action 'setRating' current.lessonItem}}/>
-      </div>
-
-      <div class="dialog-actions">
-        <PaperButton @primary={{true}} @onClick={{action this.closeModal this.lesson}}>
-          Cancel
-        </PaperButton>
-        <PaperButton @primary={{true}} @onClick={{action this.saveLessonItem this.lesson current.lessonItem this.type}}>
-          Save {{current.lessonItem.name}}
-        </PaperButton>
-      </div>
+    {{#liquid-bind (hash lessonItem=this.selectedLessonItem) class="md-padding dynamic-animation" as |current|}}
+      {{#if (eq current.lessonItem "new")}}
+        <Lessons::Modal::New
+          @lessonItemNames={{this.lessonItemNames}}
+          @addLesson={{action "addLesson"}}
+        />
+      {{else}}
+        <Lessons::Modal::Body
+          @lesson={{this.lesson}}
+          @lessonItem={{current.lessonItem}}
+          @type={{this.type}}
+          @setRating={{action "setRating"}}
+          @closeModal={{@closeModal}}
+          @saveLessonItem={{@saveLessonItem}}
+        />
+      {{/if}}
     {{/liquid-bind}}
   </div>
 </FullScreenDialog>

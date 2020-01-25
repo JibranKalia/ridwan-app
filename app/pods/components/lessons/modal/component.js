@@ -13,8 +13,15 @@ export default Component.extend({
     if (isEmpty(this.lesson)) {
       this.createLesson();
     }
-    this.ensureLessonItems(this.lesson);
-    this.set('selectedLessonItem', this.lesson.lessonItems.firstObject);
+    this.setSelectedLessonItem();
+  },
+
+  setSelectedLessonItem() {
+    if (isEmpty(this.lesson.lessonItems)) {
+      this.set('selectedLessonItem', 'new');
+    } else {
+      this.set('selectedLessonItem', this.lesson.lessonItems.firstObject);
+    }
   },
 
   ensureLessonItems(lesson) {

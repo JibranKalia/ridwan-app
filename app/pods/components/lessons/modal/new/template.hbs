@@ -1,0 +1,9 @@
+<article class='lesson-item-container'>
+  <div class='lesson-item-content layout-column'>
+    {{#each @lessonItemNames as |name|}}
+      <PaperButton @primary={{true}} @raised={{true}} @onClick={{action @addLesson name}}>
+        Add {{name}}
+      </PaperButton>
+    {{/each}}
+  </div>
+</article>

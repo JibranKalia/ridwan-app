@@ -11,18 +11,25 @@
           {{lessonItem.name}}
         </tabs.tab>
       {{/each}}
-      <tabs.tab @value='addNew'>Add New</tabs.tab>
+      <tabs.tab @value="new">Add New</tabs.tab>
     </PaperTabs>
 
-    {{#liquid-bind (hash tab=this.selectedLessonItem.index lessonItem=this.selectedLessonItem) class="md-padding dynamic-animation" as |current|}}
-      <Lessons::Modal::Body
-        @lesson={{this.lesson}}
-        @lessonItem={{current.lessonItem}}
-        @type={{this.type}}
-        @setRating={{action 'setRating'}}
-        @closeModal={{@closeModal}}
-        @saveLessonItem={{@saveLessonItem}}
-      />
+    {{#liquid-bind (hash lessonItem=this.selectedLessonItem) class="md-padding dynamic-animation" as |current|}}
+      {{#if (eq current.lessonItem "new")}}
+        <Lessons::Modal::New
+          @lessonItemNames={{this.lessonItemNames}}
+          @addLesson={{action "addLesson"}}
+        />
+      {{else}}
+        <Lessons::Modal::Body
+          @lesson={{this.lesson}}
+          @lessonItem={{current.lessonItem}}
+          @type={{this.type}}
+          @setRating={{action "setRating"}}
+          @closeModal={{@closeModal}}
+          @saveLessonItem={{@saveLessonItem}}
+        />
+      {{/if}}
     {{/liquid-bind}}
   </div>
 </FullScreenDialog>

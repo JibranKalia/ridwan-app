@@ -47,6 +47,14 @@ export default Component.extend({
   },
 
   actions: {
+    addLesson(name) {
+      const lessonItem = this.store.createRecord('lessonItem', {
+        name: name,
+        lesson: this.lesson
+      });
+      this.set('selectedLessonItem', lessonItem);
+    },
+
     setRating(lessonItem, value) {
       lessonItem.set('rating', value);
     }

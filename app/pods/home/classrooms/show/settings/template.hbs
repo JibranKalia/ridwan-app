@@ -1,3 +1,17 @@
-<article>
-  Settings Page
+<article class='md-padding'>
+  <h2 class='md-subhead'>
+    Lesson Names:
+  </h2>
+
+  <div class='layout-column max-width-20'>
+    {{#each this.model.classroom.sortedLessonTypes as |lessonType index|}}
+      <PaperInput
+        @label="Lesson {{lessonType.position}}"
+        @value={{lessonType.name}}
+        @onChange={{action (mut lessonType.name)}}
+      />
+    {{/each}}
+  </div>
+
+  <PaperButton @primary={{true}} @raised={{true}} @onClick={{action 'saveLessonTypes'}}>Save</PaperButton>
 </article>

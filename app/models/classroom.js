@@ -5,13 +5,16 @@ import { sort } from '@ember/object/computed';
 
 export default Model.extend(LoadableModel, {
   studentNameAsc: Object.freeze(['studentName:asc']),
+  lessonTypePositionAsc: Object.freeze(['position:asc']),
   // attributes
   name: attr('string'),
-  // computed properties
-  nameErrors: mapBy('errors.name', 'message'),
   // relationships
   teacher: belongsTo('teacher'),
   students: hasMany('students'),
   enrollments: hasMany('enrollments', { async: false }),
+  lessonTypes: hasMany('lessonTypes', { async: false }),
+  // computed properties
+  nameErrors: mapBy('errors.name', 'message'),
   sortedEnrollments: sort('enrollments', 'studentNameAsc'),
+  sortedLessonTypes: sort('lessonTypes', 'lessonTypePositionAsc'),
 });

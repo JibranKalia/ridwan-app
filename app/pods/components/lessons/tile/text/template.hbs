@@ -10,7 +10,7 @@
   {{#each this.lesson.sortedLessonItems as |lessonItem|}}
     {{#if (not lessonItem.isNew)}}
       <span class="font-weight-500">
-        {{lessonItem.lessonType.name}}
+        {{lessonItem.name}}
       </span>
       <span class="center-text">
         {{lessonItem.fromSurahObject.transliteration}} : {{lessonItem.fromAyahString}}

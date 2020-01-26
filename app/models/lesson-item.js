@@ -24,6 +24,7 @@ export default Model.extend({
 
   // computed properties
   position: readOnly('lessonType.position'),
+  name: readOnly('lessonType.name'),
   qualityOneErrors: mapBy('errors.qualityOne', 'message'),
   qualityTwoErrors: mapBy('errors.qualityTwo', 'message'),
   fromSurahObject: computed('fromSurah', function() {

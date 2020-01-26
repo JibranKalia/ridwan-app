@@ -8,7 +8,7 @@
     <PaperTabs @stretch={{true}} @borderBottom={{true}} @selected={{this.selectedLessonItem}} @onChange={{action (mut this.selectedLessonItem)}} as |tabs|>
       {{#each this.lesson.sortedLessonItems as |lessonItem|}}
         <tabs.tab @value={{lessonItem}}>
-          {{lessonItem.lessonType.name}}
+          {{lessonItem.name}}
         </tabs.tab>
       {{/each}}
       <tabs.tab @value="new">Add New</tabs.tab>

@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
 export default Component.extend({
-  lessonItemNames: Object.freeze(['New Lesson', 'New Revision', 'Revision']),
   store: service(),
   type: 'update',
 
@@ -20,7 +19,7 @@ export default Component.extend({
     if (isEmpty(this.lesson.lessonItems)) {
       this.set('selectedLessonItem', 'new');
     } else {
-      this.set('selectedLessonItem', this.lesson.lessonItems.firstObject);
+      this.set('selectedLessonItem', this.lesson.sortedLessonItems.firstObject);
     }
   },
 
@@ -35,9 +34,9 @@ export default Component.extend({
   },
 
   actions: {
-    addLesson(name) {
+    addLesson(lessonType) {
       const lessonItem = this.store.createRecord('lessonItem', {
-        name: name,
+        lessonType: lessonType,
         lesson: this.lesson
       });
       this.set('selectedLessonItem', lessonItem);

@@ -7,17 +7,17 @@
 </span>
 
 <div class="lessons-tile-text--list  md-subhead">
-  {{#each this.lesson.lessonItems as |lessonItem|}}
+  {{#each this.lesson.sortedLessonItems as |lessonItem|}}
     {{#if (not lessonItem.isNew)}}
       <span class="font-weight-500">
-        {{lessonItem.name}}  
+        {{lessonItem.name}}
       </span>
       <span class="center-text">
-        {{lessonItem.fromSurahObject.transliteration}} : {{lessonItem.fromAyahString}} 
+        {{lessonItem.fromSurahObject.transliteration}} : {{lessonItem.fromAyahString}}
       </span>
       <span class="center-text">to</span>
       <span class="center-text">
-        {{lessonItem.toSurahObject.transliteration}} : {{lessonItem.toAyahString}} 
+        {{lessonItem.toSurahObject.transliteration}} : {{lessonItem.toAyahString}}
       </span>
     {{/if}}
   {{/each}}

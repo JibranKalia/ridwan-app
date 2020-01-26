@@ -5,6 +5,7 @@ export default Route.extend({
   model() {
     return hash({
       enrollment: this.modelFor('home.enrollments.show').enrollment,
+      lessonTypes: this.modelFor('home.enrollments.show').lessonTypes,
     })
   }
 })

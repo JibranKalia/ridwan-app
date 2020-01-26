@@ -2,16 +2,18 @@
 
 <article>
   <PaperList>
-    <Lessons::Tile 
+    <Lessons::Tile
       @lesson={{this.currentLesson}}
       @enrollment={{this.model.enrollment}}
+      @lessonTypes={{this.model.lessonTypes}}
       @currentLesson={{true}}
     />
 
     {{#each this.nonCurrentLessons as |lesson|}}
-      <Lessons::Tile 
+      <Lessons::Tile
         @lesson={{lesson}}
         @enrollment={{this.model.enrollment}}
+        @lessonTypes={{this.model.lessonTypes}}
       />
     {{/each}}
   </PaperList>

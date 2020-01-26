@@ -1,8 +1,8 @@
 <article class='lesson-item-container'>
   <div class='lesson-item-content layout-column'>
-    {{#each @lessonItemNames as |name|}}
-      <PaperButton @primary={{true}} @raised={{true}} @onClick={{action @addLesson name}}>
-        Add {{name}}
+    {{#each @lessonTypes as |lessonType|}}
+      <PaperButton @primary={{true}} @raised={{true}} @onClick={{action @addLesson lessonType}}>
+        Add {{lessonType.name}}
       </PaperButton>
     {{/each}}
   </div>

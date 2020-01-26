@@ -3,12 +3,12 @@ import { inject as service } from '@ember/service';
 import { computed } from '@ember/object';
 import { mapBy } from '@ember/object/computed';
 import { isPresent } from '@ember/utils';
+import { readOnly } from '@ember/object/computed';
 
 export default Model.extend({
   constants: service(),
 
   // attributes
-  name: attr('string'),
   fromSurah: attr('number'),
   fromAyah: attr('number'),
   toSurah: attr('number'),
@@ -16,8 +16,15 @@ export default Model.extend({
   qualityOne: attr('number', { defaultValue: 0 }),
   qualityTwo: attr('number', { defaultValue: 0 }),
   rating: attr('number', { defaultValue: 0 }),
+  createdAt: attr('date'),
+
+  // relationships
+  lesson: belongsTo('lesson'),
+  lessonType: belongsTo('lessonType'),
 
   // computed properties
+  position: readOnly('lessonType.position'),
+  name: readOnly('lessonType.name'),
   qualityOneErrors: mapBy('errors.qualityOne', 'message'),
   qualityTwoErrors: mapBy('errors.qualityTwo', 'message'),
   fromSurahObject: computed('fromSurah', function() {
@@ -38,7 +45,4 @@ export default Model.extend({
     }
     return null;
   }),
-
-  // relationships
-  lesson: belongsTo('lesson')
 });

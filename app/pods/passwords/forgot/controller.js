@@ -1,4 +1,3 @@
-
 import Controller from '@ember/controller';
 import config from 'app-ridwan/config/environment';
 import fetch from 'fetch';
@@ -11,17 +10,17 @@ export default Controller.extend({
   handleError(errors) {
     this.errors.pushObject(errors[0]);
   },
-  
+
   actions: {
     setEmail(value) {
       this.errors.clear();
       this.set('email', value)
-    }, 
+    },
     async forgotPassword() {
       const redirectUrl = config.appDomainName + '/passwords/reset';
       const data = {
         email: this.email,
-        redirect_url: redirectUrl 
+        redirect_url: redirectUrl
       }
       try {
         const url = config.apiHost + '/auth/password'
@@ -34,7 +33,7 @@ export default Controller.extend({
           }
         })
         const body = await response.json();
-        if (!response.ok) { 
+        if (!response.ok) {
           this.handleError(body.errors);
           return;
         }

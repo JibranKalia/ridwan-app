@@ -9,6 +9,8 @@ module.exports = function(environment) {
     locationType: 'auto',
     apiHost: process.env.API_HOST,
     appDomainName: process.env.APP_DOMAIN_NAME,
+    logRocket: process.env.LOG_ROCKET,
+    isProduction: environment === 'production',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

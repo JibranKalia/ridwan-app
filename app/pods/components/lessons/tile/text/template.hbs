@@ -10,14 +10,14 @@
   {{#each this.lesson.lessonItems as |lessonItem|}}
     {{#if (not lessonItem.isNew)}}
       <span class="font-weight-500">
-        {{lessonItem.name}}  
+        {{lessonItem.lessonType.name}}
       </span>
       <span class="center-text">
-        {{lessonItem.fromSurahObject.transliteration}} : {{lessonItem.fromAyahString}} 
+        {{lessonItem.fromSurahObject.transliteration}} : {{lessonItem.fromAyahString}}
       </span>
       <span class="center-text">to</span>
       <span class="center-text">
-        {{lessonItem.toSurahObject.transliteration}} : {{lessonItem.toAyahString}} 
+        {{lessonItem.toSurahObject.transliteration}} : {{lessonItem.toAyahString}}
       </span>
     {{/if}}
   {{/each}}

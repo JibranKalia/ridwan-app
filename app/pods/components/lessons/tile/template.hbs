@@ -1,7 +1,11 @@
 <PaperCard {{on "click" (action "openModal")}} @class="clickable"  as |card|>
   <card.title as |title|>
     <title.text as |text|>
-      <Lessons::Tile::Text @text={{text}} @currentLesson={{this.currentLesson}} @lesson={{this.lesson}} />
+      <Lessons::Tile::Text
+        @text={{text}}
+        @currentLesson={{this.currentLesson}}
+        @lesson={{this.lesson}}
+      />
     </title.text>
   </card.title>
   <card.actions>
@@ -16,7 +20,8 @@
 
 {{#if this.showModal}}
   <Lessons::Modal
-    @enrollment={{this.enrollment}}
+    @enrollment={{@enrollment}}
+    @lessonTypes={{@lessonTypes}}
     @type={{this.type}}
     @lesson={{this.lesson}}
     @saveLessonItem={{action "saveLessonItem"}}

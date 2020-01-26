@@ -17,7 +17,7 @@
     {{#liquid-bind (hash lessonItem=this.selectedLessonItem) class="md-padding dynamic-animation" as |current|}}
       {{#if (eq current.lessonItem "new")}}
         <Lessons::Modal::New
-          @lessonTypes={{lessonTypes}}
+          @lessonTypes={{@lessonTypes}}
           @addLesson={{action "addLesson"}}
         />
       {{else}}

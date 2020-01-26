@@ -2,7 +2,7 @@
   <div class='lesson-item-content layout-column'>
     {{#each @lessonTypes as |lessonType|}}
       <PaperButton @primary={{true}} @raised={{true}} @onClick={{action @addLesson lessonType}}>
-        Add {{name}}
+        Add {{lessonType.name}}
       </PaperButton>
     {{/each}}
   </div>

@@ -5,7 +5,8 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Route.extend(AuthenticatedRouteMixin, {
   model({ id }) {
     return hash({
-      enrollment: this.store.loadRecord('enrollment', id, { include: 'student,lessons,lessons.lesson_items' })
+      enrollment: this.store.loadRecord('enrollment', id, { include: 'student,lessons,lessons.lesson_items' }),
+      lessonTypes: this.store.loadRecords('lessonType', { enrollment_id: id } )
     })
   },
 });

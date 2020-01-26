@@ -8,7 +8,7 @@
     <PaperTabs @stretch={{true}} @borderBottom={{true}} @selected={{this.selectedLessonItem}} @onChange={{action (mut this.selectedLessonItem)}} as |tabs|>
       {{#each this.lesson.lessonItems as |lessonItem|}}
         <tabs.tab @value={{lessonItem}}>
-          {{lessonItem.name}}
+          {{lessonItem.lessonType.name}}
         </tabs.tab>
       {{/each}}
       <tabs.tab @value="new">Add New</tabs.tab>
@@ -17,7 +17,7 @@
     {{#liquid-bind (hash lessonItem=this.selectedLessonItem) class="md-padding dynamic-animation" as |current|}}
       {{#if (eq current.lessonItem "new")}}
         <Lessons::Modal::New
-          @lessonItemNames={{this.lessonItemNames}}
+          @lessonTypes={{lessonTypes}}
           @addLesson={{action "addLesson"}}
         />
       {{else}}

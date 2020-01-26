@@ -8,7 +8,6 @@ export default Model.extend({
   constants: service(),
 
   // attributes
-  name: attr('string'),
   fromSurah: attr('number'),
   fromAyah: attr('number'),
   toSurah: attr('number'),
@@ -16,6 +15,10 @@ export default Model.extend({
   qualityOne: attr('number', { defaultValue: 0 }),
   qualityTwo: attr('number', { defaultValue: 0 }),
   rating: attr('number', { defaultValue: 0 }),
+
+  // relationships
+  lesson: belongsTo('lesson'),
+  lessonType: belongsTo('lessonType'),
 
   // computed properties
   qualityOneErrors: mapBy('errors.qualityOne', 'message'),
@@ -38,7 +41,4 @@ export default Model.extend({
     }
     return null;
   }),
-
-  // relationships
-  lesson: belongsTo('lesson')
 });

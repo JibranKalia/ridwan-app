@@ -19,7 +19,7 @@ export default Component.extend({
     if (isEmpty(this.lesson.lessonItems)) {
       this.set('selectedLessonItem', 'new');
     } else {
-      this.set('selectedLessonItem', this.lesson.lessonItems.firstObject);
+      this.set('selectedLessonItem', this.lesson.sortedLessonItems.firstObject);
     }
   },
 

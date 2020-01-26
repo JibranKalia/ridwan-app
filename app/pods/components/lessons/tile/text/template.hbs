@@ -7,7 +7,7 @@
 </span>
 
 <div class="lessons-tile-text--list  md-subhead">
-  {{#each this.lesson.lessonItems as |lessonItem|}}
+  {{#each this.lesson.sortedLessonItems as |lessonItem|}}
     {{#if (not lessonItem.isNew)}}
       <span class="font-weight-500">
         {{lessonItem.lessonType.name}}

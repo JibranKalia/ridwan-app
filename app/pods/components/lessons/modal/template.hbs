@@ -6,7 +6,7 @@
 >
   <div class="lesson-modal">
     <PaperTabs @stretch={{true}} @borderBottom={{true}} @selected={{this.selectedLessonItem}} @onChange={{action (mut this.selectedLessonItem)}} as |tabs|>
-      {{#each this.lesson.lessonItems as |lessonItem|}}
+      {{#each this.lesson.sortedLessonItems as |lessonItem|}}
         <tabs.tab @value={{lessonItem}}>
           {{lessonItem.lessonType.name}}
         </tabs.tab>

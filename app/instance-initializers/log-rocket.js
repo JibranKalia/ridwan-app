@@ -1,7 +1,10 @@
 import LogRocket from 'logrocket';
+import config from 'app-ridwan/config/environment';
 
 export function initialize(/* appInstance */) {
-  LogRocket.init('l7oafo/ridwan-app-prod');
+  if (config.isProduction) {
+    LogRocket.init(config.logRocket);
+  }
 }
 
 export default {

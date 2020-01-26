@@ -2,33 +2,13 @@
 
 <ApplicationToolbar @name={{this.model.classroom.name}} @previousRoute="home.classrooms" />
 
-<article>
-  <PaperList>
-    <PaperSubheader>
-      Your Students
-    </PaperSubheader>
-    {{#each this.model.classroom.sortedEnrollments as |enrollment|}}
-      <PaperCard {{on "click" (action "showEnrollmentDetails" enrollment.id)}} @class="clickable" as |card|>
-        <card.title as |title|>
-          <title.text as |text|>
-            <text.headline>{{enrollment.studentName}}</text.headline>
-          </title.text>
-        </card.title>
-        <card.actions>
-          <LinkTo @class="base-link" @route="home.enrollments.show" @model={{enrollment.id}}>
-            <PaperButton>Show Details</PaperButton>
-          </LinkTo>
-          <PaperButton @onClick={{action "deleteEnrollment" enrollment}}>Remove Student</PaperButton>
-        </card.actions>
-      </PaperCard>
-    {{/each}}
-    <div class="extra-list-element"></div>
-  </PaperList>
-  <PaperButton @accent={{true}} @raised={{true}} @fab={{true}} @class="app-fab--absolute" @onClick={{action "openCreateModal"}} >
-    {{paper-icon "add"}}
-  </PaperButton>
-</article>
+<PaperTabs @selected={{this.selectedRoute}} @stretch={{false}} @borderBottom={{true}} as |tabs|>
+  <tabs.tab @value="home.classrooms.show.students" @href={{href-to "home.classrooms.show.students"}}>
+    Students
+  </tabs.tab>
+  <tabs.tab @value="home.classrooms.show.settings" @href={{href-to "home.classrooms.show.settings"}}>
+    Settings
+  </tabs.tab>
+</PaperTabs>
 
-{{#if this.showCreateModal}}
-  <Students::CreateStudentModal @classroom={{this.model.classroom}} @saveStudent={{action "saveStudent"}} @closeModal={{action "closeCreateModal"}} />
-{{/if}}
+{{outlet}}

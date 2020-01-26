@@ -17,7 +17,10 @@ Router.map(function() {
     this.route('setup');
     this.route('classrooms', function() {
       this.route('index', { path: '/' });
-      this.route('show', { path: '/:id' } );
+      this.route('show', { path: '/:id' }, function() {
+        this.route('students', { path: '/'});
+        this.route('settings');
+      });
     })
     this.route('enrollments', function() {
       this.route('show', { path: '/:id' }, function() {
